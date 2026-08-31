@@ -205,13 +205,10 @@ h1, h2, h3, h4 {
   display: flex; align-items: center; justify-content: space-between;
   gap: 16px; height: 72px;
 }
-.brand { display: flex; align-items: center; gap: 9px; flex: none; }
-.brand__mark { width: 26px; height: 26px; flex: none; display: block; }
-.brand__name {
-  font-family: var(--f-display); font-weight: 800; font-size: 1.14rem;
-  letter-spacing: -0.03em; color: var(--ink);
-}
-.brand__name b { color: var(--brand); font-weight: 800; }
+.brand { display: flex; align-items: center; flex: none; }
+.brand__logo { height: 40px; width: auto; display: block; }
+.ftr .brand__logo { height: 36px; }
+@media (max-width: 420px) { .brand__logo { height: 34px; } }
 
 .nav { display: flex; align-items: center; gap: 1px; }
 .nav a {
