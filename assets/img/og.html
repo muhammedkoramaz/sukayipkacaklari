@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>OG cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;600&display=swap">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body { background: #ffffff; color: #101d31; font-family: "Plus Jakarta Sans", system-ui, sans-serif; position: relative; }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(19,42,76,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(19,42,76,.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(120% 100% at 15% 0%, #000, transparent 68%);
+            mask-image: radial-gradient(120% 100% at 15% 0%, #000, transparent 68%);
+  }
+  .glow { position: absolute; width: 720px; height: 720px; right: -180px; top: -260px;
+    background: radial-gradient(circle, rgba(37,99,235,.16), transparent 62%); }
+  .wrap { position: relative; padding: 74px 80px; height: 100%; display: flex; flex-direction: column; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand span { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 34px; letter-spacing: -.03em; }
+  .brand b { color: #2563eb; }
+  .drop { width: 30px; height: 34px; }
+  h1 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 72px; line-height: 1.04; letter-spacing: -.035em; margin-top: auto; max-width: 20ch; }
+  h1 em { color: #2563eb; font-style: normal; }
+  p.sub { margin-top: 22px; font-size: 24px; color: #45566c; max-width: 44ch; }
+  .row { margin-top: auto; display: flex; gap: 48px; padding-top: 32px; border-top: 1px solid rgba(19,42,76,.14); }
+  .row div { display: flex; flex-direction: column; gap: 4px; }
+  .row dt { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #96a3b8; }
+  .row dd { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 29px; letter-spacing: -.02em; }
+  .row dd b { color: #2563eb; }
+  .url { position: absolute; right: 80px; top: 82px; font-family: "JetBrains Mono", monospace; font-size: 16px; color: #96a3b8; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="glow"></div>
+  <span class="url">sukayipkacaklari.com</span>
+  <div class="wrap">
+    <div class="brand">
+      <svg class="drop" viewBox="0 0 24 26" aria-hidden="true"><path d="M12 1c5 5.6 7.6 9.6 7.6 13A7.6 7.6 0 0 1 4.4 14C4.4 10.6 7 6.6 12 1z" fill="#2563eb"/></svg>
+      <span>Leak<b>Expert</b></span>
+    </div>
+    <h1>Şebekede kaçan suyu <em>sinyale</em> çeviriyoruz.</h1>
+    <p class="sub">Su kayıp-kaçak tespiti · debi &amp; basınç izleme · mobil + web platform</p>
+    <dl class="row">
+      <div><dt>Saha deneyimi</dt><dd><b>25+</b> yıl</dd></div>
+      <div><dt>Tamamlanan proje</dt><dd><b>43</b></dd></div>
+      <div><dt>Akustik dinleme</dt><dd><b>1.000+</b> km</dd></div>
+      <div><dt>Kurulan DMA</dt><dd><b>70+</b></dd></div>
+    </dl>
+  </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "LeakExpert — Su Kayıp-Kaçak Platformu",
+  "short_name": "LeakExpert",
+  "description": "Belediye içme suyu şebekelerinde su kayıp-kaçak tespiti, debi/basınç izleme ve saha yönetimi.",
+  "lang": "tr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "/assets/img/icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icons/app-icon.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
