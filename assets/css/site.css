@@ -223,6 +223,7 @@ h1, h2, h3, h4 {
   background: var(--brand); border-radius: 2px;
 }
 .hdr__cta { display: flex; align-items: center; gap: 12px; }
+.hdr__cta:empty { display: none; }
 .hdr__phone {
   display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
   font-family: var(--f-mono); font-size: 0.8rem; font-weight: 500;
