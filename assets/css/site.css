@@ -137,6 +137,8 @@ h1, h2, h3, h4 {
   max-width: 62ch;
   line-height: 1.6;
 }
+.lede a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-strong); }
+.lede a:hover { text-decoration-color: var(--brand); }
 
 .h-sec { font-size: var(--step-3); max-width: 22ch; }
 .h-sec + .lede { margin-top: 18px; }

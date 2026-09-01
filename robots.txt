@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /tesekkurler.html
 
-Sitemap: https://www.sukayipkacaklari.com/sitemap.xml
+Sitemap: https://sukayipkacaklari.com/sitemap.xml
