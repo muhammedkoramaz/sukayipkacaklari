@@ -52,7 +52,7 @@ python -m http.server 8080
 ## Sayfa üretimi (jeneratörler)
 
 Proje sayfaları + `projeler/index.html` + `sitemap.xml`: `gen_projects.py`.
-`/rehber/` sayfaları + `su-kacagi-tespiti-kayseri.html`: `gen_rehber.py`.
+`/rehber/` sayfaları: `gen_rehber.py`.
 Her ikisinden sonra **`add_img_dims.py`** çalıştırılır — tüm yerel `<img>`
 etiketlerine gerçek `width`/`height` ekler (CLS / layout-shift önlemi; idempotent).
 Şema `logo` alanları her yerde raster `assets/img/icon.png` (2000×2000) kullanır.
@@ -65,7 +65,7 @@ etiketlerine gerçek `width`/`height` ekler (CLS / layout-shift önlemi; idempot
 | `platform.html` | Yazılım platformu (mobil + web + API) |
 | `hizmetler.html` | Saha hizmetleri + yöntem |
 | `projeler/` | Projeler listesi |
-| `projeler/*.html` (12 sayfa) | Proje detayları: Kütahya, Batman, Çanakkale, Keşan, Kilis, Sivas, Rize, Doğubayazıt, Fatsa, Kayseri, Bodrum, Mozambik-Beira |
+| `projeler/*.html` (11 sayfa) | Proje detayları: Kütahya, Batman, Çanakkale, Keşan, Kilis, Sivas, Rize, Doğubayazıt, Fatsa, Bodrum, Mozambik-Beira |
 | `referanslar.html` | Referans kurum logoları + proje geçmişi zaman çizelgesi |
 | `hakkimizda.html` | Hakkımızda + ekip fotoğrafları + saha galerisi |
 | `iletisim.html` | İletişim formu + Melikgazi/Kayseri haritası |

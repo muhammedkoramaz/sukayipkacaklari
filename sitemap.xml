@@ -50,10 +50,6 @@
     <image:image><image:loc>https://sukayipkacaklari.com/assets/projects/ordu-fatsa/2.webp</image:loc></image:image>
     <image:image><image:loc>https://sukayipkacaklari.com/assets/projects/ordu-fatsa/3.webp</image:loc></image:image>
   </url>
-  <url><loc>https://sukayipkacaklari.com/projeler/kayseri.html</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
-    <image:image><image:loc>https://sukayipkacaklari.com/assets/projects/kayseri/1.webp</image:loc></image:image>
-    <image:image><image:loc>https://sukayipkacaklari.com/assets/projects/kayseri/2.webp</image:loc></image:image>
-  </url>
   <url><loc>https://sukayipkacaklari.com/projeler/bodrum.html</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
     <image:image><image:loc>https://sukayipkacaklari.com/assets/projects/bodrum/1.webp</image:loc></image:image>
     <image:image><image:loc>https://sukayipkacaklari.com/assets/projects/bodrum/2.webp</image:loc></image:image>
@@ -70,8 +66,6 @@
   <url><loc>https://sukayipkacaklari.com/rehber/dma-nedir.html</loc><lastmod>2026-09-01</lastmod><changefreq>yearly</changefreq><priority>0.7</priority>
   </url>
   <url><loc>https://sukayipkacaklari.com/rehber/su-kaybi-dusurme-yol-haritasi.html</loc><lastmod>2026-09-01</lastmod><changefreq>yearly</changefreq><priority>0.7</priority>
-  </url>
-  <url><loc>https://sukayipkacaklari.com/su-kacagi-tespiti-kayseri.html</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
   </url>
   <url><loc>https://sukayipkacaklari.com/referanslar.html</loc><lastmod>2026-09-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
   </url>
