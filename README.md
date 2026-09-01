@@ -71,30 +71,29 @@ python -m http.server 8080
 
 ## Yayından önce doldurulacaklar
 
-1. **Google Analytics 4** — tüm HTML sayfalarda `G-XXXXXXXXXX` placeholder'ı var.
-   GA4 mülkü açıp gerçek ölçüm kimliğiyle değiştirin (tek seferde tüm dosyalar):
-   `grep -rl G-XXXXXXXXXX . | xargs sed -i 's/G-XXXXXXXXXX/G-GERCEKID/g'` — ve
-   `scratchpad/gen_projects.py` içindeki aynı stringi de güncelleyin.
+1. **Google Analytics 4** — ✅ tamam. Ölçüm kimliği `G-ETN61F721R` tüm HTML
+   sayfalarda ve `gen_projects.py` şablonunda gömülü. Değiştirmek gerekirse:
+   `grep -rl G-ETN61F721R . | xargs sed -i 's/G-ETN61F721R/G-YENIID/g'`.
 2. **Google Search Console** — `index.html` içindeki
    `<meta name="google-site-verification" content="BURAYA_...">` satırına doğrulama
    kodunuzu yapıştırın (veya dosya yöntemini kullanın), sonra sitemap'i gönderin:
    `https://sukayipkacaklari.com/sitemap.xml`
-2. **İletişim formu** — şu an sunucu tarafı yok; buton bilgileri e-posta uygulamasını
+3. **İletişim formu** — şu an sunucu tarafı yok; buton bilgileri e-posta uygulamasını
    açar. Kalıcı çözüm için:
    - **Netlify:** hosting Netlify ise form otomatik çalışır (`data-netlify` hazır),
      `iletisim.html` içindeki `action` değerini `/tesekkurler.html` yapın.
    - **Formspree:** formspree.io'da form açın, `iletisim.html` içindeki
      `action="https://formspree.io/f/BURAYA_FORM_ID"` kısmına gerçek ID'yi yazın
      (placeholder değişince JS devre dışı kalır, form doğrudan gönderilir).
-3. **Açık adres / harita** — tam adres netleşince `iletisim.html` içindeki
+4. **Açık adres / harita** — tam adres netleşince `iletisim.html` içindeki
    `iframe src` (Google Haritalar `?q=...&output=embed`) ve JSON-LD `PostalAddress`
    alanını güncelleyin. Şu an: Melikgazi / Kayseri, 7/24.
-4. **Ekip fotoğrafı** — `assets/team/muhammed-koramaz.jpg` günlük bir kare; stüdyo
+5. **Ekip fotoğrafı** — `assets/team/muhammed-koramaz.jpg` günlük bir kare; stüdyo
    tarzı bir portre ile değiştirebilirsiniz (aynı ad, kare oran).
-5. **Referans logoları** — `assets/brands/` içinde 11 kurum logosu var
+6. **Referans logoları** — `assets/brands/` içinde 11 kurum logosu var
    (`leakexpert-web/public/brands`'ten alındı). Yenisini eklemek için PNG koyup
    `index.html` ve `referanslar.html` içindeki `.logos` bloğuna bir `<div><img></div>` ekleyin.
-6. **Sosyal paylaşım görseli** — `assets/img/og-cover.png` (1200×630) hazır (açık tema).
+7. **Sosyal paylaşım görseli** — `assets/img/og-cover.png` (1200×630) hazır (açık tema).
    Yeniden üretmek için `assets/img/og.html` şablonunu 1200×630 tarayıcıda açıp ekran görüntüsü alın.
 
 ## Marka
