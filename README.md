@@ -1,5 +1,8 @@
 # sukayipkacaklari.com — LeakExpert tanıtım sitesi
 
+> **Projenin tam kılavuzu: [`PROJECT.md`](PROJECT.md)** — adresler, deploy, içerik kuralları, SEO durumu.
+> Bu dosya yalnızca geliştirici/build notları.
+
 Saf statik site (HTML + CSS + JS, build adımı yok). Alan adı köküne (`/`)
 kurulmalıdır çünkü tüm yollar kök-görelidir (`/assets/...`, `/hizmetler.html`).
 
@@ -49,12 +52,17 @@ python -m http.server 8080
 # http://localhost:8080
 ```
 
-## Sayfa üretimi (jeneratörler)
+## Sayfa üretimi (jeneratörler — `tools/`)
 
-Proje sayfaları + `projeler/index.html` + `sitemap.xml`: `gen_projects.py`.
-`/rehber/` sayfaları: `gen_rehber.py`.
-Her ikisinden sonra **`add_img_dims.py`** çalıştırılır — tüm yerel `<img>`
-etiketlerine gerçek `width`/`height` ekler (CLS / layout-shift önlemi; idempotent).
+```bash
+py tools/gen_projects.py   # 11 proje sayfası + projeler/index.html + sitemap.xml
+py tools/gen_rehber.py     # /rehber/ hub + 4 makale
+py tools/add_img_dims.py   # HER jeneratörden sonra: <img> width/height (CLS; idempotent)
+py tools/validate_all.py   # tag dengesi + JSON-LD + img boyut + GA preconnect
+py tools/linkcheck.py      # kırık iç link
+```
+
+`py` = Python 3.10; `PYTHONUTF8=1` gerekli. `SITE` yolu her scriptin başında sabit.
 Şema `logo` alanları her yerde raster `assets/img/icon.png` (2000×2000) kullanır.
 
 ## Sayfa haritası
