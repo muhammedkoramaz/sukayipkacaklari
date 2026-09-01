@@ -49,6 +49,14 @@ python -m http.server 8080
 # http://localhost:8080
 ```
 
+## Sayfa üretimi (jeneratörler)
+
+Proje sayfaları + `projeler/index.html` + `sitemap.xml`: `gen_projects.py`.
+`/rehber/` sayfaları + `su-kacagi-tespiti-kayseri.html`: `gen_rehber.py`.
+Her ikisinden sonra **`add_img_dims.py`** çalıştırılır — tüm yerel `<img>`
+etiketlerine gerçek `width`/`height` ekler (CLS / layout-shift önlemi; idempotent).
+Şema `logo` alanları her yerde raster `assets/img/icon.png` (2000×2000) kullanır.
+
 ## Sayfa haritası
 
 | Dosya | Sayfa |

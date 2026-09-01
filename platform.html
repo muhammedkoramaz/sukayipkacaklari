@@ -42,14 +42,31 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "LeakExpert",
+  "name": "LeakExpert Platform",
+  "url": "https://sukayipkacaklari.com/platform.html",
   "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Su kayıp-kaçak saha yönetimi",
   "operatingSystem": "iOS, Android, Web",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TRY", "description": "Kurumsal lisanslama — teklife göre" },
-  "publisher": { "@type": "Organization", "name": "LeakExpert", "url": "https://sukayipkacaklari.com/" }
+  "inLanguage": "tr-TR",
+  "description": "Su kayıp-kaçak saha yönetimi için mobil uygulama (GPS ve fotoğraflı kaçak kaydı), harita tabanlı web paneli, Excel/Word raporlama ve GSM debimetre entegrasyonu.",
+  "featureList": [
+    "GPS ve fotoğraflı kaçak noktası kaydı (mobil saha uygulaması)",
+    "Harita tabanlı web yönetim paneli",
+    "Saha ve ofis arasında canlı WebSocket senkronizasyonu",
+    "Excel/Word rapor ve teklif çıktısı",
+    "GSM üzerinden ultrasonik debimetre telemetrisi",
+    "Bulut fotoğraf arşivi (S3 uyumlu)",
+    "Belediye bazlı yetkilendirme ve JWT kimlik doğrulama",
+    "Mevcut Firebase/Excel arşivlerinden veri taşıma"
+  ],
+  "screenshot": "https://sukayipkacaklari.com/assets/img/og-cover.png",
+  "offers": { "@type": "Offer", "priceCurrency": "TRY", "priceSpecification": { "@type": "PriceSpecification", "description": "Kurumsal lisanslama — kapsamına göre teklif" } },
+  "publisher": { "@type": "Organization", "name": "LeakExpert", "url": "https://sukayipkacaklari.com/", "logo": { "@type": "ImageObject", "url": "https://sukayipkacaklari.com/assets/img/icon.png" } }
 }
 </script>
 <!-- Google Analytics 4 -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ETN61F721R"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ETN61F721R',{anonymize_ip:true});</script>
 </head>
