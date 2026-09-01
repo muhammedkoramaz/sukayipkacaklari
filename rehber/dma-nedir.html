@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMA Nedir? İzole Ölçüm Bölgesi Kurulumu ve Gece Minimum Debi | LeakExpert</title>
+<meta name="description" content="DMA (District Metered Area) bir şebekeyi ölçülebilir alt bölgelere ayırır. Kurulum adımları, gece minimum debi analizi, step test ve kayıp ayrıştırma anlatımı.">
+<link rel="canonical" href="https://sukayipkacaklari.com/rehber/dma-nedir.html">
+<link rel="alternate" hreflang="tr" href="https://sukayipkacaklari.com/rehber/dma-nedir.html">
+<link rel="alternate" hreflang="x-default" href="https://sukayipkacaklari.com/rehber/dma-nedir.html">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="LeakExpert">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="DMA Nedir? İzole Ölçüm Bölgesi Kurulumu ve Gece Minimum Debi | LeakExpert">
+<meta property="og:description" content="DMA (District Metered Area) bir şebekeyi ölçülebilir alt bölgelere ayırır. Kurulum adımları, gece minimum debi analizi, step test ve kayıp ayrıştırma anlatımı.">
+<meta property="og:url" content="https://sukayipkacaklari.com/rehber/dma-nedir.html">
+<meta property="og:image" content="https://sukayipkacaklari.com/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sukayipkacaklari.com/assets/img/og-cover.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/img/icon.png">
+<link rel="apple-touch-icon" href="/assets/icons/app-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/plus-jakarta-sans-400-latin-ext.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-600-800-latin-ext.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://sukayipkacaklari.com/" }, { "@type": "ListItem", "position": 2, "name": "Rehber", "item": "https://sukayipkacaklari.com/rehber/" }, { "@type": "ListItem", "position": 3, "name": "DMA (İzole Ölçüm Bölgesi) nedir, nasıl kurulur?", "item": "https://sukayipkacaklari.com/rehber/dma-nedir.html" } ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "DMA (İzole Ölçüm Bölgesi) nedir, nasıl kurulur?",
+  "description": "DMA (District Metered Area) bir şebekeyi ölçülebilir alt bölgelere ayırır. Kurulum adımları, gece minimum debi analizi, step test ve kayıp ayrıştırma anlatımı.",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://sukayipkacaklari.com/rehber/dma-nedir.html" },
+  "articleSection": "Rehber",
+  "inLanguage": "tr-TR",
+  "author": { "@type": "Organization", "name": "LeakExpert", "url": "https://sukayipkacaklari.com/" },
+  "publisher": { "@type": "Organization", "name": "LeakExpert", "url": "https://sukayipkacaklari.com/",
+    "logo": { "@type": "ImageObject", "url": "https://sukayipkacaklari.com/assets/img/logo.svg" } },
+  "image": "https://sukayipkacaklari.com/assets/img/og-cover.png",
+  "datePublished": "2026-09-01", "dateModified": "2026-09-01"
+}
+</script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ETN61F721R"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ETN61F721R',{anonymize_ip:true});</script>
+</head>
+<body>
+<a class="skip" href="#main">İçeriğe geç</a>
+
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="brand" href="/" aria-label="LeakExpert ana sayfa">
+      <img src="/assets/img/logo.svg" alt="LeakExpert" width="118" height="34" class="brand__logo">
+    </a>
+    <nav class="nav" id="navmenu" aria-label="Ana menü">
+      <a href="/">Ana Sayfa</a>
+      <a href="/platform.html">Platform</a>
+      <a href="/hizmetler.html">Hizmetler</a>
+      <a href="/rehber/" aria-current="page">Rehber</a>
+      <a href="/projeler/">Projeler</a>
+      <a href="/referanslar.html">Referanslar</a>
+      <a href="/hakkimizda.html">Hakkımızda</a>
+      <a href="/iletisim.html">İletişim</a>
+    </nav>
+    <div class="hdr__cta">
+      <a class="hdr__phone" href="tel:+905396588434">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        0539 658 84 34
+      </a>
+    </div>
+    <button class="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navmenu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Sayfa işaret yolu">
+      <a href="/">Ana Sayfa</a><span class="sep">/</span><a href="/rehber/">Rehber</a><span class="sep">/</span><span aria-current="page">DMA (İzole Ölçüm Bölgesi) nedir, nasıl kurulur?</span>
+    </nav>
+  </div>
+
+  <section class="phead">
+    <div class="wrap">
+      <p class="eyebrow">Rehber</p>
+      <h1>DMA (İzole Ölçüm Bölgesi) nedir, nasıl kurulur?</h1>
+      <p class="lede">Bir şehir şebekesini bütün hâlde denetlemek zordur. <strong>DMA</strong> (District Metered Area — izole ölçüm bölgesi), şebekeyi girişi ve çıkışı sayılabilen küçük, kalıcı parçalara böler. Kayıp, ancak ölçülebildiği yerde yönetilebilir.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap" style="max-width:900px">
+
+      <div class="prose">
+        <h2>DMA neyi çözer?</h2>
+        <p>Şehir geneli NRW oranı "%35" gibi bir sayı verir ama kaybın <strong>nerede</strong> olduğunu söylemez. Şebeke 15–20 DMA'ya bölündüğünde, her bölgenin kendi gece minimum debisi izlenir; kayıp birkaç bölgeye daralır ve saha ekibi doğru yere gönderilir.</p>
+
+        <h2>Bir DMA'nın büyüklüğü</h2>
+        <p>Tipik olarak <strong>500–3.000 abone</strong> veya birkaç kilometre hat. Çok büyük DMA'da küçük kaçaklar gece debisi içinde kaybolur; çok küçük DMA ise fazla vana ve sayaç maliyeti getirir. Topografya, basınç bölgeleri ve doğal sınırlar (dere, ana yol, demiryolu) gözetilerek belirlenir.</p>
+
+        <h2>Kurulum adımları</h2>
+        <h3>1. Sınır tasarımı</h3>
+        <p>Şebeke haritası üzerinde bölge sınırları çizilir. Sınırdaki tüm bağlantılar ya kalıcı kapatılır ya da sayaçlı girişe dönüştürülür. Amaç: bölgeye giren her damlanın sayaçtan geçmesi.</p>
+        <h3>2. Sınır vanası testi</h3>
+        <p>Kapatılması gereken vanalar tek tek kapatılıp sızdırmazlığı kontrol edilir. Kapanmayan tek bir sınır vanası, tüm ölçümü bozar.</p>
+        <h3>3. Giriş sayacı / debimetre montajı</h3>
+        <p>Bölge girişine kalıcı elektromanyetik sayaç veya geçici <a href="/hizmetler.html#debi">ultrasonik debimetre</a> takılır; akış 15 dakikalık adımlarla kaydedilir.</p>
+        <h3>4. Gece minimum debi (MNF) ölçümü</h3>
+        <p>03:00–05:00 arası ölçülen minimum debiden, meşru gece tüketimi (sifon dolumları, sanayi, kaçak olmayan kullanım) çıkarılır. Kalan değer <strong>fiziki kayıp debisidir</strong>. Türkiye'de gece minimum debisinin yaklaşık %70'i fiziki kayıptır.</p>
+
+        <h2>Step test — kaybı hat bazına indirmek</h2>
+        <p>DMA içindeki vanalar, gece boyunca uçtan başlayarak sırayla kapatılır. Bir vana kapandığında giriş debisi belirgin düşüyorsa, o vananın beslediği hatta kayıp yoğunlaşmıştır. Böylece ölçüm sahası birkaç yüz metreye iner ve akustik tarama hedeflenir.</p>
+
+        <h2>Kalıcı izleme</h2>
+        <p>Kurulan DMA bir kereye mahsus değildir. Giriş sayacı sürekli kayıt aldıkça, yeni bir kaçak oluştuğunda gece debisi birkaç gün içinde yükselir ve sistem erken uyarı verir. LeakExpert platformu bu eğriyi bölge bölge takip eder.</p>
+        <ul>
+          <li>İlişkili hizmet: <a href="/hizmetler.html#dma">DMA, step &amp; sıfır basınç testi</a></li>
+          <li>Ölçüm tarafı: <a href="/hizmetler.html#debi">Debi ölçümü &amp; NRW analizi</a></li>
+          <li>Yol haritası: <a href="/rehber/su-kaybi-dusurme-yol-haritasi.html">Su kaybını düşürme yol haritası</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section--panel">
+    <div class="wrap">
+      <p class="eyebrow rv">Rehberde ayrıca</p>
+      <h2 class="h-sec rv">İlgili yazılar.</h2>
+      <div class="cards cards--3 mt-l">
+        <a class="card" href="/rehber/su-kacagi-nasil-anlasilir.html"><h3>Su kaçağı nasıl anlaşılır? Şebekede ve binada 9 belirti</h3><p>İçme suyu şebekesinde ve binada gizli su kaçağının belirtileri: gece minimum debi artışı, …</p></a>
+        <a class="card" href="/rehber/akustik-su-kacagi-tespiti-nedir.html"><h3>Akustik su kaçağı tespiti nedir, nasıl yapılır?</h3><p>Akustik su kaçağı tespitinin adımları: gürültü kaydediciyle tarama, yer mikrofonuyla daral…</p></a>
+        <a class="card" href="/rehber/su-kaybi-dusurme-yol-haritasi.html"><h3>Su kayıp-kaçak oranını düşürme yol haritası</h3><p>Fatura edilemeyen su (NRW) oranını kalıcı düşürmek için sekiz adımlı program: su dengesi, …</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight cta-band">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Şebekeniz için</p>
+        <h2>Kaybı ölçelim, noktayı bulalım.</h2>
+        <p class="lede" style="margin-top:14px">Kısa bir görüntülü görüşmede mevcut durumu ve uygulanacak yöntemi konuşalım.</p>
+      </div>
+      <div class="cta-band__act">
+        <a class="btn" href="/iletisim.html">Görüşme talebi <span class="arw" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="/hizmetler.html">Hizmetler</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__grid">
+      <div>
+        <a class="brand" href="/" aria-label="LeakExpert ana sayfa">
+          <img src="/assets/img/logo.svg" alt="LeakExpert" width="118" height="34" class="brand__logo">
+        </a>
+        <p class="ftr__brandline">Belediye içme suyu şebekelerinde su kayıp-kaçak tespiti, debi/basınç izleme ve saha yönetimi. Web ve mobil entegre platform.</p>
+      </div>
+      <div><h4>Platform</h4><ul>
+        <li><a href="/platform.html#mobil">Mobil saha uygulaması</a></li>
+        <li><a href="/platform.html#web">Web yönetim paneli</a></li>
+        <li><a href="/platform.html#api">API &amp; entegrasyon</a></li>
+        <li><a href="/hizmetler.html">Saha hizmetleri</a></li>
+      </ul></div>
+      <div><h4>Kurumsal</h4><ul>
+        <li><a href="/hakkimizda.html">Hakkımızda</a></li>
+        <li><a href="/projeler/">Projeler</a></li><li><a href="/referanslar.html">Referanslar</a></li>
+        <li><a href="/rehber/">Rehber</a></li>
+        <li><a href="/sss.html">Sık sorulan sorular</a></li>
+        <li><a href="/iletisim.html">İletişim</a></li>
+        <li><a href="/gizlilik.html">Gizlilik politikası</a></li>
+      </ul></div>
+      <div><h4>İletişim</h4><ul>
+        <li class="ftr__mono">Melikgazi / Kayseri</li>
+        <li class="ftr__mono"><a href="tel:+905396588434">+90 539 658 84 34</a></li>
+        <li class="ftr__mono"><a href="mailto:sukayipkacaklari@gmail.com">sukayipkacaklari@gmail.com</a></li>
+      </ul></div>
+    </div>
+    <div class="ftr__bottom">
+      <span>© 2026 LeakExpert · Tüm hakları saklıdır.</span>
+      <span>sukayipkacaklari.com</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Hızlı iletişim">
+  <a class="btn btn--ghost btn--sm" href="/iletisim.html">Görüşme talebi</a>
+  <a class="btn btn--sm" href="tel:+905396588434">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    0539 658 84 34
+  </a>
+</nav>
+
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>
