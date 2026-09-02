@@ -39,6 +39,7 @@ Coolify API çağrıları `$COOLIFY_API_TOKEN` ve `$COOLIFY_API_URL` ortam deği
 ## 3. Teknik yapı
 
 - **Saf statik site**: elle yazılmış HTML + CSS + JS. Build adımı yok. Kök dizine (`/`) kurulur (tüm yollar kök-göreli).
+- **CSS/JS minify**: kaynak `assets/css/site.css` · `fonts.css` · `assets/js/site.js` elle düzenlenir; `py tools/minify.py` bunlardan `*.min.css` / `*.min.js` üretir. HTML **daima `.min` sürümlere** referans verir. `.min` dosyaları repoya commit edilir (deploy'da build yok).
 - **Tema**: sadece açık (light). Marka mavisi `#2563eb`. Tokenlar `assets/css/site.css` başında.
 - **Fontlar**: kendi sunucumuzda (`assets/fonts/*.woff2`) — Bricolage Grotesque (başlık), Plus Jakarta Sans (gövde), JetBrains Mono (veri). `assets/css/fonts.css`. Google Fonts'a istek yok.
 - **Görseller**: WebP (`assets/projects/`, `assets/photos/`, `assets/brands/`, `assets/team/`). OG kapağı `assets/img/og-cover.png`.
@@ -112,10 +113,13 @@ Windows'ta `py` (Python 3.10) + `PYTHONUTF8=1` ile çalıştır.
 | `tools/gen_projects.py` | 11 proje sayfası + `projeler/index.html` + `sitemap.xml` (proje verisi `P` listesinde) |
 | `tools/gen_rehber.py` | `/rehber/` hub + 4 makale (`ARTICLES` listesinde) |
 | `tools/add_img_dims.py` | **Her jeneratör çalıştırmasından sonra** — tüm yerel `<img>`'lere gerçek `width`/`height` ekler (CLS düzeltmesi; idempotent) |
-| `tools/validate_all.py` | tag dengesi + JSON-LD parse + Article zorunlu alanlar + img boyut + GA preconnect |
+| `tools/minify.py` | `site.css` / `fonts.css` / `site.js` → `*.min.*` üretir. **CSS/JS kaynağı değiştiyse çalıştır.** Bağımlılık yok, idempotent |
+| `tools/validate_all.py` | tag dengesi + JSON-LD parse + Article zorunlu alanlar + img boyut + GA etiketi |
 | `tools/linkcheck.py` | kırık iç link taraması |
 
-Tipik akış: `py tools/gen_projects.py` → `py tools/add_img_dims.py` → `py tools/validate_all.py` → `git commit` → `git push` (Coolify deploy eder).
+Tipik akış: `py tools/gen_projects.py` → `py tools/gen_rehber.py` → `py tools/add_img_dims.py` → (`site.css`/`site.js` değiştiyse `py tools/minify.py`) → `py tools/validate_all.py` → `py tools/linkcheck.py` → `git commit` → `git push` (Coolify deploy eder).
+
+> Jeneratör şablonları (`gen_projects.py`, `gen_rehber.py`) `<head>` bloğunu — meta description, font preload, GA snippet, `.min` referansları — kendi içlerinde tutar. `<head>` politikası değişirse **hem 27 HTML'i hem iki jeneratör şablonunu** güncelle, yoksa ilk `regen` geri alır.
 
 `SITE` yolu her jeneratörün başında sabit yazılı — repo taşınırsa orayı güncelle. `nginx.conf`
 değiştiyse ayrıca §4'teki `custom_nginx_configuration` PATCH'i unutma.
@@ -148,6 +152,8 @@ Bunlar kullanıcının açık talimatları. Yeni içerik eklerken hepsine uy:
 | **C** | Proje sayfaları Article şeması derinleştirme (gerçek foto `image` dizisi, `datePublished`, `isPartOf` CollectionPage) · `platform.html` SoftwareApplication `featureList` · şema `logo` → `icon.png` standardizasyonu · GA `preconnect`/`dns-prefetch` · 60 `<img>`'e `width`/`height` (CLS) |
 | **Sonra** | "**su kayıp kaçakları**" tam ifadesi görünür metne (ana sayfa title/meta/OG/eyebrow/lede + 25 sayfa footer marka satırı) — domain adının birebir karşılığı |
 | **Sonra** | Kayseri bölgesel konumlandırması tamamen kaldırıldı (yerel iniş sayfası + "Kayseri Merkez" projesi silindi, 12→11 proje) · ev/bina içi kaçak ibareleri kaldırıldı (SSS sorusu, rehber maddesi, hizmetler wording) |
+| **D** (2026-09-02) | SEOptimer + Rank Math denetimlerine göre: **(G1)** 13 sayfada meta description ≤160 krk'e indirildi (meta + OG + Twitter senkron) · **(G2)** `/llms.txt` eklendi · **(G3)** ölü `google-site-verification` placeholder meta'sı silindi · **(G4)** ana sayfa `Organization` şemasına `founder` (Hasan + Muhammed, `@id`'li — `hakkimizda.html` Person'larıyla eşleşir), `foundingLocation`, `numberOfEmployees` eklendi · **(G5)** `tools/minify.py` + `site.min.css`/`fonts.min.css`/`site.min.js`, 27 HTML + 2 jeneratör `.min`'e repoint (Rank Math "minify" FAIL kapandı) · **(G6)** ~110 satır-içi `style=""` → `site.css` utility sınıfları (1:1, görsel değişiklik yok) · **(G7)** mobil CLS 0.218 / LCP 3.8s: Bricolage başlık fontu `font-display:optional` (başlıkta swap→kayma yok), font preload yanlış subset düzeltildi (`-latin-ext` → asıl gereken `-latin` + `-ext`), GA `gtag.js` `requestIdleCallback` ile kritik yoldan çıkarıldı (27 sayfa) |
+| **Bekliyor (kullanıcı)** | SPF + DMARC TXT kayıtları (Cloudflare) · sosyal profiller → açılınca şema `sameAs`'e eklenecek · `iletisim.html` formu hâlâ `formspree.io/f/BURAYA_FORM_ID` placeholder |
 
 ## 9. SEO — neden henüz Google'da çıkmıyoruz
 

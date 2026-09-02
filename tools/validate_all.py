@@ -34,7 +34,7 @@ for f in files:
     # img dims
     imgs=re.findall(r'<img [^>]*>',s)
     nodim=[i for i in imgs if 'width=' not in i or 'height=' not in i]
-    ga = 'preconnect" href="https://www.googletagmanager.com"' in s
+    ga = ('googletagmanager.com"' in s) and ('G-ETN61F721R' in s)
     if left or p.err or jerr or nodim or not ga:
         issues+=1
         print(f'✗ {f}')
@@ -42,6 +42,6 @@ for f in files:
         if p.err: print('   ',p.err[:4])
         if jerr: print('   ld+json:',jerr)
         if nodim: print(f'   {len(nodim)} <img> without width/height:',nodim[0][:90])
-        if not ga: print('   GA preconnect missing')
+        if not ga: print('   GA tag (googletagmanager + G-ETN61F721R) missing')
 
 print(f'\n{len(files)} files — {issues} with issues')

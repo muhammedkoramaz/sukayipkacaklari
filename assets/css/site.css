@@ -349,6 +349,7 @@ h1, h2, h3, h4 {
   .split { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); align-items: center; }
   .split--7-5 { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
 }
+.split--top { align-items: start; }
 
 .cards { display: grid; gap: 16px; }
 .cards--2 { grid-template-columns: 1fr; }
@@ -618,6 +619,22 @@ a.card:hover { border-color: var(--brand); }
 .muted { color: var(--ink-2); }
 .center { text-align: center; }
 .mt-s { margin-top: 16px; } .mt-m { margin-top: 28px; } .mt-l { margin-top: 44px; }
+.mt-14 { margin-top: 14px; } .mt-18 { margin-top: 18px; } .mt-26 { margin-top: 26px; }
+.mb-s { margin-bottom: 16px; }
+.mx-auto { margin-inline: auto; }
+.jc-center { justify-content: center; }
+.inline-flex { display: inline-flex; }
+.grid-14 { display: grid; gap: 14px; }
+.grid-20 { display: grid; gap: 20px; }
+.font-display { font-family: var(--f-display); }
+.mw-640 { max-width: 640px; }
+.mw-900 { max-width: 900px; }
+.bg-2 { background: var(--bg-2); }
+.fs-72 { font-size: .72rem; } .fs-74 { font-size: .74rem; } .fs-76 { font-size: .76rem; }
+.fs-78 { font-size: .78rem; } .fs-80 { font-size: .8rem; } .fs-82 { font-size: .82rem; }
+.fs-86 { font-size: .86rem; } .fs-105 { font-size: 1.05rem; }
+.contact-list { list-style: none; padding: 0; margin: 6px 0 0; display: flex; flex-direction: column; gap: 12px; }
+.foot-links { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; font-size: .82rem; }
 .stack-s > * + * { margin-top: 12px; }
 .hr { height: 1px; background: var(--line); border: 0; margin: 0; }
 .nowrap { white-space: nowrap; }

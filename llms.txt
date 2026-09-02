@@ -1,0 +1,43 @@
+# LeakExpert — Su Kayıp Kaçakları Tespiti ve Yönetimi
+
+> LeakExpert (sukayipkacaklari.com), belediye ve sanayi (OSB) içme suyu şebekelerinde
+> su kayıp-kaçak tespiti yapan bir mühendislik ekibi ve yazılım platformudur. Fiziki
+> kaybı akustik dinleme ve korelasyonla kazı yapmadan bulur; debi ve basıncı sürekli
+> ölçer; DMA kurar; IWA su dengesi ve NRW (fatura edilemeyen su) analizi yapar. 25+ yıl
+> saha deneyimi (kuruluş 2004). Merkez Melikgazi/Kayseri; hizmet alanı Türkiye geneli.
+> Kendi mobil saha uygulaması + web yönetim paneli + API altyapısı.
+
+## Firma
+
+- Marka: LeakExpert — "Su Kayıp Kaçakları"
+- Kapsam: yalnızca belediye + sanayi (OSB) dağıtım şebekeleri (ev/bina içi tesisat kapsam dışı)
+- Kurucu: Hasan Koramaz (Su Kayıp Kaçakları Uzmanı)
+- Platform ve saha yürütme: M. Muhammed Koramaz (Bilgisayar Mühendisi)
+- Telefon: +90 539 658 84 34
+- E-posta: sukayipkacaklari@gmail.com
+- Deneyim: 25+ yıl · 43+ tamamlanmış proje · 1.000+ km akustik dinleme · 70+ DMA
+
+## Hizmetler
+
+- [Saha hizmetleri ve 4 aşamalı yöntem](https://sukayipkacaklari.com/hizmetler.html): akustik sızıntı tespiti ve korelasyon, ultrasonik debi ölçümü, su dengesi / NRW analizi, basınç izleme ve yönetimi, DMA - step - sıfır basınç testleri, CBS haritalama, ekip eğitimi
+- [Yazılım platformu](https://sukayipkacaklari.com/platform.html): mobil saha uygulaması (GPS + fotoğraflı kaçak kaydı), Leaflet haritalı web paneli, Excel/Word raporlama, GSM ultrasonik debimetre entegrasyonu
+
+## Rehber (kavramsal içerik)
+
+- [Su kaçağı nasıl anlaşılır?](https://sukayipkacaklari.com/rehber/su-kacagi-nasil-anlasilir.html)
+- [Akustik su kaçağı tespiti nedir?](https://sukayipkacaklari.com/rehber/akustik-su-kacagi-tespiti-nedir.html)
+- [DMA (İzole Ölçüm Bölgesi) nedir?](https://sukayipkacaklari.com/rehber/dma-nedir.html)
+- [Su kaybı düşürme yol haritası](https://sukayipkacaklari.com/rehber/su-kaybi-dusurme-yol-haritasi.html)
+- [Rehber ana sayfası](https://sukayipkacaklari.com/rehber/)
+
+## Projeler (sahadan ölçülmüş sonuçlar)
+
+- [Proje arşivi](https://sukayipkacaklari.com/projeler/): Kütahya, Batman, Çanakkale, Keşan, Kilis, Sivas, Rize, Doğubayazıt, Ordu-Fatsa, Bodrum, Mozambik-Beira
+- [Kurumsal referanslar](https://sukayipkacaklari.com/referanslar.html)
+
+## Kurumsal
+
+- [Hakkımızda](https://sukayipkacaklari.com/hakkimizda.html)
+- [Sık sorulan sorular](https://sukayipkacaklari.com/sss.html)
+- [İletişim](https://sukayipkacaklari.com/iletisim.html)
+- [Gizlilik politikası](https://sukayipkacaklari.com/gizlilik.html)

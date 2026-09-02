@@ -24,10 +24,11 @@
 <link rel="icon" type="image/png" href="/assets/img/icon.png">
 <link rel="apple-touch-icon" href="/assets/icons/app-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/plus-jakarta-sans-400-latin-ext.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-600-800-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-600-800-latin-ext.woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/fonts.css">
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/plus-jakarta-sans-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.min.css">
+<link rel="stylesheet" href="/assets/css/site.min.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -45,11 +46,10 @@
   "hasPart": { "@type": "ItemList", "itemListElement": [ { "@type": "ListItem", "position": 1, "url": "https://sukayipkacaklari.com/rehber/su-kacagi-nasil-anlasilir.html", "name": "Su kaçağı nasıl anlaşılır?" }, { "@type": "ListItem", "position": 2, "url": "https://sukayipkacaklari.com/rehber/akustik-su-kacagi-tespiti-nedir.html", "name": "Akustik su kaçağı tespiti nasıl yapılır?" }, { "@type": "ListItem", "position": 3, "url": "https://sukayipkacaklari.com/rehber/dma-nedir.html", "name": "DMA (İzole Ölçüm Bölgesi) nedir?" }, { "@type": "ListItem", "position": 4, "url": "https://sukayipkacaklari.com/rehber/su-kaybi-dusurme-yol-haritasi.html", "name": "Su kaybını düşürme yol haritası" } ] }
 }
 </script>
-<!-- Google Analytics 4 -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
+<!-- Google Analytics 4 — gtag.js kritik yoldan çıkarıldı, boşta yüklenir -->
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://www.google-analytics.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ETN61F721R"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ETN61F721R',{anonymize_ip:true});</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ETN61F721R',{anonymize_ip:true});(function(){function l(){var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=G-ETN61F721R';document.head.appendChild(s);}if('requestIdleCallback'in window){requestIdleCallback(l,{timeout:3000});}else{window.addEventListener('load',function(){setTimeout(l,1200);});}})();</script>
 </head>
 <body>
 <a class="skip" href="#main">İçeriğe geç</a>
@@ -94,7 +94,7 @@
       <h1>Su kayıp-kaçak rehberi.</h1>
       <p class="lede">Şebeke ve sanayi tesislerinde su kaçağını anlamak, ölçmek ve kalıcı olarak
         azaltmak için uygulamalı yazılar. Yöntemin saha karşılığı için
-        <a class="link-arw" href="/projeler/" style="display:inline-flex">projelere</a> bakın.</p>
+        <a class="link-arw inline-flex" href="/projeler/">projelere</a> bakın.</p>
     </div>
   </section>
 
@@ -114,7 +114,7 @@
       <div>
         <p class="eyebrow">Şebekeniz için</p>
         <h2>Kaybı ölçelim, noktayı bulalım.</h2>
-        <p class="lede" style="margin-top:14px">Kısa bir görüntülü görüşmede mevcut durumu ve uygulanacak yöntemi konuşalım.</p>
+        <p class="lede mt-14">Kısa bir görüntülü görüşmede mevcut durumu ve uygulanacak yöntemi konuşalım.</p>
       </div>
       <div class="cta-band__act">
         <a class="btn" href="/iletisim.html">Görüşme talebi <span class="arw" aria-hidden="true">→</span></a>
@@ -169,6 +169,6 @@
   </a>
 </nav>
 
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.min.js" defer></script>
 </body>
 </html>

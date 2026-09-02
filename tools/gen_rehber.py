@@ -5,12 +5,15 @@ import os
 
 SITE = r"C:\Users\muham\Desktop\LEAKEXPERT APPS\leakexpert-site"
 BASE = "https://sukayipkacaklari.com"
-GA = ('<!-- Google Analytics 4 -->\n'
-      '<link rel="preconnect" href="https://www.googletagmanager.com">\n'
+GA = ('<!-- Google Analytics 4 — gtag.js kritik yoldan çıkarıldı, boşta yüklenir -->\n'
+      '<link rel="dns-prefetch" href="https://www.googletagmanager.com">\n'
       '<link rel="dns-prefetch" href="https://www.google-analytics.com">\n'
-      '<script async src="https://www.googletagmanager.com/gtag/js?id=G-ETN61F721R"></script>\n'
       "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}"
-      "gtag('js',new Date());gtag('config','G-ETN61F721R',{anonymize_ip:true});</script>")
+      "gtag('js',new Date());gtag('config','G-ETN61F721R',{anonymize_ip:true});"
+      "(function(){function l(){var s=document.createElement('script');s.async=1;"
+      "s.src='https://www.googletagmanager.com/gtag/js?id=G-ETN61F721R';document.head.appendChild(s);}"
+      "if('requestIdleCallback'in window){requestIdleCallback(l,{timeout:3000});}"
+      "else{window.addEventListener('load',function(){setTimeout(l,1200);});}})();</script>")
 
 NAV_ITEMS = [
     ('/', 'Ana Sayfa'), ('/platform.html', 'Platform'), ('/hizmetler.html', 'Hizmetler'),
@@ -60,10 +63,11 @@ def head(title, desc, canonical, extra_preload_prefix="/", schema_blocks=()):
 <link rel="icon" type="image/png" href="/assets/img/icon.png">
 <link rel="apple-touch-icon" href="/assets/icons/app-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" as="font" type="font/woff2" href="{p}assets/fonts/plus-jakarta-sans-400-latin-ext.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{p}assets/fonts/bricolage-grotesque-600-800-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="{p}assets/fonts/bricolage-grotesque-600-800-latin-ext.woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/fonts.css">
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="preload" as="font" type="font/woff2" href="{p}assets/fonts/plus-jakarta-sans-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.min.css">
+<link rel="stylesheet" href="/assets/css/site.min.css">
 {sb}
 {GA}
 </head>
@@ -136,7 +140,7 @@ FOOTER = f"""
   </a>
 </nav>
 
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.min.js" defer></script>
 </body>
 </html>
 """
@@ -185,7 +189,7 @@ CTA = """
       <div>
         <p class="eyebrow">Şebekeniz için</p>
         <h2>Kaybı ölçelim, noktayı bulalım.</h2>
-        <p class="lede" style="margin-top:14px">Kısa bir görüntülü görüşmede mevcut durumu ve uygulanacak yöntemi konuşalım.</p>
+        <p class="lede mt-14">Kısa bir görüntülü görüşmede mevcut durumu ve uygulanacak yöntemi konuşalım.</p>
       </div>
       <div class="cta-band__act">
         <a class="btn" href="/iletisim.html">Görüşme talebi <span class="arw" aria-hidden="true">→</span></a>
@@ -208,7 +212,7 @@ ARTICLES = [
         slug="su-kacagi-nasil-anlasilir",
         h1="Su kaçağı nasıl anlaşılır? Şebekede 8 belirti",
         title="Su Kaçağı Nasıl Anlaşılır? 8 Belirti ve Kontrol Yöntemi | LeakExpert",
-        desc="İçme suyu şebekesinde gizli su kaçağının belirtileri: gece minimum debi artışı, basınç düşüşü, fatura edilemeyen su oranının açılması, sürekli nemli zemin. Nasıl doğrulanır?",
+        desc="İçme suyu şebekesinde gizli su kaçağının belirtileri: gece minimum debi artışı, basınç düşüşü, NRW oranının açılması, sürekli nemli zemin. Nasıl doğrulanır?",
         section="Rehber",
         lede="Görünür bir su birikintisi çoğu kaçağın <strong>son</strong> belirtisidir. Şebeke ölçeğinde kayıp, çok daha önce verideki küçük sapmalardan okunur. İşte belediye ve sanayi içme suyu şebekelerinde en güvenilir sekiz işaret.",
         body="""
@@ -251,7 +255,7 @@ ARTICLES = [
         slug="akustik-su-kacagi-tespiti-nedir",
         h1="Akustik su kaçağı tespiti nedir, nasıl yapılır?",
         title="Akustik Su Kaçağı Tespiti Nasıl Yapılır? Yer Mikrofonu ve Korelatör | LeakExpert",
-        desc="Akustik su kaçağı tespitinin adımları: gürültü kaydediciyle tarama, yer mikrofonuyla daraltma, korelatörle metrik konumlandırma. Hangi borularda çalışır, neden gece yapılır?",
+        desc="Akustik su kaçağı tespitinin adımları: gürültü kaydediciyle tarama, yer mikrofonuyla daraltma, korelatörle metrik konumlandırma. Neden gece yapılır?",
         section="Rehber",
         lede="Basınçlı bir borudan kaçan su, boru cidarında ve zeminde <strong>titreşim (ses)</strong> üretir. Akustik tespit, bu sesi dinleyip kaynağına doğru daraltma sanatıdır. Tahribatsızdır; kazı yalnızca doğrulanmış noktada yapılır.",
         body="""
@@ -329,7 +333,7 @@ ARTICLES = [
         slug="su-kaybi-dusurme-yol-haritasi",
         h1="Su kayıp-kaçak oranını düşürme yol haritası",
         title="Su Kayıp-Kaçak Oranını Düşürme Yol Haritası (NRW / IWA) | LeakExpert",
-        desc="Fatura edilemeyen su (NRW) oranını kalıcı düşürmek için sekiz adımlı program: su dengesi, DMA, basınç yönetimi, aktif kaçak kontrolü, onarım hızı ve sayaç doğrulama.",
+        desc="Fatura edilemeyen su (NRW) oranını kalıcı düşürmek için sekiz adımlı program: su dengesi, DMA, basınç yönetimi, aktif kaçak kontrolü, sayaç doğrulama.",
         section="Rehber",
         lede="Su kaybını düşürmek tek seferlik bir kampanya değil, <strong>sürekli bir program</strong>dır. IWA (Uluslararası Su Birliği) çerçevesi dört kaldıraç tanımlar; sıra ve süreklilik olmadan kazanç kısa sürede geri erir.",
         body="""
@@ -410,7 +414,7 @@ def build_article(a):
   </section>
 
   <section class="section">
-    <div class="wrap" style="max-width:900px">
+    <div class="wrap mw-900">
 {a['body']}
     </div>
   </section>
@@ -464,7 +468,7 @@ def build_rehber_index():
       <h1>Su kayıp-kaçak rehberi.</h1>
       <p class="lede">Şebeke ve sanayi tesislerinde su kaçağını anlamak, ölçmek ve kalıcı olarak
         azaltmak için uygulamalı yazılar. Yöntemin saha karşılığı için
-        <a class="link-arw" href="/projeler/" style="display:inline-flex">projelere</a> bakın.</p>
+        <a class="link-arw inline-flex" href="/projeler/">projelere</a> bakın.</p>
     </div>
   </section>
 

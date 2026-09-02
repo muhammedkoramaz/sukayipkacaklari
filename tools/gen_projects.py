@@ -83,14 +83,15 @@ FOOTER = f'''<footer class="ftr">
   </a>
 </nav>
 
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.min.js" defer></script>
 </body>
 </html>'''
 
 FONTS = (
-'<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/plus-jakarta-sans-400-latin-ext.woff2" crossorigin>\n'
+'<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-600-800-latin.woff2" crossorigin>\n'
 '<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-600-800-latin-ext.woff2" crossorigin>\n'
-'<link rel="stylesheet" href="/assets/css/fonts.css">'
+'<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/plus-jakarta-sans-400-latin.woff2" crossorigin>\n'
+'<link rel="stylesheet" href="/assets/css/fonts.min.css">'
 )
 
 def page_head(title, desc, canon, ogtype, extra_ld):
@@ -121,13 +122,12 @@ def page_head(title, desc, canon, ogtype, extra_ld):
 <link rel="apple-touch-icon" href="/assets/icons/app-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 {FONTS}
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/site.min.css">
 {extra_ld}
-<!-- Google Analytics 4 -->
-<link rel="preconnect" href="https://www.googletagmanager.com">
+<!-- Google Analytics 4 — gtag.js kritik yoldan çıkarıldı, boşta yüklenir -->
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://www.google-analytics.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ETN61F721R"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-ETN61F721R',{{anonymize_ip:true}});</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-ETN61F721R',{{anonymize_ip:true}});(function(){{function l(){{var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=G-ETN61F721R';document.head.appendChild(s);}}if('requestIdleCallback'in window){{requestIdleCallback(l,{{timeout:3000}});}}else{{window.addEventListener('load',function(){{setTimeout(l,1200);}});}}}})();</script>
 </head>
 <body>
 <a class="skip" href="#main">İçeriğe geç</a>
@@ -138,7 +138,7 @@ P = [
  dict(slug="kutahya", name="Kütahya Belediyesi", kicker="Proje · Kütahya Belediyesi · İç Ege · 2024–2025",
    h1="Şebeke &ldquo;kritik&rdquo; bantta: 348,5 km&#39;de 432 arıza.",
    lede="Su ve Kanalizasyon Müdürlüğü ile yürütülen akustik kaçak tespiti hizmetinde, başlangıç ihalesindeki 300 km dinlendikten sonra bulunan yoğunluk uluslararası eşiklerin çok üzerine çıktı; kapsam genişletildi ve bulgular doğrulandı.",
-   desc="Kütahya içme suyu şebekesinde akustik kaçak tespiti: 348,5 km hat dinlendi, 432 arıza bulundu. 1,34 arıza/km/yıl yoğunluk, AB Direktifi 2020/2184 eşiğinin yaklaşık üç katı.",
+   desc="Kütahya içme suyu şebekesinde akustik kaçak tespiti: 348,5 km hat dinlendi, 432 arıza bulundu. Yoğunluk 1,34 arıza/km/yıl — AB eşiğinin yaklaşık üç katı.",
    spec=[("Başlangıç kapsamı · dinlenen hat","300","km",0),
          ("Başlangıç kapsamı · tespit edilen kaçak/arıza","403","adet",1),
          ("İhale artışı · ilave dinleme","48,5","km",0),
@@ -161,7 +161,7 @@ P = [
  dict(slug="batman", name="Batman Belediyesi", kicker="Proje · Batman Belediyesi · Güneydoğu Anadolu · 2 fazlı proje",
    h1="400 km tarama, 220 sızıntı noktası tespiti.",
    lede="Batman Belediyesi BASKİ Müdürlüğü ile iki fazlı yürütülen çalışmada; şehir genelinde toplam 400 km içme suyu hattı gece ve gündüz akustik dinlemeyle tarandı, görünmeyen fiziki kaçaklar koordinatıyla tespit edildi. Debi/basınç ölçümü, su dengesi raporu ve CBS haritalama dahil.",
-   desc="Batman içme suyu şebekesinde 2 fazlı akustik kayıp-kaçak çalışması: 400 km hat gece ve gündüz dinlendi, 220 sızıntı noktası koordinatıyla tespit edildi. Yan yana iki arıza örneğinde 8 L/sn kayıp.",
+   desc="Batman içme suyu şebekesinde 2 fazlı akustik kayıp-kaçak çalışması: 400 km hat gece ve gündüz dinlendi, 220 sızıntı noktası koordinatıyla tespit edildi.",
    spec=[("Akustik dinlenen hat (1. + 2. faz)","400","km",1),
          ("Tespit edilen sızıntı noktası","220","adet",1),
          ("Çamlıca 1 depo · tahmini fiziki kaçak","~68","m³/saat",0),
@@ -225,7 +225,7 @@ P = [
  dict(slug="kilis", name="Kilis Belediyesi", kicker="Proje · Kilis Belediyesi · Güneydoğu Anadolu · 2023–2024",
    h1="Basınç, step ve sıfır basınç testleriyle kaybın haritası.",
    lede="Kilis içme suyu şebekesinde kayıp-kaçak tespiti; basınç veri loggerı kurulumu, sıfır basınç ve step testleri, akustik dinleme ve tahakkuk analizi. Çalışma altı ay sürdü.",
-   desc="Kilis Belediyesi su şebekesinde kayıp-kaçak tespiti: basınç loggerları, sıfır basınç ve step testleri, akustik dinleme, tahakkuk analizi ve CBS haritalama (2023–2024).",
+   desc="Kilis Belediyesi su şebekesinde kayıp-kaçak tespiti: basınç loggerları, sıfır basınç ve step testleri, akustik dinleme, CBS haritalama (2023–2024).",
    spec=[("Çalışma süresi","6","ay",0),
          ("Basınç izleme","7/24","logger",0),
          ("Test yöntemi","Step + sıfır basınç","",1),
@@ -437,13 +437,13 @@ def render(i, p):
 
   <section class="section">
     <div class="wrap">
-      <div class="split" style="align-items:start">
+      <div class="split split--top">
         <div class="prose rv">
 {prose_html}
         </div>
-        <div class="rv rv-2" style="display:grid;gap:14px">
+        <div class="rv rv-2 grid-14">
 {fig_block}
-          <p class="muted mono" style="font-size:.74rem">{p["note"]}</p>
+          <p class="muted mono fs-74">{p["note"]}</p>
         </div>
       </div>
     </div>
@@ -453,7 +453,7 @@ def render(i, p):
     <div class="wrap">
       <p class="eyebrow eyebrow--ok rv">Sonuç</p>
       <h2 class="h-sec rv">{p["concl"][0]}</h2>
-      <p class="lede rv" style="margin-top:14px">{p["concl"][1]}</p>
+      <p class="lede rv mt-14">{p["concl"][1]}</p>
       <div class="mt-l rv"><a class="link-arw" href="/projeler/{nextp["slug"]}.html">Sonraki proje: {nextp["name"]}</a></div>
     </div>
   </section>
@@ -474,7 +474,7 @@ def render(i, p):
       <div>
         <p class="eyebrow">Uzaktan görüşelim</p>
         <h2>Şebekenizi birlikte değerlendirelim.</h2>
-        <p class="lede" style="margin-top:14px">Kısa bir görüntülü görüşmede mevcut durumu, yaklaşımı ve kapsamı konuşuruz.</p>
+        <p class="lede mt-14">Kısa bir görüntülü görüşmede mevcut durumu, yaklaşımı ve kapsamı konuşuruz.</p>
       </div>
       <div class="cta-band__act">
         <a class="btn" href="/iletisim.html">Görüşme talebi <span class="arw" aria-hidden="true">→</span></a>
@@ -521,7 +521,7 @@ idx_ld = f'''<script type="application/ld+json">
 </script>'''
 
 idx = page_head("Projeler — Belediye Su Kayıp-Kaçak Çalışmaları | LeakExpert",
-  "LeakExpert proje arşivi: Kütahya (432 arıza), Batman (8 L/sn), Çanakkale, Keşan, Kilis, Sivas, Rize, Doğubayazıt, Fatsa, Bodrum ve Mozambik-Beira. Sahadan ölçülmüş sonuçlar.",
+  "LeakExpert proje arşivi: Kütahya, Batman, Çanakkale, Keşan, Kilis, Sivas, Rize, Doğubayazıt, Fatsa, Bodrum ve Mozambik-Beira. Sahadan ölçülmüş sonuçlar.",
   f"{BASE}/projeler/", "website", idx_ld)
 idx += f'''{header("/projeler/")}
 
@@ -541,7 +541,7 @@ idx += f'''{header("/projeler/")}
   </section>
 
   <section class="section">
-    <div class="wrap wrap--wide" style="display:grid;gap:20px">
+    <div class="wrap wrap--wide grid-20">
 {cards}
     </div>
   </section>
@@ -551,7 +551,7 @@ idx += f'''{header("/projeler/")}
       <div>
         <p class="eyebrow">Sırada sizin şebekeniz</p>
         <h2>Aynı yöntemi belediyenizde uygulayalım.</h2>
-        <p class="lede" style="margin-top:14px">Pilot bir etapla başlayıp sonuçları birlikte değerlendirelim.</p>
+        <p class="lede mt-14">Pilot bir etapla başlayıp sonuçları birlikte değerlendirelim.</p>
       </div>
       <div class="cta-band__act">
         <a class="btn" href="/iletisim.html">Görüşme talebi <span class="arw" aria-hidden="true">→</span></a>
