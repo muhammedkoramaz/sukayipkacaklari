@@ -30,6 +30,14 @@
     });
   }
 
+  /* language switcher — remember explicit choice */
+  var langLinks = document.querySelectorAll('.nav__lang a, .ftr__lang a');
+  Array.prototype.forEach.call(langLinks, function (a) {
+    a.addEventListener('click', function () {
+      try { localStorage.setItem('le-lang', a.getAttribute('lang') === 'en' ? 'en' : 'tr'); } catch (e) {}
+    });
+  });
+
   /* reveal on scroll */
   var items = document.querySelectorAll('.rv');
   if (!items.length) return;

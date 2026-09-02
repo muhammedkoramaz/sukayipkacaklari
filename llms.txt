@@ -41,3 +41,16 @@
 - [Sık sorulan sorular](https://sukayipkacaklari.com/sss.html)
 - [İletişim](https://sukayipkacaklari.com/iletisim.html)
 - [Gizlilik politikası](https://sukayipkacaklari.com/gizlilik.html)
+
+## English
+
+The full site is available in English under the `/en/` path. LeakExpert
+(sukayipkacaklari.com) is an engineering team and software platform for water
+loss and leak detection in municipal and industrial (OIZ) drinking-water
+distribution networks — acoustic leak location and correlation without
+excavation, continuous flow and pressure monitoring, DMA design, IWA water
+balance and non-revenue water (NRW) analysis. 25+ years of field experience
+(founded 2004). Registered office in Melikgazi/Kayseri; service area: Turkey.
+
+- [English home](https://sukayipkacaklari.com/en/)
+- [Services](https://sukayipkacaklari.com/en/hizmetler.html) · [Platform](https://sukayipkacaklari.com/en/platform.html) · [Guide](https://sukayipkacaklari.com/en/rehber/) · [Projects](https://sukayipkacaklari.com/en/projeler/) · [About](https://sukayipkacaklari.com/en/hakkimizda.html) · [Contact](https://sukayipkacaklari.com/en/iletisim.html)

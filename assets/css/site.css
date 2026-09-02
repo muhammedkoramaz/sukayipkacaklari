@@ -638,3 +638,18 @@ a.card:hover { border-color: var(--brand); }
 .stack-s > * + * { margin-top: 12px; }
 .hr { height: 1px; background: var(--line); border: 0; margin: 0; }
 .nowrap { white-space: nowrap; }
+
+/* ---------- dil değiştirici (TR | EN) ---------- */
+.nav__lang { display: inline-flex; align-items: center; gap: .45rem; margin-left: 6px;
+  font-family: var(--f-mono); font-size: 0.8rem; font-weight: 500; }
+.nav__lang a { color: var(--ink-2); text-decoration: none; padding: 4px 4px; border-radius: var(--radius-sm);
+  transition: color .15s, background .15s; }
+.nav__lang a:hover { color: var(--ink); background: var(--bg-2); }
+.nav__lang a.is-active { color: var(--brand-ink); font-weight: 700; }
+.nav__lang-sep { color: var(--line-strong); }
+.ftr__lang { display: inline-flex; align-items: center; gap: .4rem; }
+.ftr__lang a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 980px) {
+  .nav--open .nav__lang { margin: 6px 0 0; padding-top: 12px; border-top: 1px solid var(--line);
+    width: 100%; font-size: 1rem; }
+}

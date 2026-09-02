@@ -7,11 +7,13 @@
 <meta name="description" content="Su kayıp-kaçak saha yönetimi için mobil uygulama (GPS ve fotoğraflı kayıt), haritalı web paneli, Excel/Word raporlama ve GSM debimetre entegrasyonu.">
 <link rel="canonical" href="https://sukayipkacaklari.com/platform.html">
 <link rel="alternate" hreflang="tr" href="https://sukayipkacaklari.com/platform.html">
+<link rel="alternate" hreflang="en" href="https://sukayipkacaklari.com/en/platform.html">
 <link rel="alternate" hreflang="x-default" href="https://sukayipkacaklari.com/platform.html">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LeakExpert">
 <meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:title" content="Su Kaçağı Tespit Yazılımı — Mobil Saha + Web Panel + API | LeakExpert">
 <meta property="og:description" content="Su kayıp-kaçak saha yönetimi için mobil uygulama (GPS ve fotoğraflı kayıt), haritalı web paneli, Excel/Word raporlama ve GSM debimetre entegrasyonu.">
 <meta property="og:url" content="https://sukayipkacaklari.com/platform.html">
@@ -27,6 +29,25 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-600-800-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-600-800-latin-ext.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/plus-jakarta-sans-400-latin.woff2" crossorigin>
+<script>
+(function(){try{
+  var d=document.documentElement,cur=d.lang==='en'?'en':'tr';
+  var alt=document.querySelector('link[rel="alternate"][hreflang="'+(cur==='en'?'tr':'en')+'"]');
+  if(!alt)return;
+  var other=alt.getAttribute('href');
+  if(sessionStorage.getItem('le-lang-redirected'))return;
+  var pref=null;try{pref=localStorage.getItem('le-lang');}catch(e){}
+  if(pref==='tr'||pref==='en'){
+    if(pref!==cur){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
+    return;
+  }
+  if(d.getAttribute('data-home')!=='1')return;
+  var langs=navigator.languages||[navigator.language||''];
+  var wantsTr=langs.some(function(l){return /^tr\b/i.test(l);});
+  if(!wantsTr&&cur==='tr'){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
+  else if(wantsTr&&cur==='en'){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
+}catch(e){}})();
+</script>
 <link rel="stylesheet" href="/assets/css/fonts.min.css">
 <link rel="stylesheet" href="/assets/css/site.min.css">
 <script type="application/ld+json">
@@ -87,6 +108,11 @@
       <a href="/referanslar.html">Referanslar</a>
       <a href="/hakkimizda.html">Hakkımızda</a>
       <a href="/iletisim.html">İletişim</a>
+      <span class="nav__lang" role="group" aria-label="Language / Dil">
+        <a href="/platform.html" hreflang="tr" lang="tr" aria-current="true" class="is-active">TR</a>
+        <span class="nav__lang-sep" aria-hidden="true">|</span>
+        <a href="/en/platform.html" hreflang="en" lang="en">EN</a>
+      </span>
     </nav>
     <div class="hdr__cta">
       <a class="hdr__phone" href="tel:+905396588434">
@@ -230,6 +256,11 @@
     </div>
     <div class="ftr__bottom">
       <span>© 2026 LeakExpert · Tüm hakları saklıdır.</span>
+      <span class="ftr__lang">
+        <a href="/platform.html" hreflang="tr" lang="tr">Türkçe</a>
+        <span aria-hidden="true">·</span>
+        <a href="/en/platform.html" hreflang="en" lang="en">English</a>
+      </span>
       <span>sukayipkacaklari.com</span>
     </div>
   </div>

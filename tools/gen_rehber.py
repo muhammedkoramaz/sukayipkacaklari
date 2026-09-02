@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
-"""Group B — /rehber/ hub + articles + Kayseri local landing page.
-Writes into the live site tree. Shares header/footer/head with existing pages."""
+"""Group B — /rehber/ hub + articles, bilingual (tr + en).
+Writes into the live site tree (root = tr, /en/ = en).
+Shares header/footer/head/lang-switcher/open-script with gen_projects.py —
+keep the two in sync (PROJECT.md §6)."""
 import os
 
 SITE = r"C:\Users\muham\Desktop\LEAKEXPERT APPS\leakexpert-site"
 BASE = "https://sukayipkacaklari.com"
+LANGS = ("tr", "en")
+
 GA = ('<!-- Google Analytics 4 — gtag.js kritik yoldan çıkarıldı, boşta yüklenir -->\n'
       '<link rel="dns-prefetch" href="https://www.googletagmanager.com">\n'
       '<link rel="dns-prefetch" href="https://www.google-analytics.com">\n'
@@ -15,18 +19,25 @@ GA = ('<!-- Google Analytics 4 — gtag.js kritik yoldan çıkarıldı, boşta y
       "if('requestIdleCallback'in window){requestIdleCallback(l,{timeout:3000});}"
       "else{window.addEventListener('load',function(){setTimeout(l,1200);});}})();</script>")
 
-NAV_ITEMS = [
-    ('/', 'Ana Sayfa'), ('/platform.html', 'Platform'), ('/hizmetler.html', 'Hizmetler'),
-    ('/rehber/', 'Rehber'), ('/projeler/', 'Projeler'), ('/referanslar.html', 'Referanslar'),
-    ('/hakkimizda.html', 'Hakkımızda'), ('/iletisim.html', 'İletişim'),
-]
-
-def nav(active):
-    out = []
-    for href, label in NAV_ITEMS:
-        cur = ' aria-current="page"' if href == active else ''
-        out.append(f'      <a href="{href}"{cur}>{label}</a>')
-    return '\n'.join(out)
+OPEN_SCRIPT = """<script>
+(function(){try{
+  var d=document.documentElement,cur=d.lang==='en'?'en':'tr';
+  var alt=document.querySelector('link[rel="alternate"][hreflang="'+(cur==='en'?'tr':'en')+'"]');
+  if(!alt)return;
+  var other=alt.getAttribute('href');
+  if(sessionStorage.getItem('le-lang-redirected'))return;
+  var pref=null;try{pref=localStorage.getItem('le-lang');}catch(e){}
+  if(pref==='tr'||pref==='en'){
+    if(pref!==cur){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
+    return;
+  }
+  if(d.getAttribute('data-home')!=='1')return;
+  var langs=navigator.languages||[navigator.language||''];
+  var wantsTr=langs.some(function(l){return /^tr\\b/i.test(l);});
+  if(!wantsTr&&cur==='tr'){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
+  else if(wantsTr&&cur==='en'){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
+}catch(e){}})();
+</script>"""
 
 PHONE_SVG = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
             'stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 '
@@ -34,23 +45,139 @@ PHONE_SVG = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke
             '2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 '
             '2 0 0 1 22 16.92z"/></svg>')
 
-def head(title, desc, canonical, extra_preload_prefix="/", schema_blocks=()):
-    p = extra_preload_prefix
+# ---------------------------------------------------------------- i18n table
+UI = {
+    "tr": {
+        "menu": [("/", "Ana Sayfa"), ("/platform.html", "Platform"), ("/hizmetler.html", "Hizmetler"),
+                 ("/rehber/", "Rehber"), ("/projeler/", "Projeler"), ("/referanslar.html", "Referanslar"),
+                 ("/hakkimizda.html", "Hakkımızda"), ("/iletisim.html", "İletişim")],
+        "skip": "İçeriğe geç", "menu_aria": "Ana menü", "burger_aria": "Menüyü aç",
+        "brand_aria": "LeakExpert ana sayfa", "crumb_aria": "Sayfa işaret yolu",
+        "og_locale": "tr_TR", "og_locale_alt": "en_US", "html_lang": "tr", "ld_lang": "tr-TR",
+        "guide": "Rehber", "guide_eyebrow": "Rehber",
+        "dock_aria": "Hızlı iletişim", "dock_cta": "Görüşme talebi",
+        "ftr_brandline": ("Belediye içme suyu şebekelerinde su kayıp kaçakları tespiti, debi/basınç izleme "
+                          "ve saha yönetimi. Web ve mobil entegre platform."),
+        "ftr_h_platform": "Platform", "ftr_h_corp": "Kurumsal", "ftr_h_contact": "İletişim",
+        "ftr_platform": [("/platform.html#mobil", "Mobil saha uygulaması"),
+                         ("/platform.html#web", "Web yönetim paneli"),
+                         ("/platform.html#api", "API &amp; entegrasyon"),
+                         ("/hizmetler.html", "Saha hizmetleri")],
+        "ftr_corp": [("/hakkimizda.html", "Hakkımızda"), ("/projeler/", "Projeler"),
+                     ("/referanslar.html", "Referanslar"), ("/rehber/", "Rehber"),
+                     ("/sss.html", "Sık sorulan sorular"), ("/iletisim.html", "İletişim"),
+                     ("/gizlilik.html", "Gizlilik politikası")],
+        "ftr_rights": "© 2026 LeakExpert · Tüm hakları saklıdır.",
+        "lang_tr": "Türkçe", "lang_en": "English",
+        "cta_eyebrow": "Şebekeniz için", "cta_h": "Kaybı ölçelim, noktayı bulalım.",
+        "cta_p": "Kısa bir görüntülü görüşmede mevcut durumu ve uygulanacak yöntemi konuşalım.",
+        "cta_btn": "Görüşme talebi", "cta_btn2": "Hizmetler",
+        "rel_eyebrow": "Rehberde ayrıca", "rel_h": "İlgili yazılar.",
+        "hub_title": "Su Kayıp-Kaçak Rehberi — Tespit Yöntemleri, DMA, NRW | LeakExpert",
+        "hub_desc": ("Su kaçağı belirtileri, akustik tespit, DMA kurulumu ve su kaybı düşürme yol haritası. "
+                     "Belediye ve sanayi şebekeleri için uygulamalı rehber yazıları."),
+        "hub_h1": "Su kayıp-kaçak rehberi.",
+        "hub_lede": ('Şebeke ve sanayi tesislerinde su kaçağını anlamak, ölçmek ve kalıcı olarak '
+                     'azaltmak için uygulamalı yazılar. Yöntemin saha karşılığı için '
+                     '<a class="link-arw inline-flex" href="{P}/projeler/">projelere</a> bakın.'),
+        "hub_name": "Su kayıp-kaçak rehberi",
+        "home": "Ana Sayfa",
+    },
+    "en": {
+        "menu": [("/", "Home"), ("/platform.html", "Platform"), ("/hizmetler.html", "Services"),
+                 ("/rehber/", "Guide"), ("/projeler/", "Projects"), ("/referanslar.html", "References"),
+                 ("/hakkimizda.html", "About"), ("/iletisim.html", "Contact")],
+        "skip": "Skip to content", "menu_aria": "Main menu", "burger_aria": "Open menu",
+        "brand_aria": "LeakExpert home", "crumb_aria": "Breadcrumb",
+        "og_locale": "en_US", "og_locale_alt": "tr_TR", "html_lang": "en", "ld_lang": "en-US",
+        "guide": "Guide", "guide_eyebrow": "Guide",
+        "dock_aria": "Quick contact", "dock_cta": "Request a consultation",
+        "ftr_brandline": ("Water loss and leak detection, flow/pressure monitoring and field management "
+                          "for municipal drinking-water networks. Integrated web and mobile platform."),
+        "ftr_h_platform": "Platform", "ftr_h_corp": "Company", "ftr_h_contact": "Contact",
+        "ftr_platform": [("/platform.html#mobil", "Mobile field app"),
+                         ("/platform.html#web", "Web management panel"),
+                         ("/platform.html#api", "API &amp; integration"),
+                         ("/hizmetler.html", "Field services")],
+        "ftr_corp": [("/hakkimizda.html", "About"), ("/projeler/", "Projects"),
+                     ("/referanslar.html", "References"), ("/rehber/", "Guide"),
+                     ("/sss.html", "FAQ"), ("/iletisim.html", "Contact"),
+                     ("/gizlilik.html", "Privacy policy")],
+        "ftr_rights": "© 2026 LeakExpert · All rights reserved.",
+        "lang_tr": "Türkçe", "lang_en": "English",
+        "cta_eyebrow": "For your network", "cta_h": "Let's measure the loss and pinpoint it.",
+        "cta_p": "In a short video call we can review the current situation and the method to apply.",
+        "cta_btn": "Request a consultation", "cta_btn2": "Services",
+        "rel_eyebrow": "Also in the guide", "rel_h": "Related articles.",
+        "hub_title": "Water Loss & Leakage Guide — Detection Methods, DMA, NRW | LeakExpert",
+        "hub_desc": ("Leak signs, acoustic detection, DMA setup and a roadmap for cutting water loss. "
+                     "Practical guide articles for municipal and industrial networks."),
+        "hub_h1": "Water loss & leakage guide.",
+        "hub_lede": ('Practical articles on understanding, measuring and permanently reducing water loss in '
+                     'distribution networks and industrial plants. For the field side of the method, see the '
+                     '<a class="link-arw inline-flex" href="{P}/projeler/">projects</a>.'),
+        "hub_name": "Water loss & leakage guide",
+        "home": "Home",
+    },
+}
+
+
+def pfx(lang):
+    return "" if lang == "tr" else "/en"
+
+
+def rel_href(lang, path):
+    """root-relative href for the current language tree; path like '/', '/x.html', '/rehber/'."""
+    if path == "/":
+        return pfx(lang) + "/"
+    return pfx(lang) + path
+
+
+def abs_url(lang, path):
+    return BASE + (rel_href(lang, path) if path != "/" else (pfx(lang) + "/"))
+
+
+def nav(active, page_path, lang):
+    u = UI[lang]
+    out = []
+    for href, label in u["menu"]:
+        cur = ' aria-current="page"' if href == active else ''
+        out.append(f'      <a href="{rel_href(lang, href)}"{cur}>{label}</a>')
+    tr_href = "/" if page_path == "/" else page_path
+    en_href = "/en/" if page_path == "/" else "/en" + page_path
+    tr_a = ' aria-current="true" class="is-active"' if lang == "tr" else ''
+    en_a = ' aria-current="true" class="is-active"' if lang == "en" else ''
+    out.append('      <span class="nav__lang" role="group" aria-label="Language / Dil">')
+    out.append(f'        <a href="{tr_href}" hreflang="tr" lang="tr"{tr_a}>TR</a>')
+    out.append('        <span class="nav__lang-sep" aria-hidden="true">|</span>')
+    out.append(f'        <a href="{en_href}" hreflang="en" lang="en"{en_a}>EN</a>')
+    out.append('      </span>')
+    return '\n'.join(out)
+
+
+def head(title, desc, page_path, lang, schema_blocks=(), ogtype="article"):
+    u = UI[lang]
+    canonical = abs_url(lang, page_path)
+    tr_url = BASE + ("/" if page_path == "/" else page_path)
+    en_url = BASE + ("/en/" if page_path == "/" else "/en" + page_path)
     sb = "\n".join(schema_blocks)
+    nav_html = nav(_active_menu(page_path), page_path, lang)
     return f"""<!doctype html>
-<html lang="tr">
+<html lang="{u['html_lang']}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canonical}">
-<link rel="alternate" hreflang="tr" href="{canonical}">
-<link rel="alternate" hreflang="x-default" href="{canonical}">
+<link rel="alternate" hreflang="tr" href="{tr_url}">
+<link rel="alternate" hreflang="en" href="{en_url}">
+<link rel="alternate" hreflang="x-default" href="{tr_url}">
 <meta name="theme-color" content="#ffffff">
-<meta property="og:type" content="article">
+<meta property="og:type" content="{ogtype}">
 <meta property="og:site_name" content="LeakExpert">
-<meta property="og:locale" content="tr_TR">
+<meta property="og:locale" content="{u['og_locale']}">
+<meta property="og:locale:alternate" content="{u['og_locale_alt']}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{canonical}">
@@ -63,24 +190,25 @@ def head(title, desc, canonical, extra_preload_prefix="/", schema_blocks=()):
 <link rel="icon" type="image/png" href="/assets/img/icon.png">
 <link rel="apple-touch-icon" href="/assets/icons/app-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" as="font" type="font/woff2" href="{p}assets/fonts/bricolage-grotesque-600-800-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="{p}assets/fonts/bricolage-grotesque-600-800-latin-ext.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="{p}assets/fonts/plus-jakarta-sans-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-600-800-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-600-800-latin-ext.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/plus-jakarta-sans-400-latin.woff2" crossorigin>
+{OPEN_SCRIPT}
 <link rel="stylesheet" href="/assets/css/fonts.min.css">
 <link rel="stylesheet" href="/assets/css/site.min.css">
 {sb}
 {GA}
 </head>
 <body>
-<a class="skip" href="#main">İçeriğe geç</a>
+<a class="skip" href="#main">{u['skip']}</a>
 
 <header class="hdr">
   <div class="wrap hdr__in">
-    <a class="brand" href="/" aria-label="LeakExpert ana sayfa">
+    <a class="brand" href="{rel_href(lang, '/')}" aria-label="{u['brand_aria']}">
       <img src="/assets/img/logo.svg" alt="LeakExpert" width="118" height="34" class="brand__logo">
     </a>
-    <nav class="nav" id="navmenu" aria-label="Ana menü">
-{{nav_html}}
+    <nav class="nav" id="navmenu" aria-label="{u['menu_aria']}">
+{nav_html}
     </nav>
     <div class="hdr__cta">
       <a class="hdr__phone" href="tel:+905396588434">
@@ -88,52 +216,62 @@ def head(title, desc, canonical, extra_preload_prefix="/", schema_blocks=()):
         0539 658 84 34
       </a>
     </div>
-    <button class="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navmenu">
+    <button class="burger" aria-label="{u['burger_aria']}" aria-expanded="false" aria-controls="navmenu">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
 </header>
 """
 
-FOOTER = f"""
+
+def _active_menu(page_path):
+    if page_path.startswith("/rehber/"):
+        return "/rehber/"
+    return page_path
+
+
+def footer(lang, page_path):
+    u = UI[lang]
+    tr_href = "/" if page_path == "/" else page_path
+    en_href = "/en/" if page_path == "/" else "/en" + page_path
+    fp = "\n".join(f'        <li><a href="{rel_href(lang, h)}">{t}</a></li>' for h, t in u["ftr_platform"])
+    fc = "\n".join(f'        <li><a href="{rel_href(lang, h)}">{t}</a></li>' for h, t in u["ftr_corp"])
+    return f"""
 <footer class="ftr">
   <div class="wrap">
     <div class="ftr__grid">
       <div>
-        <a class="brand" href="/" aria-label="LeakExpert ana sayfa">
+        <a class="brand" href="{rel_href(lang, '/')}" aria-label="{u['brand_aria']}">
           <img src="/assets/img/logo.svg" alt="LeakExpert" width="118" height="34" class="brand__logo">
         </a>
-        <p class="ftr__brandline">Belediye içme suyu şebekelerinde su kayıp kaçakları tespiti, debi/basınç izleme ve saha yönetimi. Web ve mobil entegre platform.</p>
+        <p class="ftr__brandline">{u['ftr_brandline']}</p>
       </div>
-      <div><h4>Platform</h4><ul>
-        <li><a href="/platform.html#mobil">Mobil saha uygulaması</a></li>
-        <li><a href="/platform.html#web">Web yönetim paneli</a></li>
-        <li><a href="/platform.html#api">API &amp; entegrasyon</a></li>
-        <li><a href="/hizmetler.html">Saha hizmetleri</a></li>
+      <div><h4>{u['ftr_h_platform']}</h4><ul>
+{fp}
       </ul></div>
-      <div><h4>Kurumsal</h4><ul>
-        <li><a href="/hakkimizda.html">Hakkımızda</a></li>
-        <li><a href="/projeler/">Projeler</a></li><li><a href="/referanslar.html">Referanslar</a></li>
-        <li><a href="/rehber/">Rehber</a></li>
-        <li><a href="/sss.html">Sık sorulan sorular</a></li>
-        <li><a href="/iletisim.html">İletişim</a></li>
-        <li><a href="/gizlilik.html">Gizlilik politikası</a></li>
+      <div><h4>{u['ftr_h_corp']}</h4><ul>
+{fc}
       </ul></div>
-      <div><h4>İletişim</h4><ul>
+      <div><h4>{u['ftr_h_contact']}</h4><ul>
         <li class="ftr__mono">Melikgazi / Kayseri</li>
         <li class="ftr__mono"><a href="tel:+905396588434">+90 539 658 84 34</a></li>
         <li class="ftr__mono"><a href="mailto:sukayipkacaklari@gmail.com">sukayipkacaklari@gmail.com</a></li>
       </ul></div>
     </div>
     <div class="ftr__bottom">
-      <span>© 2026 LeakExpert · Tüm hakları saklıdır.</span>
+      <span>{u['ftr_rights']}</span>
+      <span class="ftr__lang">
+        <a href="{tr_href}" hreflang="tr" lang="tr">{u['lang_tr']}</a>
+        <span aria-hidden="true">·</span>
+        <a href="{en_href}" hreflang="en" lang="en">{u['lang_en']}</a>
+      </span>
       <span>sukayipkacaklari.com</span>
     </div>
   </div>
 </footer>
 
-<nav class="dock" aria-label="Hızlı iletişim">
-  <a class="btn btn--ghost btn--sm" href="/iletisim.html">Görüşme talebi</a>
+<nav class="dock" aria-label="{u['dock_aria']}">
+  <a class="btn btn--ghost btn--sm" href="{rel_href(lang, '/iletisim.html')}">{u['dock_cta']}</a>
   <a class="btn btn--sm" href="tel:+905396588434">
     {PHONE_SVG}
     0539 658 84 34
@@ -145,6 +283,26 @@ FOOTER = f"""
 </html>
 """
 
+
+def cta(lang):
+    u = UI[lang]
+    return f"""
+  <section class="section section--tight cta-band">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">{u['cta_eyebrow']}</p>
+        <h2>{u['cta_h']}</h2>
+        <p class="lede mt-14">{u['cta_p']}</p>
+      </div>
+      <div class="cta-band__act">
+        <a class="btn" href="{rel_href(lang, '/iletisim.html')}">{u['cta_btn']} <span class="arw" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="{rel_href(lang, '/hizmetler.html')}">{u['cta_btn2']}</a>
+      </div>
+    </div>
+  </section>
+"""
+
+
 def breadcrumb(items):
     els = ", ".join(
         f'{{ "@type": "ListItem", "position": {i+1}, "name": "{n}", "item": "{u}" }}'
@@ -155,7 +313,8 @@ def breadcrumb(items):
             f'  "itemListElement": [ {els} ]\n'
             '}\n</script>')
 
-def article_schema(headline, desc, url, section):
+
+def article_schema(headline, desc, url, section, ld_lang):
     return ('<script type="application/ld+json">\n{\n'
             '  "@context": "https://schema.org",\n'
             '  "@type": "Article",\n'
@@ -163,7 +322,7 @@ def article_schema(headline, desc, url, section):
             f'  "description": "{desc}",\n'
             f'  "mainEntityOfPage": {{ "@type": "WebPage", "@id": "{url}" }},\n'
             f'  "articleSection": "{section}",\n'
-            '  "inLanguage": "tr-TR",\n'
+            f'  "inLanguage": "{ld_lang}",\n'
             '  "author": { "@type": "Organization", "name": "LeakExpert", "url": "https://sukayipkacaklari.com/" },\n'
             '  "publisher": { "@type": "Organization", "name": "LeakExpert", "url": "https://sukayipkacaklari.com/",\n'
             '    "logo": { "@type": "ImageObject", "url": "https://sukayipkacaklari.com/assets/img/icon.png" } },\n'
@@ -171,8 +330,8 @@ def article_schema(headline, desc, url, section):
             '  "datePublished": "2026-09-01", "dateModified": "2026-09-01"\n'
             '}\n</script>')
 
-def crumbnav(trail):
-    # trail: list of (label, href or None)
+
+def crumbnav(trail, aria):
     parts = []
     for i, (label, href) in enumerate(trail):
         if href:
@@ -181,23 +340,8 @@ def crumbnav(trail):
             parts.append(f'<span aria-current="page">{label}</span>')
         if i < len(trail) - 1:
             parts.append('<span class="sep">/</span>')
-    return '<nav class="crumb" aria-label="Sayfa işaret yolu">\n      ' + ''.join(parts) + '\n    </nav>'
+    return f'<nav class="crumb" aria-label="{aria}">\n      ' + ''.join(parts) + '\n    </nav>'
 
-CTA = """
-  <section class="section section--tight cta-band">
-    <div class="wrap">
-      <div>
-        <p class="eyebrow">Şebekeniz için</p>
-        <h2>Kaybı ölçelim, noktayı bulalım.</h2>
-        <p class="lede mt-14">Kısa bir görüntülü görüşmede mevcut durumu ve uygulanacak yöntemi konuşalım.</p>
-      </div>
-      <div class="cta-band__act">
-        <a class="btn" href="/iletisim.html">Görüşme talebi <span class="arw" aria-hidden="true">→</span></a>
-        <a class="btn btn--ghost" href="/hizmetler.html">Hizmetler</a>
-      </div>
-    </div>
-  </section>
-"""
 
 def write(path, html):
     full = os.path.join(SITE, path)
@@ -206,6 +350,7 @@ def write(path, html):
         f.write(html)
     print("wrote", path, f"({len(html)} b)")
 
+
 # ------------------------------------------------------------------ ARTICLES
 ARTICLES = [
     dict(
@@ -213,8 +358,11 @@ ARTICLES = [
         h1="Su kaçağı nasıl anlaşılır? Şebekede 8 belirti",
         title="Su Kaçağı Nasıl Anlaşılır? 8 Belirti ve Kontrol Yöntemi | LeakExpert",
         desc="İçme suyu şebekesinde gizli su kaçağının belirtileri: gece minimum debi artışı, basınç düşüşü, NRW oranının açılması, sürekli nemli zemin. Nasıl doğrulanır?",
-        section="Rehber",
         lede="Görünür bir su birikintisi çoğu kaçağın <strong>son</strong> belirtisidir. Şebeke ölçeğinde kayıp, çok daha önce verideki küçük sapmalardan okunur. İşte belediye ve sanayi içme suyu şebekelerinde en güvenilir sekiz işaret.",
+        h1_en="How to tell if there is a water leak: 8 signs in a network",
+        title_en="How to Tell If There Is a Water Leak? 8 Signs and How to Check | LeakExpert",
+        desc_en="Signs of a hidden leak in a drinking-water network: rising night flow, pressure drop, a widening NRW gap, persistently damp ground. How is it confirmed?",
+        lede_en="A visible puddle is the <strong>last</strong> sign of most leaks. At network scale, loss shows up far earlier as small deviations in the data. Here are the eight most reliable signs in municipal and industrial drinking-water networks.",
         body="""
       <div class="prose">
         <h2>1. Gece minimum debisinin yükselmesi</h2>
@@ -250,14 +398,52 @@ ARTICLES = [
         </ul>
       </div>
 """,
+        body_en="""
+      <div class="prose">
+        <h2>1. Rising minimum night flow</h2>
+        <p>The flow measured at the reservoir outlet of a zone (DMA) drops to its lowest level between 03:00 and 05:00, when demand has stopped. If this <strong>minimum night flow</strong> rises over time while population and connection count stay constant, the difference is most likely a new physical leak. This is the earliest and most objective signal in network monitoring.</p>
+
+        <h2>2. A local pressure drop</h2>
+        <p>If the pressure at the far end of a main falls gradually while pump flow is unchanged, water is leaving the system somewhere in between. A 24/7 <a href="/en/hizmetler.html#basinc">pressure logger</a> record shows that drop at hourly resolution.</p>
+
+        <h2>3. A widening gap between water produced and water billed</h2>
+        <p>The difference between the total water entering the reservoir and the water billed to customers is the <strong>non-revenue water (NRW)</strong> share. If that share is above 30% and climbing, a measurable loss has built up in the network.</p>
+
+        <h2>4. A flow sound at one point that never stops</h2>
+        <p>A continuous hiss heard even at night next to a valve, a fire hydrant or a service connection is the classic leak sound. <a href="/en/hizmetler.html#akustik">Acoustic listening</a> amplifies it with a ground microphone and locates it between two points with a correlator.</p>
+
+        <h2>5. Ground that stays wet in dry weather, or a strip of greener grass</h2>
+        <p>Edge subsidence in asphalt, moss on a pavement, soil that stays wet without rain, or a strip of grass noticeably greener than its surroundings — all are signs of a leak that has reached the surface.</p>
+
+        <h2>6. More frequent repairs</h2>
+        <p>Pipe bursts that recur at short intervals in the same area are usually linked to <strong>high or fluctuating pressure</strong>. Repairs made without introducing pressure management move the problem to a neighbouring point a few months later.</p>
+
+        <h2>7. An unexplained rise in chlorination and pumping costs</h2>
+        <p>Every cubic metre of leaking water has been treated, chlorinated and pumped. If energy and chemical consumption rise without population growth, the difference is water seeping from the network.</p>
+
+        <h2>8. Reservoir level falling at night too</h2>
+        <p>The reservoir level should stabilise once demand stops. If it keeps falling through the night, a serious leak should be sought on the transmission main between the reservoir and the first metering point.</p>
+
+        <h2>The signs are there — now confirm the location</h2>
+        <p>These signs show that a loss <em>exists</em>, not <em>where</em> it is. Locating it requires systematic field work: zoning (DMA), night-flow measurement, step testing and acoustic surveying. LeakExpert runs this cycle as a single programme and reports every point with its coordinates.</p>
+        <ul>
+          <li>Method detail: <a href="/en/hizmetler.html">Services</a></li>
+          <li>Field examples: <a href="/en/projeler/">Projects</a></li>
+          <li>Common questions: <a href="/en/sss.html">FAQ</a></li>
+        </ul>
+      </div>
+""",
     ),
     dict(
         slug="akustik-su-kacagi-tespiti-nedir",
         h1="Akustik su kaçağı tespiti nedir, nasıl yapılır?",
         title="Akustik Su Kaçağı Tespiti Nasıl Yapılır? Yer Mikrofonu ve Korelatör | LeakExpert",
         desc="Akustik su kaçağı tespitinin adımları: gürültü kaydediciyle tarama, yer mikrofonuyla daraltma, korelatörle metrik konumlandırma. Neden gece yapılır?",
-        section="Rehber",
         lede="Basınçlı bir borudan kaçan su, boru cidarında ve zeminde <strong>titreşim (ses)</strong> üretir. Akustik tespit, bu sesi dinleyip kaynağına doğru daraltma sanatıdır. Tahribatsızdır; kazı yalnızca doğrulanmış noktada yapılır.",
+        h1_en="What is acoustic water leak detection, and how is it done?",
+        title_en="How Is Acoustic Water Leak Detection Done? Ground Microphone and Correlator | LeakExpert",
+        desc_en="The steps of acoustic leak detection: survey with noise loggers, narrow down with a ground microphone, locate to the metre with a correlator. Why is it done at night?",
+        lede_en="Water escaping a pressurised pipe produces <strong>vibration (sound)</strong> in the pipe wall and the ground. Acoustic detection is the craft of listening to that sound and narrowing in on its source. It is non-destructive; excavation is done only at the confirmed point.",
         body="""
       <div class="prose">
         <h2>Kaçak neden ses çıkarır?</h2>
@@ -290,14 +476,49 @@ ARTICLES = [
         </ul>
       </div>
 """,
+        body_en="""
+      <div class="prose">
+        <h2>Why does a leak make a sound?</h2>
+        <p>The pressure in the water turns into turbulence as it escapes through a hole or a crack. Depending on the pipe material, diameter, pressure and ground, that turbulence radiates a continuous sound in roughly the <strong>20–2,500 Hz</strong> range. In metal pipes the sound travels far; in plastic pipes (PE, PVC) it decays quickly, which is why measurement points are spaced more closely.</p>
+
+        <h2>Step 1 — Preliminary zoning</h2>
+        <p>The network map, valve positions and any DMA boundaries are reviewed. The area with high loss data is chosen as the priority zone to survey. If needed, the zone's minimum night flow is measured with a temporary flow logger.</p>
+
+        <h2>Step 2 — Night survey with noise loggers</h2>
+        <p><strong>Noise loggers</strong> are placed on valves and hydrants. The devices record automatically during the quietest hours of the night; points that give a continuous, high-amplitude sound are flagged as "suspect". This step quickly screens a wide area.</p>
+
+        <h2>Step 3 — Narrowing down with a ground microphone</h2>
+        <p>Along the suspect main, point-by-point listening is done from the surface with a <strong>ground microphone</strong>. The sound level rises as you approach the leak; the location of the highest reading is the leak's surface projection. A listening rod is used on valves and connections.</p>
+
+        <h2>Step 4 — Locating to the metre with a correlator</h2>
+        <p>A sensor is placed on each contact point (valve, hydrant) on either side of the leak. Using the difference in arrival time of the leak sound at the two sensors and the speed of sound in the pipe, the <strong>correlator</strong> locates the leak between the two points to <strong>within a metre</strong>. When the pipe material and diameter are entered correctly, the margin of error is very small.</p>
+
+        <h2>Step 5 — Confirmation and hand-over</h2>
+        <p>The identified point is verified with the ground microphone; its coordinates and sound level are recorded and photographed. Excavation is done only for this confirmed point. All points are entered onto the <a href="/en/hizmetler.html#cbs">GIS map</a> and the LeakExpert platform.</p>
+
+        <h2>Why work at night?</h2>
+        <p>Daytime demand, traffic and ground noise mask the leak sound. When demand stops at night the network goes quiet; the leak sound becomes relatively distinct and is picked up from much farther away.</p>
+
+        <h2>When is it not enough on its own?</h2>
+        <p>On very deep mains, large-diameter transmission pipes, high groundwater and entirely plastic new networks, the acoustic method is used together with <strong>flow/pressure measurement and step testing</strong>. That is why LeakExpert relies not on a single method but on a closed-loop programme.</p>
+        <ul>
+          <li>Related service: <a href="/en/hizmetler.html#akustik">Acoustic leak detection</a></li>
+          <li>Concept: <a href="/en/rehber/dma-nedir.html">What is a DMA?</a></li>
+          <li>In practice: <a href="/en/projeler/">Project pages</a></li>
+        </ul>
+      </div>
+""",
     ),
     dict(
         slug="dma-nedir",
         h1="DMA (İzole Ölçüm Bölgesi) nedir, nasıl kurulur?",
         title="DMA Nedir? İzole Ölçüm Bölgesi Kurulumu ve Gece Minimum Debi | LeakExpert",
         desc="DMA (District Metered Area) bir şebekeyi ölçülebilir alt bölgelere ayırır. Kurulum adımları, gece minimum debi analizi, step test ve kayıp ayrıştırma anlatımı.",
-        section="Rehber",
         lede="Bir şehir şebekesini bütün hâlde denetlemek zordur. <strong>DMA</strong> (District Metered Area — izole ölçüm bölgesi), şebekeyi girişi ve çıkışı sayılabilen küçük, kalıcı parçalara böler. Kayıp, ancak ölçülebildiği yerde yönetilebilir.",
+        h1_en="What is a DMA (District Metered Area), and how is it set up?",
+        title_en="What Is a DMA? District Metered Area Setup and Minimum Night Flow | LeakExpert",
+        desc_en="A DMA (District Metered Area) splits a network into measurable sub-zones. Setup steps, minimum night flow analysis, step testing and separating out the loss.",
+        lede_en="Auditing a city network as a single whole is hard. A <strong>DMA</strong> (District Metered Area) divides the network into small, permanent parts whose inflow and outflow can be counted. Loss can only be managed where it can be measured.",
         body="""
       <div class="prose">
         <h2>DMA neyi çözer?</h2>
@@ -328,14 +549,47 @@ ARTICLES = [
         </ul>
       </div>
 """,
+        body_en="""
+      <div class="prose">
+        <h2>What does a DMA solve?</h2>
+        <p>A city-wide NRW figure such as "35%" is a number, but it does not say <strong>where</strong> the loss is. When the network is split into 15–20 DMAs, each zone's own minimum night flow is monitored; the loss narrows to a few zones and the field crew is sent to the right place.</p>
+
+        <h2>The size of a DMA</h2>
+        <p>Typically <strong>500–3,000 connections</strong> or a few kilometres of main. In a DMA that is too large, small leaks disappear inside the night flow; one that is too small brings excess valve and meter cost. Size is set with regard to topography, pressure zones and natural boundaries (a stream, a main road, a railway).</p>
+
+        <h2>Setup steps</h2>
+        <h3>1. Boundary design</h3>
+        <p>Zone boundaries are drawn on the network map. Every connection on the boundary is either closed permanently or converted to a metered inlet. The aim: every drop entering the zone passes through a meter.</p>
+        <h3>2. Boundary valve test</h3>
+        <p>The valves that must be closed are shut one by one and checked for tightness. A single boundary valve that does not seal ruins the whole measurement.</p>
+        <h3>3. Inlet meter / flow meter installation</h3>
+        <p>A permanent electromagnetic meter or a temporary <a href="/en/hizmetler.html#debi">ultrasonic flow meter</a> is fitted at the zone inlet; flow is logged in 15-minute steps.</p>
+        <h3>4. Minimum night flow (MNF) measurement</h3>
+        <p>From the minimum flow measured between 03:00 and 05:00, legitimate night use (cistern refills, industry, non-leak consumption) is subtracted. What remains is the <strong>physical loss flow</strong>. In Turkey, roughly 70% of the minimum night flow is physical loss.</p>
+
+        <h2>Step testing — bringing the loss down to individual mains</h2>
+        <p>The valves inside the DMA are closed in sequence through the night, starting from the far end. If the inlet flow drops noticeably when a valve is closed, the loss is concentrated on the main that valve feeds. The measurement area then narrows to a few hundred metres and the acoustic survey is targeted.</p>
+
+        <h2>Permanent monitoring</h2>
+        <p>A DMA is not a one-off. As the inlet meter logs continuously, the night flow rises within a few days when a new leak forms and the system gives early warning. The LeakExpert platform tracks that curve zone by zone.</p>
+        <ul>
+          <li>Related service: <a href="/en/hizmetler.html#dma">DMA, step &amp; zero-pressure testing</a></li>
+          <li>Measurement side: <a href="/en/hizmetler.html#debi">Flow measurement &amp; NRW analysis</a></li>
+          <li>Roadmap: <a href="/en/rehber/su-kaybi-dusurme-yol-haritasi.html">Roadmap for cutting water loss</a></li>
+        </ul>
+      </div>
+""",
     ),
     dict(
         slug="su-kaybi-dusurme-yol-haritasi",
         h1="Su kayıp-kaçak oranını düşürme yol haritası",
         title="Su Kayıp-Kaçak Oranını Düşürme Yol Haritası (NRW / IWA) | LeakExpert",
         desc="Fatura edilemeyen su (NRW) oranını kalıcı düşürmek için sekiz adımlı program: su dengesi, DMA, basınç yönetimi, aktif kaçak kontrolü, sayaç doğrulama.",
-        section="Rehber",
         lede="Su kaybını düşürmek tek seferlik bir kampanya değil, <strong>sürekli bir program</strong>dır. IWA (Uluslararası Su Birliği) çerçevesi dört kaldıraç tanımlar; sıra ve süreklilik olmadan kazanç kısa sürede geri erir.",
+        h1_en="A roadmap for cutting the water loss / leakage rate",
+        title_en="A Roadmap for Cutting the Water Loss Rate (NRW / IWA) | LeakExpert",
+        desc_en="An eight-step programme to permanently cut the non-revenue water (NRW) rate: water balance, DMA, pressure management, active leak control, meter verification.",
+        lede_en="Cutting water loss is not a one-off campaign but a <strong>continuous programme</strong>. The IWA (International Water Association) framework defines four levers; without order and continuity the gains melt away quickly.",
         body="""
       <div class="prose">
         <h2>Önce ölç: IWA su dengesi</h2>
@@ -376,99 +630,159 @@ ARTICLES = [
         </ul>
       </div>
 """,
+        body_en="""
+      <div class="prose">
+        <h2>Measure first: the IWA water balance</h2>
+        <p>The water entering the system is broken down into billed consumption, unbilled legitimate consumption, apparent losses (meter error, unauthorised use) and real losses (leakage, bursts, overflows). No target can be set without this table. Output: the <strong>NRW rate</strong>, the loss volume (m³/yr) and its monetary value.</p>
+
+        <h2>The four levers</h2>
+        <ul>
+          <li><strong>Pressure management</strong> — reducing excess pressure immediately lowers the leak flow and the number of new bursts.</li>
+          <li><strong>Active leakage control</strong> — using DMA + acoustic surveying to find unknown leaks and repair them without delay.</li>
+          <li><strong>Speed and quality of repair</strong> — the time a leak runs from detection to repair is directly a loss volume.</li>
+          <li><strong>Infrastructure management</strong> — planned renewal of chronically failing mains.</li>
+        </ul>
+
+        <h2>The eight-step programme</h2>
+        <h3>1. Data collection and water balance</h3>
+        <p>Reservoir inlet records, customer meter readings and the network map are brought together; the baseline NRW is calculated.</p>
+        <h3>2. Mapping the pressure zones</h3>
+        <p>High-pressure zones are identified; pressure-reducing valve (PRV) locations are planned.</p>
+        <h3>3. Pilot DMA setup</h3>
+        <p>A <a href="/en/rehber/dma-nedir.html">DMA</a> is set up in a zone with high suspected loss, and the minimum night flow is measured.</p>
+        <h3>4. Active survey</h3>
+        <p><a href="/en/rehber/akustik-su-kacagi-tespiti-nedir.html">Acoustic detection</a> + step testing are applied in the pilot zone and the points are reported.</p>
+        <h3>5. Fast repair cycle</h3>
+        <p>Each point found is prioritised and passed to the repair crew; a check listen is done after repair.</p>
+        <h3>6. Meter verification</h3>
+        <p>The meters of large customers are tested; slow or stopped meters inflate apparent losses.</p>
+        <h3>7. Roll-out</h3>
+        <p>The method that works in the pilot is extended DMA by DMA across the city.</p>
+        <h3>8. Permanent monitoring</h3>
+        <p>Every DMA's night flow is monitored continuously; when a threshold is passed, the zone is surveyed again. The gain is only kept with this monitoring.</p>
+
+        <h2>What to expect</h2>
+        <p>Pressure management gives a measurable drop within weeks. Active leakage control brings a clear fall in NRW in the first year. A lasting result requires the programme to run without interruption — when it is dropped, loss climbs back a few points a year.</p>
+        <ul>
+          <li>Service scope: <a href="/en/hizmetler.html">Field services</a></li>
+          <li>Platform support: <a href="/en/platform.html">Web + mobile platform</a></li>
+          <li>Example applications: <a href="/en/projeler/">Projects</a></li>
+        </ul>
+      </div>
+""",
     ),
 ]
 
+# slug, tr_title, tr_desc, en_title, en_desc
 REHBER_INDEX_ITEMS = [
-    ("su-kacagi-nasil-anlasilir", "Su kaçağı nasıl anlaşılır?", "İçme suyu şebekesinde gizli kaybın 8 belirtisi ve nasıl doğrulandığı."),
-    ("akustik-su-kacagi-tespiti-nedir", "Akustik su kaçağı tespiti nasıl yapılır?", "Gürültü kaydedici, yer mikrofonu ve korelatörle adım adım yer tespiti."),
-    ("dma-nedir", "DMA (İzole Ölçüm Bölgesi) nedir?", "Şebekeyi ölçülebilir bölgelere ayırmak, gece minimum debi ve step test."),
-    ("su-kaybi-dusurme-yol-haritasi", "Su kaybını düşürme yol haritası", "NRW / IWA çerçevesi ve sekiz adımlı kalıcı kayıp azaltma programı."),
+    ("su-kacagi-nasil-anlasilir",
+     "Su kaçağı nasıl anlaşılır?", "İçme suyu şebekesinde gizli kaybın 8 belirtisi ve nasıl doğrulandığı.",
+     "How to tell if there is a water leak?", "Eight signs of hidden loss in a drinking-water network and how it is confirmed."),
+    ("akustik-su-kacagi-tespiti-nedir",
+     "Akustik su kaçağı tespiti nasıl yapılır?", "Gürültü kaydedici, yer mikrofonu ve korelatörle adım adım yer tespiti.",
+     "How is acoustic water leak detection done?", "Step-by-step location with noise loggers, a ground microphone and a correlator."),
+    ("dma-nedir",
+     "DMA (İzole Ölçüm Bölgesi) nedir?", "Şebekeyi ölçülebilir bölgelere ayırmak, gece minimum debi ve step test.",
+     "What is a DMA (District Metered Area)?", "Splitting the network into measurable zones, minimum night flow and step testing."),
+    ("su-kaybi-dusurme-yol-haritasi",
+     "Su kaybını düşürme yol haritası", "NRW / IWA çerçevesi ve sekiz adımlı kalıcı kayıp azaltma programı.",
+     "A roadmap for cutting water loss", "The NRW / IWA framework and an eight-step programme for lasting loss reduction."),
 ]
 
-def build_article(a):
-    url = f"{BASE}/rehber/{a['slug']}.html"
+
+def L(a, key, lang):
+    return a[key + "_en"] if lang == "en" else a[key]
+
+
+def build_article(a, lang):
+    u = UI[lang]
+    page_path = f"/rehber/{a['slug']}.html"
+    url = abs_url(lang, page_path)
+    h1 = L(a, "h1", lang)
+    desc = L(a, "desc", lang)
+    home_abs = BASE + pfx(lang) + "/"
+    guide_abs = abs_url(lang, "/rehber/")
     schema = [
-        breadcrumb([("Ana Sayfa", f"{BASE}/"), ("Rehber", f"{BASE}/rehber/"), (a['h1'], url)]),
-        article_schema(a['h1'], a['desc'], url, a['section']),
+        breadcrumb([(u["home"], home_abs), (u["guide"], guide_abs), (h1, url)]),
+        article_schema(h1, desc, url, u["guide"], u["ld_lang"]),
     ]
-    h = head(a['title'], a['desc'], url, extra_preload_prefix="/", schema_blocks=schema)
-    h = h.replace("{nav_html}", nav("/rehber/"))
-    # related list = other 3 articles
+    hd = head(L(a, "title", lang), desc, page_path, lang, schema_blocks=schema)
     rel = [x for x in ARTICLES if x['slug'] != a['slug']][:3]
     rel_cards = "\n".join(
-        f'        <a class="card" href="/rehber/{r["slug"]}.html"><h3>{r["h1"]}</h3><p>{r["desc"][:90]}…</p></a>'
+        f'        <a class="card" href="{rel_href(lang, "/rehber/" + r["slug"] + ".html")}">'
+        f'<h3>{L(r, "h1", lang)}</h3><p>{L(r, "desc", lang)[:90]}…</p></a>'
         for r in rel)
     body = f"""
 <main id="main">
   <div class="wrap">
-    {crumbnav([("Ana Sayfa", "/"), ("Rehber", "/rehber/"), (a['h1'], None)])}
+    {crumbnav([(u["home"], rel_href(lang, "/")), (u["guide"], rel_href(lang, "/rehber/")), (h1, None)], u["crumb_aria"])}
   </div>
 
   <section class="phead">
     <div class="wrap">
-      <p class="eyebrow">Rehber</p>
-      <h1>{a['h1']}</h1>
-      <p class="lede">{a['lede']}</p>
+      <p class="eyebrow">{u['guide_eyebrow']}</p>
+      <h1>{h1}</h1>
+      <p class="lede">{L(a, "lede", lang)}</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap mw-900">
-{a['body']}
+{L(a, "body", lang)}
     </div>
   </section>
 
   <section class="section section--panel">
     <div class="wrap">
-      <p class="eyebrow rv">Rehberde ayrıca</p>
-      <h2 class="h-sec rv">İlgili yazılar.</h2>
+      <p class="eyebrow rv">{u['rel_eyebrow']}</p>
+      <h2 class="h-sec rv">{u['rel_h']}</h2>
       <div class="cards cards--3 mt-l">
 {rel_cards}
       </div>
     </div>
   </section>
-{CTA}
+{cta(lang)}
 </main>
 """
-    write(f"rehber/{a['slug']}.html", h + body + FOOTER)
+    write(f"{pfx(lang).lstrip('/')}/rehber/{a['slug']}.html" if lang == "en" else f"rehber/{a['slug']}.html",
+          hd + body + footer(lang, page_path))
 
-def build_rehber_index():
-    url = f"{BASE}/rehber/"
+
+def build_rehber_index(lang):
+    u = UI[lang]
+    page_path = "/rehber/"
+    url = abs_url(lang, page_path)
+    home_abs = BASE + pfx(lang) + "/"
+    items = [(s, (ten if lang == "en" else tt), (den if lang == "en" else dt))
+             for s, tt, dt, ten, den in REHBER_INDEX_ITEMS]
     item_list = ", ".join(
-        f'{{ "@type": "ListItem", "position": {i+1}, "url": "{BASE}/rehber/{s}.html", "name": "{t}" }}'
-        for i, (s, t, d) in enumerate(REHBER_INDEX_ITEMS))
+        f'{{ "@type": "ListItem", "position": {i+1}, "url": "{abs_url(lang, "/rehber/" + s + ".html")}", "name": "{t}" }}'
+        for i, (s, t, d) in enumerate(items))
     schema = [
-        breadcrumb([("Ana Sayfa", f"{BASE}/"), ("Rehber", url)]),
+        breadcrumb([(u["home"], home_abs), (u["guide"], url)]),
         ('<script type="application/ld+json">\n{\n'
          '  "@context": "https://schema.org",\n  "@type": "CollectionPage",\n'
-         '  "name": "Su kayıp-kaçak rehberi",\n'
-         f'  "url": "{url}",\n  "inLanguage": "tr-TR",\n'
+         f'  "name": "{u["hub_name"]}",\n'
+         f'  "url": "{url}",\n  "inLanguage": "{u["ld_lang"]}",\n'
          f'  "hasPart": {{ "@type": "ItemList", "itemListElement": [ {item_list} ] }}\n'
          '}\n</script>'),
     ]
-    title = "Su Kayıp-Kaçak Rehberi — Tespit Yöntemleri, DMA, NRW | LeakExpert"
-    desc = ("Su kaçağı belirtileri, akustik tespit, DMA kurulumu ve su kaybı düşürme yol haritası. "
-            "Belediye ve sanayi şebekeleri için uygulamalı rehber yazıları.")
-    h = head(title, desc, url, extra_preload_prefix="/", schema_blocks=schema)
-    h = h.replace("{nav_html}", nav("/rehber/"))
+    hd = head(u["hub_title"], u["hub_desc"], page_path, lang, schema_blocks=schema, ogtype="website")
     cards = "\n".join(
-        f'        <a class="card rv" href="/rehber/{s}.html"><span class="card__ix">{i+1:02d}</span>'
+        f'        <a class="card rv" href="{rel_href(lang, "/rehber/" + s + ".html")}"><span class="card__ix">{i+1:02d}</span>'
         f'<h3>{t}</h3><p>{d}</p></a>'
-        for i, (s, t, d) in enumerate(REHBER_INDEX_ITEMS))
+        for i, (s, t, d) in enumerate(items))
     body = f"""
 <main id="main">
   <div class="wrap">
-    {crumbnav([("Ana Sayfa", "/"), ("Rehber", None)])}
+    {crumbnav([(u["home"], rel_href(lang, "/")), (u["guide"], None)], u["crumb_aria"])}
   </div>
 
   <section class="phead">
     <div class="wrap">
-      <p class="eyebrow">Rehber</p>
-      <h1>Su kayıp-kaçak rehberi.</h1>
-      <p class="lede">Şebeke ve sanayi tesislerinde su kaçağını anlamak, ölçmek ve kalıcı olarak
-        azaltmak için uygulamalı yazılar. Yöntemin saha karşılığı için
-        <a class="link-arw inline-flex" href="/projeler/">projelere</a> bakın.</p>
+      <p class="eyebrow">{u['guide_eyebrow']}</p>
+      <h1>{u['hub_h1']}</h1>
+      <p class="lede">{u['hub_lede'].replace('{P}', pfx(lang))}</p>
     </div>
   </section>
 
@@ -479,13 +793,15 @@ def build_rehber_index():
       </div>
     </div>
   </section>
-{CTA}
+{cta(lang)}
 </main>
 """
-    write("rehber/index.html", h + body + FOOTER)
+    write("en/rehber/index.html" if lang == "en" else "rehber/index.html", hd + body + footer(lang, page_path))
+
 
 if __name__ == "__main__":
-    for a in ARTICLES:
-        build_article(a)
-    build_rehber_index()
+    for lang in LANGS:
+        for a in ARTICLES:
+            build_article(a, lang)
+        build_rehber_index(lang)
     print("done")
