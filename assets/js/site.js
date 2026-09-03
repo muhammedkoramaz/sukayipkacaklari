@@ -30,13 +30,8 @@
     });
   }
 
-  /* language switcher — remember explicit choice */
-  var langLinks = document.querySelectorAll('.nav__lang a, .ftr__lang a');
-  Array.prototype.forEach.call(langLinks, function (a) {
-    a.addEventListener('click', function () {
-      try { localStorage.setItem('le-lang', a.getAttribute('lang') === 'en' ? 'en' : 'tr'); } catch (e) {}
-    });
-  });
+  /* language switcher: explicit choice is stored by the inline <head> script,
+     which is attached before this deferred file loads — see OPEN_SCRIPT. */
 
   /* reveal on scroll */
   var items = document.querySelectorAll('.rv');

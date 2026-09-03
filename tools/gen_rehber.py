@@ -19,24 +19,47 @@ GA = ('<!-- Google Analytics 4 — gtag.js kritik yoldan çıkarıldı, boşta y
       "if('requestIdleCallback'in window){requestIdleCallback(l,{timeout:3000});}"
       "else{window.addEventListener('load',function(){setTimeout(l,1200);});}})();</script>")
 
+# <head> icinde calisan dil acilis script'i. Iki isi var:
+#   1) TR|EN degistiricisine yapilan tiklamayi capture fazinda dinleyip secimi
+#      localStorage['le-lang']'e yazar. Dinleyici <head>'de baglandigi icin
+#      defer'li site.min.js henuz yuklenmemis olsa da ilk tiklama kaydedilir.
+#   2) Kayitli secim yoksa yalnizca ana sayfada, site disindan gelen ziyarette ve
+#      oturum basina bir kez tarayici diline gore yonlendirir; site ici gezinme
+#      (ayni origin referrer) asla ezilmez.
 OPEN_SCRIPT = """<script>
-(function(){try{
+(function(){
   var d=document.documentElement,cur=d.lang==='en'?'en':'tr';
-  var alt=document.querySelector('link[rel="alternate"][hreflang="'+(cur==='en'?'tr':'en')+'"]');
-  if(!alt)return;
-  var other=alt.getAttribute('href');
-  if(sessionStorage.getItem('le-lang-redirected'))return;
-  var pref=null;try{pref=localStorage.getItem('le-lang');}catch(e){}
-  if(pref==='tr'||pref==='en'){
-    if(pref!==cur){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
-    return;
-  }
-  if(d.getAttribute('data-home')!=='1')return;
-  var langs=navigator.languages||[navigator.language||''];
-  var wantsTr=langs.some(function(l){return /^tr\\b/i.test(l);});
-  if(!wantsTr&&cur==='tr'){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
-  else if(wantsTr&&cur==='en'){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
-}catch(e){}})();
+  try{
+    document.addEventListener('click',function(e){
+      for(var n=e.target;n&&n!==document;n=n.parentNode){
+        if(n.tagName==='A'){
+          var hl=n.getAttribute('hreflang');
+          if(hl==='tr'||hl==='en'){try{localStorage.setItem('le-lang',hl);}catch(x){}}
+          return;
+        }
+      }
+    },true);
+  }catch(e){}
+  try{
+    var alt=document.querySelector('link[rel="alternate"][hreflang="'+(cur==='en'?'tr':'en')+'"]');
+    if(!alt)return;
+    var other=alt.getAttribute('href');
+    var pref=null;try{pref=localStorage.getItem('le-lang');}catch(e){}
+    if(pref==='tr'||pref==='en'){
+      if(pref!==cur)location.replace(other);
+      return;
+    }
+    if(d.getAttribute('data-home')!=='1')return;
+    if(document.referrer&&document.referrer.indexOf(location.origin+'/')===0)return;
+    try{
+      if(sessionStorage.getItem('le-lang-redirected'))return;
+      sessionStorage.setItem('le-lang-redirected','1');
+    }catch(e){}
+    var langs=navigator.languages||[navigator.language||''];
+    var wantsTr=langs.some(function(l){return /^tr\\b/i.test(l);});
+    if(wantsTr!==(cur==='tr'))location.replace(other);
+  }catch(e){}
+})();
 </script>"""
 
 PHONE_SVG = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
