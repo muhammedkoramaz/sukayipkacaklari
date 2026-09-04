@@ -15,24 +15,47 @@ BRAND_SVG = '<img src="/assets/img/logo.svg" alt="LeakExpert" width="118" height
 PHONE_SVG = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">'
   '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>')
 
+# <head> icinde calisan dil acilis script'i. Iki isi var:
+#   1) TR|EN degistiricisine yapilan tiklamayi capture fazinda dinleyip secimi
+#      localStorage['le-lang']'e yazar. Dinleyici <head>'de baglandigi icin
+#      defer'li site.min.js henuz yuklenmemis olsa da ilk tiklama kaydedilir.
+#   2) Kayitli secim yoksa yalnizca ana sayfada, site disindan gelen ziyarette ve
+#      oturum basina bir kez tarayici diline gore yonlendirir; site ici gezinme
+#      (ayni origin referrer) asla ezilmez.
 OPEN_SCRIPT = """<script>
-(function(){try{
+(function(){
   var d=document.documentElement,cur=d.lang==='en'?'en':'tr';
-  var alt=document.querySelector('link[rel="alternate"][hreflang="'+(cur==='en'?'tr':'en')+'"]');
-  if(!alt)return;
-  var other=alt.getAttribute('href');
-  if(sessionStorage.getItem('le-lang-redirected'))return;
-  var pref=null;try{pref=localStorage.getItem('le-lang');}catch(e){}
-  if(pref==='tr'||pref==='en'){
-    if(pref!==cur){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
-    return;
-  }
-  if(d.getAttribute('data-home')!=='1')return;
-  var langs=navigator.languages||[navigator.language||''];
-  var wantsTr=langs.some(function(l){return /^tr\\b/i.test(l);});
-  if(!wantsTr&&cur==='tr'){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
-  else if(wantsTr&&cur==='en'){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
-}catch(e){}})();
+  try{
+    document.addEventListener('click',function(e){
+      for(var n=e.target;n&&n!==document;n=n.parentNode){
+        if(n.tagName==='A'){
+          var hl=n.getAttribute('hreflang');
+          if(hl==='tr'||hl==='en'){try{localStorage.setItem('le-lang',hl);}catch(x){}}
+          return;
+        }
+      }
+    },true);
+  }catch(e){}
+  try{
+    var alt=document.querySelector('link[rel="alternate"][hreflang="'+(cur==='en'?'tr':'en')+'"]');
+    if(!alt)return;
+    var other=alt.getAttribute('href');
+    var pref=null;try{pref=localStorage.getItem('le-lang');}catch(e){}
+    if(pref==='tr'||pref==='en'){
+      if(pref!==cur)location.replace(other);
+      return;
+    }
+    if(d.getAttribute('data-home')!=='1')return;
+    if(document.referrer&&document.referrer.indexOf(location.origin+'/')===0)return;
+    try{
+      if(sessionStorage.getItem('le-lang-redirected'))return;
+      sessionStorage.setItem('le-lang-redirected','1');
+    }catch(e){}
+    var langs=navigator.languages||[navigator.language||''];
+    var wantsTr=langs.some(function(l){return /^tr\\b/i.test(l);});
+    if(wantsTr!==(cur==='tr'))location.replace(other);
+  }catch(e){}
+})();
 </script>"""
 
 FONTS = (
