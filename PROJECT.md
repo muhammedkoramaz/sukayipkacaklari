@@ -81,7 +81,7 @@ güzel URL (`try_files $uri $uri/ $uri.html`) · markalı `error_page 404 /404.h
 
 ---
 
-## 5. Sayfalar (TR 25 + EN 25 indekslenebilir URL · sitemap.xml)
+## 5. Sayfalar (TR 33 + EN 33 indekslenebilir URL · sitemap.xml)
 
 > **İngilizce (tam parite):** her TR sayfanın `/en/` önekli birebir kopyası var
 > (`/en/`, `/en/platform.html`, `/en/hizmetler.html`, `/en/projeler/*.html`,
@@ -103,7 +103,7 @@ güzel URL (`try_files $uri $uri/ $uri.html`) · markalı `error_page 404 /404.h
 | `/referanslar.html` | Kurum logoları + proje geçmişi | BreadcrumbList |
 | `/hakkimizda.html` | Ekip + saha galerisi | AboutPage, Person ×2 |
 | `/blog/` | Blog hub | CollectionPage |
-| `/blog/*.html` (**4**) | su-kacagi-nasil-anlasilir · akustik-su-kacagi-tespiti-nedir · dma-nedir · su-kaybi-dusurme-yol-haritasi | BreadcrumbList, Article |
+| `/blog/*.html` (**12**) | su-kacagi-nasil-anlasilir · akustik-su-kacagi-tespiti-nedir · dma-nedir · su-kaybi-dusurme-yol-haritasi · debi-olcumu-nedir · basinc-yonetimi-nedir · adim-testi-nedir · sifir-basinc-testi-nedir · hidrolik-modelleme-nedir · boru-hatti-tespiti-nedir · sebeke-haritalama-cbs · kacak-onarimi-ve-dogrulama | BreadcrumbList, Article |
 | `/sss.html` | **11** SSS | FAQPage |
 | `/iletisim.html` | Form + Melikgazi/Kayseri haritası | LocalBusiness (areaServed = Türkiye), BreadcrumbList |
 | `/gizlilik.html` | KVKK gizlilik politikası | BreadcrumbList |
@@ -121,7 +121,7 @@ Windows'ta `py` (Python 3.10) + `PYTHONUTF8=1` ile çalıştır.
 | Script | Ne üretir |
 |---|---|
 | `tools/gen_projects.py` | **TR + EN** 11'er proje sayfası + `projeler/index.html` (+ `en/…`) + `sitemap.xml` (hreflang çiftli). TR verisi `P` listesinde, EN verisi `EN` sözlüğünde (`slug` anahtarlı), chrome metinleri `UI` sözlüğünde. Döngü: `for lang in ("tr","en")` |
-| `tools/gen_blog.py` | **TR + EN** `/blog/` hub + 4'er makale (`ARTICLES` içinde `*_en` alanları, `UI` sözlüğü, `for lang in ("tr","en")`). `en/blog/…` çıktısı |
+| `tools/gen_blog.py` | **TR + EN** `/blog/` hub + 12'şer makale (`ARTICLES` içinde `*_en` alanları, `UI` sözlüğü, `for lang in ("tr","en")`). `en/blog/…` çıktısı |
 | `tools/add_img_dims.py` | **Her jeneratör çalıştırmasından sonra** — tüm yerel `<img>`'lere gerçek `width`/`height` ekler (CLS düzeltmesi; idempotent) |
 | `tools/minify.py` | `site.css` / `fonts.css` / `site.js` → `*.min.*` üretir. **CSS/JS kaynağı değiştiyse çalıştır.** Bağımlılık yok, idempotent |
 | `tools/validate_all.py` | tag dengesi + JSON-LD parse + Article zorunlu alanlar + img boyut + GA etiketi + **hreflang tr/en/x-default üçlüsü (hedef diskte çözülür) + `<html lang>` ağaç tutarlılığı + JSON-LD `inLanguage`** (`noindex` sayfalar hreflang'den muaf) |
@@ -167,7 +167,7 @@ Bunlar kullanıcının açık talimatları. Yeni içerik eklerken hepsine uy:
 | **Sonra** | "**su kayıp kaçakları**" tam ifadesi görünür metne (ana sayfa title/meta/OG/eyebrow/lede + 25 sayfa footer marka satırı) — domain adının birebir karşılığı |
 | **Sonra** | Kayseri bölgesel konumlandırması tamamen kaldırıldı (yerel iniş sayfası + "Kayseri Merkez" projesi silindi, 12→11 proje) · ev/bina içi kaçak ibareleri kaldırıldı (SSS sorusu, rehber maddesi, hizmetler wording) |
 | **D** (2026-09-02) | SEOptimer + Rank Math denetimlerine göre: **(G1)** 13 sayfada meta description ≤160 krk'e indirildi (meta + OG + Twitter senkron) · **(G2)** `/llms.txt` eklendi · **(G3)** ölü `google-site-verification` placeholder meta'sı silindi · **(G4)** ana sayfa `Organization` şemasına `founder` (Hasan + Muhammed, `@id`'li — `hakkimizda.html` Person'larıyla eşleşir), `foundingLocation`, `numberOfEmployees` eklendi · **(G5)** `tools/minify.py` + `site.min.css`/`fonts.min.css`/`site.min.js`, 27 HTML + 2 jeneratör `.min`'e repoint (Rank Math "minify" FAIL kapandı) · **(G6)** ~110 satır-içi `style=""` → `site.css` utility sınıfları (1:1, görsel değişiklik yok) · **(G7)** mobil CLS 0.218 / LCP 3.8s: Bricolage başlık fontu `font-display:optional` (başlıkta swap→kayma yok), font preload yanlış subset düzeltildi (`-latin-ext` → asıl gereken `-latin` + `-ext`), GA `gtag.js` `requestIdleCallback` ile kritik yoldan çıkarıldı (27 sayfa) |
-| **E** (2026-09-03) | **Tam İngilizce desteği** — `/en/` alt ağacı, TR ile birebir parite (25 indekslenebilir + 2 `noindex` sayfa). Karşılıklı `hreflang` üçlüsü (tr/en/x-default) + `og:locale:alternate` tüm indekslenebilir sayfalarda · header+footer `TR | EN` metin değiştirici (`.nav__lang`/`.ftr__lang`, JS ile seçimi hatırlar) · `<head>` içi açılış script'i: bilgisayar dili Türkçe değilse ana sayfada `/en/`'e yönlendirir, seçim `localStorage['le-lang']`'de sabitlenir · `sitemap.xml` 50 URL (25 TR + 25 EN) + `xhtml:link` hreflang çiftleri · `gen_projects.py` + `gen_rehber.py` iki dilli refaktör (`UI`/`EN` sözlükleri, `for lang` döngüsü) · 10 el sayfası `/en/` altında elle çevrildi (JSON-LD `@id` korunur, `inLanguage`→`en-US`, `areaServed`=Türkiye) · `nginx.conf` `/en/` 404 kuralı · `validate_all.py` hreflang/lang kontrolleri · `llms.txt` İngilizce bölüm. Doğrulama: 54 HTML, 0 sorun, 0 kırık link |
+| **E** (2026-09-03) | **Tam İngilizce desteği** — `/en/` alt ağacı, TR ile birebir parite (25 indekslenebilir + 2 `noindex` sayfa). Karşılıklı `hreflang` üçlüsü (tr/en/x-default) + `og:locale:alternate` tüm indekslenebilir sayfalarda · header+footer `TR | EN` metin değiştirici (`.nav__lang`/`.ftr__lang`, JS ile seçimi hatırlar) · `<head>` içi açılış script'i: bilgisayar dili Türkçe değilse ana sayfada `/en/`'e yönlendirir, seçim `localStorage['le-lang']`'de sabitlenir · `sitemap.xml` 66 URL (33 TR + 33 EN) + `xhtml:link` hreflang çiftleri · `gen_projects.py` + `gen_rehber.py` iki dilli refaktör (`UI`/`EN` sözlükleri, `for lang` döngüsü) · 10 el sayfası `/en/` altında elle çevrildi (JSON-LD `@id` korunur, `inLanguage`→`en-US`, `areaServed`=Türkiye) · `nginx.conf` `/en/` 404 kuralı · `validate_all.py` hreflang/lang kontrolleri · `llms.txt` İngilizce bölüm. Doğrulama: 54 HTML, 0 sorun, 0 kırık link |
 | **F** (2026-09-04) | /rehber/ → /blog/ taşındı (301'li), hub+makale kartları görselli, 8 yeni makale (debi ölçümü, basınç yönetimi, adım testi, sıfır basınç testi, hidrolik modelleme, boru hattı tespiti, şebeke haritalama/CBS, kaçak onarımı) TR+EN |
 | **Bekliyor (kullanıcı)** | SPF + DMARC TXT kayıtları (Cloudflare) · sosyal profiller → açılınca şema `sameAs`'e eklenecek · `iletisim.html` + `en/iletisim.html` formu hâlâ `formspree.io/f/BURAYA_FORM_ID` placeholder · **`nginx.conf` `/en/` 404 kuralı için §4 `custom_nginx_configuration` PATCH + `deploy?force=true`** |
 

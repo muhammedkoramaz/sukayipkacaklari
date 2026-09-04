@@ -109,7 +109,7 @@ UI = {
         "cta_p": "In a short video call we can review the current situation and the method to apply.",
         "cta_btn": "Request a consultation", "cta_btn2": "Services",
         "rel_eyebrow": "Also on the blog", "rel_h": "Related articles.",
-        "hub_title": "Water Loss & Leakage Blog — Detection Methods, DMA, NRW | LeakExpert",
+        "hub_title": "Water Loss &amp; Leakage Blog — Detection Methods, DMA, NRW | LeakExpert",
         "hub_desc": ("Leak signs, acoustic detection, DMA setup and a roadmap for cutting water loss. "
                      "Practical blog articles for municipal and industrial networks."),
         "hub_h1": "Water loss & leakage blog.",
@@ -444,13 +444,14 @@ ARTICLES = [
         hero="/assets/photos/debi-olcum.webp",
         hero_alt="Hat üzerinde taşınabilir ultrasonik debimetre kurulumu",
         hero_alt_en="Portable ultrasonic flow meter clamped on a main",
+        date="2026-09-04",
         h1="Debi ölçümü nedir, şebekede nasıl yapılır?",
         title="Debi Ölçümü Nedir? Şebekede Debi Nasıl Ölçülür | LeakExpert",
-        desc="Şebekede debi ölçümünün amacı, taşınabilir ultrasonik/elektromanyetik debimetre ile geçici ölçüm, kalıcı bölge sayacı, gece minimum debi ve doğruluğu etkileyen etkenler.",
+        desc="Şebekede debi ölçümünün amacı, taşınabilir ultrasonik/elektromanyetik debimetre ile geçici ölçüm, kalıcı bölge sayacı, gece minimum debi.",
         lede="Kaybı yönetmek için önce <strong>ne kadar su aktığını</strong> bilmek gerekir. Debi ölçümü, bir hattan veya bölgeden birim zamanda geçen su hacmini ölçer; su kayıp-kaçak çalışmasının ilk sayısal adımıdır.",
         h1_en="What is flow measurement, and how is it done in a network?",
         title_en="What Is Flow Measurement? How Flow Is Measured in a Network | LeakExpert",
-        desc_en="The purpose of network flow measurement, temporary measurement with a portable ultrasonic/electromagnetic flow meter, permanent zone meters, minimum night flow and what affects accuracy.",
+        desc_en="The purpose of network flow measurement, temporary measurement with a portable ultrasonic/electromagnetic meter, permanent zone meters and minimum night flow.",
         lede_en="To manage loss you first need to know <strong>how much water is flowing</strong>. Flow measurement quantifies the volume passing a main or a zone per unit time; it is the first numerical step of any water-loss programme.",
         body="""
       <div class="prose">
@@ -534,6 +535,7 @@ ARTICLES = [
         hero="/assets/photos/basinc-logger.webp",
         hero_alt="Hat üzerinde basınç veri loggerı",
         hero_alt_en="Pressure data logger on a main",
+        date="2026-09-04",
         h1="Basınç yönetimi ve basınç bölgeleri (PMA)",
         title="Basınç Yönetimi Nedir? Basınç Bölgeleri ve PMA | LeakExpert",
         desc="Şebekede yüksek ve dalgalı basıncın kaçak ve patlaklarla ilişkisi, basınç bölgesi (PMA) kurulumu, basınç düşürücü vana ve sabit/zaman/akış kontrollü ayar.",
@@ -1132,7 +1134,7 @@ ARTICLES = [
 
         <h2>Öznitelikler</h2>
         <p>Konum tek başına yeterli değildir. Haritanın işe yaraması için her nesnenin öznitelikleriyle — onu tanımlayan alanlarla — birlikte kaydedilmesi gerekir.</p>
-        <p>Her hat bölümü için tipik öznitelikler şunlardır: çap, malzeme (font, çelik, PE, PVC, AÇB), döşeme yılı, bağlı olduğu basınç bölgesi ve varsa iç astar bilgisi. Her vana için: tip (sürgülü, kelebek, hava, tahliye), açık/kapalı durumu, çap ve manevra yönü. Hidrantlar için tip ve çıkış çapı; bağlantılar için abone türü (ana kullanıcı, sanayi tesisi) ve bağlantı çapı.</p>
+        <p>Her hat bölümü için tipik öznitelikler şunlardır: çap, malzeme (düktil font, çelik, PE, PVC, AÇB), döşeme yılı, bağlı olduğu basınç bölgesi ve varsa iç astar bilgisi. Her vana için: tip (sürgülü, kelebek, hava, tahliye), açık/kapalı durumu, çap ve manevra yönü. Hidrantlar için tip ve çıkış çapı; bağlantılar için abone türü (ana kullanıcı, sanayi tesisi) ve bağlantı çapı.</p>
         <p>Öznitelikler, ölçüm sahadayken kayıt altına alınır; eksik bırakılan bir alan sonradan tamamlanması zor bir boşluğa dönüşür. Döşeme yılı ve malzeme gibi alanlar çoğu zaman eski paftalardan ve idari kayıtlardan derlenir, sonra saha gözlemiyle çapraz kontrol edilir.</p>
 
         <h2>CBS katmanı ve topoloji</h2>
