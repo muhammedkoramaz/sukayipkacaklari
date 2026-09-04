@@ -72,10 +72,10 @@ UI = {
         "cta_eyebrow": "Şebekeniz için", "cta_h": "Kaybı ölçelim, noktayı bulalım.",
         "cta_p": "Kısa bir görüntülü görüşmede mevcut durumu ve uygulanacak yöntemi konuşalım.",
         "cta_btn": "Görüşme talebi", "cta_btn2": "Hizmetler",
-        "rel_eyebrow": "Rehberde ayrıca", "rel_h": "İlgili yazılar.",
-        "hub_title": "Su Kayıp-Kaçak Rehberi — Tespit Yöntemleri, DMA, NRW | LeakExpert",
+        "rel_eyebrow": "Blogda ayrıca", "rel_h": "İlgili yazılar.",
+        "hub_title": "Su Kayıp-Kaçak Blogu — Tespit Yöntemleri, DMA, NRW | LeakExpert",
         "hub_desc": ("Su kaçağı belirtileri, akustik tespit, DMA kurulumu ve su kaybı düşürme yol haritası. "
-                     "Belediye ve sanayi şebekeleri için uygulamalı rehber yazıları."),
+                     "Belediye ve sanayi şebekeleri için uygulamalı blog yazıları."),
         "hub_h1": "Su kayıp-kaçak blogu.",
         "hub_lede": ('Şebeke ve sanayi tesislerinde su kaçağını anlamak, ölçmek ve kalıcı olarak '
                      'azaltmak için uygulamalı yazılar. Yöntemin saha karşılığı için '
@@ -108,10 +108,10 @@ UI = {
         "cta_eyebrow": "For your network", "cta_h": "Let's measure the loss and pinpoint it.",
         "cta_p": "In a short video call we can review the current situation and the method to apply.",
         "cta_btn": "Request a consultation", "cta_btn2": "Services",
-        "rel_eyebrow": "Also in the guide", "rel_h": "Related articles.",
-        "hub_title": "Water Loss & Leakage Guide — Detection Methods, DMA, NRW | LeakExpert",
+        "rel_eyebrow": "Also on the blog", "rel_h": "Related articles.",
+        "hub_title": "Water Loss & Leakage Blog — Detection Methods, DMA, NRW | LeakExpert",
         "hub_desc": ("Leak signs, acoustic detection, DMA setup and a roadmap for cutting water loss. "
-                     "Practical guide articles for municipal and industrial networks."),
+                     "Practical blog articles for municipal and industrial networks."),
         "hub_h1": "Water loss & leakage blog.",
         "hub_lede": ('Practical articles on understanding, measuring and permanently reducing water loss in '
                      'distribution networks and industrial plants. For the field side of the method, see the '
