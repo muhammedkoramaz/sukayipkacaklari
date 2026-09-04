@@ -440,6 +440,96 @@ ARTICLES = [
 """,
     ),
     dict(
+        slug="debi-olcumu-nedir",
+        hero="/assets/photos/debi-olcum.webp",
+        hero_alt="Hat üzerinde taşınabilir ultrasonik debimetre kurulumu",
+        hero_alt_en="Portable ultrasonic flow meter clamped on a main",
+        h1="Debi ölçümü nedir, şebekede nasıl yapılır?",
+        title="Debi Ölçümü Nedir? Şebekede Debi Nasıl Ölçülür | LeakExpert",
+        desc="Şebekede debi ölçümünün amacı, taşınabilir ultrasonik/elektromanyetik debimetre ile geçici ölçüm, kalıcı bölge sayacı, gece minimum debi ve doğruluğu etkileyen etkenler.",
+        lede="Kaybı yönetmek için önce <strong>ne kadar su aktığını</strong> bilmek gerekir. Debi ölçümü, bir hattan veya bölgeden birim zamanda geçen su hacmini ölçer; su kayıp-kaçak çalışmasının ilk sayısal adımıdır.",
+        h1_en="What is flow measurement, and how is it done in a network?",
+        title_en="What Is Flow Measurement? How Flow Is Measured in a Network | LeakExpert",
+        desc_en="The purpose of network flow measurement, temporary measurement with a portable ultrasonic/electromagnetic flow meter, permanent zone meters, minimum night flow and what affects accuracy.",
+        lede_en="To manage loss you first need to know <strong>how much water is flowing</strong>. Flow measurement quantifies the volume passing a main or a zone per unit time; it is the first numerical step of any water-loss programme.",
+        body="""
+      <div class="prose">
+        <h2>Debi neden ölçülür?</h2>
+        <p>Su kaybı yönetimi, ölçülemeyen bir büyüklüğü düşüremez. Bir hattan veya bölgeden birim zamanda geçen su ölçülmeden, kaybın boyutu tahmine kalır. Debi verisi, depoya basılan su ile abonelere ulaşan su arasındaki farkı sayısallaştırır ve <strong>fatura edilemeyen su (NRW)</strong> oranının temelini kurar.</p>
+        <p>Bir izole ölçüm bölgesinde (DMA) giriş debisi ile bölge içindeki meşru tüketim toplamı karşılaştırıldığında, aradaki sürekli ve açıklanamayan fark fiziki kaçağa işaret eder. Ölçüm ne kadar uzun sürerse, bu fark o kadar güvenilir okunur.</p>
+        <p>Gün boyunca kaydedilen debi eğrisi ayrıca bölgenin tüketim profilini çıkarır: sabah ve akşam pik saatleri, öğle düşüşü ve gecenin durgun akışı. Bu profil hem şebeke planlamasına hem de kaçak analizine girdi sağlar.</p>
+
+        <h2>Taşınabilir ölçüm: kelepçeli ultrasonik debimetre</h2>
+        <p>Geçici ölçüm kampanyalarında en yaygın araç <strong>taşınabilir ultrasonik debimetre</strong>dir. Sensörler borunun dışına kelepçeyle bağlanır; suyla temas yoktur, hat basınç altında çalışırken takılır ve servis kesintisi gerekmez. Bir bölge birkaç gün ölçülüp ekipman sonraki bölgeye taşınabilir.</p>
+        <p>Doğru okuma için sensörden önce ve sonra yeterli <strong>düz boru</strong> uzunluğu bulunmalıdır — tipik olarak girişte boru çapının on katı, çıkışta beş katı kadar. Dirseğe, vanaya veya pompa çıkışına yakın montaj akış profilini bozar ve hatayı büyütür.</p>
+        <p>Boru, ölçüm kesitinde tam dolu olmalıdır. Kısmen dolu bir hatta veya içinde hava yastığı bulunan noktada ultrasonik ölçüm güvenilmez sonuç verir; bu yüzden nokta seçimi ölçümün kendisi kadar önemlidir.</p>
+
+        <h2>Kalıcı ölçüm: bölge (DMA) sayacı</h2>
+        <p>Sürekli izleme için bölge girişine kalıcı bir <strong>elektromanyetik (manyetik) debimetre</strong> monte edilir. Hareketli parçası yoktur, basınç kaybı düşüktür ve geniş bir debi aralığında doğruluğunu korur; ancak montajı hattın kesilmesini gerektirir.</p>
+        <p>Sayaç bir <strong>veri loggerına</strong> veya telemetri ünitesine bağlanır; akış 15 dakikalık adımlarla kaydedilir ve uzaktan okunur. Böylece her bölgenin debisi kesintisiz izlenir: yeni bir kaçak oluştuğunda gece debisi birkaç gün içinde yükselir ve sistem erken uyarı verir. Bölgeleme mantığı için <a href="/blog/dma-nedir.html">DMA nedir?</a> yazısına bakın.</p>
+
+        <h2>Ölçüm noktası nasıl seçilir?</h2>
+        <p>İdeal ölçüm noktaları şebekenin doğal kısılma yerleridir: depo veya pompa istasyonu çıkışı, bir bölgeyi besleyen tek giriş hattı veya bir DMA sınır vanası. Bu noktalarda bölgeye giren tüm su tek bir kesitten geçer ve tek ölçümle yakalanır.</p>
+        <p>Seçilen kesit düz, dolu ve türbülanstan uzak olmalı; menhol veya vana odası içinde sensöre ve boruya güvenli erişim bulunmalıdır. Boru malzemesi ve gerçek iç çapı bilinmelidir, çünkü debi hesabı doğrudan kesit alanına dayanır.</p>
+
+        <h2>Gece minimum debisi</h2>
+        <p>Tüketimin neredeyse durduğu gece <strong>03:00–05:00</strong> arasında ölçülen en düşük akışa gece minimum debisi denir. Bu değerin büyük bölümü meşru gece kullanımı değil, sürekli akan fiziki kaçaktır.</p>
+        <p>Abone sayısı ve nüfus sabitken gece minimum debisi zamanla yükseliyorsa, artış neredeyse her zaman yeni bir fiziki kaçaktır. Bu nedenle gece debisi, şebeke izlemede en erken ve en nesnel sinyaldir. Bölge içinde kaybı hat bazına indirmek için <a href="/blog/adim-testi-nedir.html">adım (step) testi</a> uygulanır; kavramsal çerçeve için <a href="/blog/dma-nedir.html">DMA nedir?</a> yazısına bakın.</p>
+
+        <h2>Doğruluğu ne etkiler?</h2>
+        <p>Ultrasonik ölçümde en büyük hata kaynağı yanlış girilen boru iç çapı ve malzemesidir; cihaz borudaki ses hızını bu verilerden hesaplar. Birkaç milimetrelik çap hatası bile debide yüzde birkaçlık sapmaya dönüşür.</p>
+        <p>Borudaki hava kabarcıkları, kısmen dolu kesit, sensör ile boru arasında yetersiz temas (kir, pas, kalın boya) ve kurumuş temas jeli sinyali zayıflatır. Elektromanyetik sayaçta ise düşük su iletkenliği, topraklama sorunu ve boru içi kaplamanın bozulması okuma hatası yaratır.</p>
+        <p>Her iki teknolojide de periyodik kalibrasyon ve montaj sonrası bağımsız bir yöntemle (örneğin depo seviye düşüş testiyle) çapraz kontrol önerilir.</p>
+
+        <h2>Ölçümden sonuca</h2>
+        <p>Toplanan debi kayıtları LeakExpert platformuna işlenir; her bölgenin gece minimum debisi, tüketim profili ve NRW payı birlikte değerlendirilir. Kayıp yoğun bölgeler önceliklendirilir ve saha ekibi akustik tarama ile step test için doğru bölgeye yönlendirilir. Debi ölçümü tek seferlik bir işlem değil, sürekli tekrarlanan bir izleme döngüsüdür.</p>
+        <ul>
+          <li>Yöntemin ayrıntısı: <a href="/hizmetler.html">Hizmetler</a></li>
+          <li>Saha örnekleri: <a href="/projeler/">Projeler</a></li>
+          <li>Sık sorulanlar: <a href="/sss.html">SSS</a></li>
+        </ul>
+      </div>
+""",
+        body_en="""
+      <div class="prose">
+        <h2>Why measure flow?</h2>
+        <p>Water-loss management cannot reduce a quantity it does not measure. Until the water passing a main or a zone per unit time is measured, the size of the loss is left to guesswork. Flow data quantifies the gap between the water pumped into the reservoir and the water reaching customers, and it forms the basis of the <strong>non-revenue water (NRW)</strong> rate.</p>
+        <p>When the inflow of a District Metered Area (DMA) is compared with the sum of legitimate consumption inside it, a continuous, unexplained difference points to physical leakage.</p>
+        <p>The flow curve recorded through the day also produces the zone's consumption profile: the morning and evening peaks, the midday dip and the still flow of the night. That profile feeds both network planning and leak analysis.</p>
+
+        <h2>Temporary measurement: the clamp-on ultrasonic flow meter</h2>
+        <p>The most common tool in temporary measurement campaigns is the <strong>portable ultrasonic flow meter</strong>. The sensors are clamped to the outside of the pipe; there is no contact with the water, the meter is fitted while the main stays under pressure, and no service interruption is needed.</p>
+        <p>For a correct reading there must be enough <strong>straight pipe</strong> before and after the sensor — typically ten pipe diameters upstream and five downstream. Mounting close to a bend, a valve or a pump outlet distorts the flow profile and widens the error.</p>
+        <p>The pipe must be completely full at the measuring section. On a partly filled main, or at a point with an air pocket, an ultrasonic reading is unreliable; this is why choosing the point matters as much as the measurement itself.</p>
+
+        <h2>Permanent measurement: the zone (DMA) meter</h2>
+        <p>For continuous monitoring a permanent <strong>electromagnetic flow meter</strong> is installed at the zone inlet. It has no moving parts, its pressure loss is low and it holds its accuracy across a wide flow range; its installation, however, requires the main to be cut.</p>
+        <p>The meter is connected to a <strong>data logger</strong> or a telemetry unit; flow is logged in 15-minute steps and read remotely. Each zone's flow is then monitored without interruption: when a new leak forms, the night flow rises within a few days and the system gives early warning. For the logic of zoning, see <a href="/en/blog/dma-nedir.html">What is a DMA?</a></p>
+
+        <h2>How is the measuring point chosen?</h2>
+        <p>The ideal measuring points are the network's natural constrictions: the outlet of a reservoir or a pumping station, the single feed main into a zone, or a DMA boundary valve. At these points all the water entering the zone passes through one section.</p>
+        <p>The chosen section must be straight, full and clear of turbulence, and there must be safe access to the sensor and the pipe inside a manhole or valve chamber. The pipe material and the true internal diameter must be known, because the flow calculation rests directly on the cross-sectional area.</p>
+
+        <h2>Minimum night flow</h2>
+        <p>The lowest flow measured between <strong>03:00 and 05:00</strong>, when consumption has almost stopped, is the minimum night flow. Most of this value is not legitimate night use but continuously running physical leakage.</p>
+        <p>If the minimum night flow rises over time while connection count and population stay constant, the increase is almost always a new physical leak. This makes night flow the earliest and most objective signal in network monitoring. To bring the loss down to individual mains within a zone, a <a href="/en/blog/adim-testi-nedir.html">step test</a> is used; for the conceptual framework, see <a href="/en/blog/dma-nedir.html">What is a DMA?</a></p>
+
+        <h2>What affects accuracy?</h2>
+        <p>In ultrasonic measurement the biggest source of error is a wrongly entered pipe internal diameter and material; the device computes the speed of sound in the pipe from these values. Even a few millimetres of diameter error turns into a deviation of a few per cent in flow.</p>
+        <p>Air bubbles in the pipe, a partly filled section, poor contact between the sensor and the pipe (dirt, rust, thick paint) and dried coupling gel all weaken the signal. On an electromagnetic meter, low water conductivity, an earthing fault and a degraded internal lining produce reading errors.</p>
+        <p>For both technologies, periodic calibration and a cross-check against an independent method after installation (a reservoir level-drop test, for example) are recommended.</p>
+
+        <h2>From measurement to result</h2>
+        <p>The flow records collected are entered into the LeakExpert platform; each zone's minimum night flow, consumption profile and NRW share are assessed together. Zones with heavy loss are prioritised and the field crew is directed to the right zone for acoustic surveying and step testing. Flow measurement is not a one-off task but a monitoring cycle that repeats continuously.</p>
+        <ul>
+          <li>Method detail: <a href="/en/hizmetler.html">Services</a></li>
+          <li>Field examples: <a href="/en/projeler/">Projects</a></li>
+          <li>Common questions: <a href="/en/sss.html">FAQ</a></li>
+        </ul>
+      </div>
+""",
+    ),
+    dict(
         slug="akustik-su-kacagi-tespiti-nedir",
         hero="/assets/photos/gece-dinleme-hero.webp",
         hero_alt="Gece akustik dinleme",
@@ -696,6 +786,10 @@ BLOG_INDEX_ITEMS = [
      "Su kaçağı nasıl anlaşılır?", "İçme suyu şebekesinde gizli kaybın 8 belirtisi ve nasıl doğrulandığı.",
      "How to tell if there is a water leak?", "Eight signs of hidden loss in a drinking-water network and how it is confirmed.",
      "/assets/photos/gunduz-dinleme.webp"),
+    ("debi-olcumu-nedir",
+     "Debi ölçümü nedir?", "Taşınabilir ve kalıcı debimetreler, ölçüm noktası seçimi ve gece minimum debi.",
+     "What is flow measurement?", "Portable and permanent flow meters, choosing the measuring point, minimum night flow.",
+     "/assets/photos/debi-olcum.webp"),
     ("akustik-su-kacagi-tespiti-nedir",
      "Akustik su kaçağı tespiti nasıl yapılır?", "Gürültü kaydedici, yer mikrofonu ve korelatörle adım adım yer tespiti.",
      "How is acoustic water leak detection done?", "Step-by-step location with noise loggers, a ground microphone and a correlator.",
