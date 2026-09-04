@@ -434,6 +434,9 @@ a.card:hover { border-color: var(--brand); }
 .figure--wide { aspect-ratio: 16 / 10; }
 .figure--sq { aspect-ratio: 1 / 1; }
 
+.article-hero { margin: 0 0 8px; border-radius: var(--radius); overflow: hidden; }
+.article-hero img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+
 .photo-grid { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); }
 @media (min-width: 800px) { .photo-grid { grid-template-columns: repeat(4, 1fr); } }
 .photo-grid .figure { aspect-ratio: 3 / 4; }

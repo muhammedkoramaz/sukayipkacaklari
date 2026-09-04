@@ -314,7 +314,8 @@ def breadcrumb(items):
             '}\n</script>')
 
 
-def article_schema(headline, desc, url, section, ld_lang):
+def article_schema(headline, desc, url, section, ld_lang, image=None, date="2026-09-04"):
+    img = f"https://sukayipkacaklari.com{image}" if image else "https://sukayipkacaklari.com/assets/img/og-cover.png"
     return ('<script type="application/ld+json">\n{\n'
             '  "@context": "https://schema.org",\n'
             '  "@type": "Article",\n'
@@ -326,8 +327,8 @@ def article_schema(headline, desc, url, section, ld_lang):
             '  "author": { "@type": "Organization", "name": "LeakExpert", "url": "https://sukayipkacaklari.com/" },\n'
             '  "publisher": { "@type": "Organization", "name": "LeakExpert", "url": "https://sukayipkacaklari.com/",\n'
             '    "logo": { "@type": "ImageObject", "url": "https://sukayipkacaklari.com/assets/img/icon.png" } },\n'
-            '  "image": "https://sukayipkacaklari.com/assets/img/og-cover.png",\n'
-            '  "datePublished": "2026-09-01", "dateModified": "2026-09-01"\n'
+            f'  "image": "{img}",\n'
+            f'  "datePublished": "{date}", "dateModified": "{date}"\n'
             '}\n</script>')
 
 
@@ -355,6 +356,10 @@ def write(path, html):
 ARTICLES = [
     dict(
         slug="su-kacagi-nasil-anlasilir",
+        hero="/assets/photos/gunduz-dinleme.webp",
+        hero_alt="Gündüz saha dinleme çalışması",
+        hero_alt_en="Daytime field listening survey",
+        date="2026-09-01",
         h1="Su kaçağı nasıl anlaşılır? Şebekede 8 belirti",
         title="Su Kaçağı Nasıl Anlaşılır? 8 Belirti ve Kontrol Yöntemi | LeakExpert",
         desc="İçme suyu şebekesinde gizli su kaçağının belirtileri: gece minimum debi artışı, basınç düşüşü, NRW oranının açılması, sürekli nemli zemin. Nasıl doğrulanır?",
@@ -436,6 +441,10 @@ ARTICLES = [
     ),
     dict(
         slug="akustik-su-kacagi-tespiti-nedir",
+        hero="/assets/photos/gece-dinleme-hero.webp",
+        hero_alt="Gece akustik dinleme",
+        hero_alt_en="Night-time acoustic listening",
+        date="2026-09-01",
         h1="Akustik su kaçağı tespiti nedir, nasıl yapılır?",
         title="Akustik Su Kaçağı Tespiti Nasıl Yapılır? Yer Mikrofonu ve Korelatör | LeakExpert",
         desc="Akustik su kaçağı tespitinin adımları: gürültü kaydediciyle tarama, yer mikrofonuyla daraltma, korelatörle metrik konumlandırma. Neden gece yapılır?",
@@ -511,6 +520,10 @@ ARTICLES = [
     ),
     dict(
         slug="dma-nedir",
+        hero="/assets/photos/dma-tasarim.webp",
+        hero_alt="DMA sınır ve sayaç tasarımı",
+        hero_alt_en="DMA boundary and meter design",
+        date="2026-09-01",
         h1="DMA (İzole Ölçüm Bölgesi) nedir, nasıl kurulur?",
         title="DMA Nedir? İzole Ölçüm Bölgesi Kurulumu ve Gece Minimum Debi | LeakExpert",
         desc="DMA (District Metered Area) bir şebekeyi ölçülebilir alt bölgelere ayırır. Kurulum adımları, gece minimum debi analizi, step test ve kayıp ayrıştırma anlatımı.",
@@ -582,6 +595,10 @@ ARTICLES = [
     ),
     dict(
         slug="su-kaybi-dusurme-yol-haritasi",
+        hero="/assets/photos/depo-cikis.webp",
+        hero_alt="Depo çıkışı debi ölçüm noktası",
+        hero_alt_en="Reservoir outlet flow metering point",
+        date="2026-09-01",
         h1="Su kayıp-kaçak oranını düşürme yol haritası",
         title="Su Kayıp-Kaçak Oranını Düşürme Yol Haritası (NRW / IWA) | LeakExpert",
         desc="Fatura edilemeyen su (NRW) oranını kalıcı düşürmek için sekiz adımlı program: su dengesi, DMA, basınç yönetimi, aktif kaçak kontrolü, sayaç doğrulama.",
@@ -673,20 +690,24 @@ ARTICLES = [
     ),
 ]
 
-# slug, tr_title, tr_desc, en_title, en_desc
+# slug, tr_title, tr_desc, en_title, en_desc, hero
 BLOG_INDEX_ITEMS = [
     ("su-kacagi-nasil-anlasilir",
      "Su kaçağı nasıl anlaşılır?", "İçme suyu şebekesinde gizli kaybın 8 belirtisi ve nasıl doğrulandığı.",
-     "How to tell if there is a water leak?", "Eight signs of hidden loss in a drinking-water network and how it is confirmed."),
+     "How to tell if there is a water leak?", "Eight signs of hidden loss in a drinking-water network and how it is confirmed.",
+     "/assets/photos/gunduz-dinleme.webp"),
     ("akustik-su-kacagi-tespiti-nedir",
      "Akustik su kaçağı tespiti nasıl yapılır?", "Gürültü kaydedici, yer mikrofonu ve korelatörle adım adım yer tespiti.",
-     "How is acoustic water leak detection done?", "Step-by-step location with noise loggers, a ground microphone and a correlator."),
+     "How is acoustic water leak detection done?", "Step-by-step location with noise loggers, a ground microphone and a correlator.",
+     "/assets/photos/gece-dinleme-hero.webp"),
     ("dma-nedir",
      "DMA (İzole Ölçüm Bölgesi) nedir?", "Şebekeyi ölçülebilir bölgelere ayırmak, gece minimum debi ve step test.",
-     "What is a DMA (District Metered Area)?", "Splitting the network into measurable zones, minimum night flow and step testing."),
+     "What is a DMA (District Metered Area)?", "Splitting the network into measurable zones, minimum night flow and step testing.",
+     "/assets/photos/dma-tasarim.webp"),
     ("su-kaybi-dusurme-yol-haritasi",
      "Su kaybını düşürme yol haritası", "NRW / IWA çerçevesi ve sekiz adımlı kalıcı kayıp azaltma programı.",
-     "A roadmap for cutting water loss", "The NRW / IWA framework and an eight-step programme for lasting loss reduction."),
+     "A roadmap for cutting water loss", "The NRW / IWA framework and an eight-step programme for lasting loss reduction.",
+     "/assets/photos/depo-cikis.webp"),
 ]
 
 
@@ -704,9 +725,18 @@ def build_article(a, lang):
     guide_abs = abs_url(lang, "/blog/")
     schema = [
         breadcrumb([(u["home"], home_abs), (u["guide"], guide_abs), (h1, url)]),
-        article_schema(h1, desc, url, u["guide"], u["ld_lang"]),
+        article_schema(h1, desc, url, u["guide"], u["ld_lang"],
+                       image=a.get("hero"), date=a.get("date", "2026-09-04")),
     ]
     hd = head(L(a, "title", lang), desc, page_path, lang, schema_blocks=schema)
+    hero_html = ""
+    if a.get("hero"):
+        hero_html = f'''
+  <section class="section section--tight">
+    <div class="wrap mw-900">
+      <figure class="article-hero"><img src="{a['hero']}" alt="{L(a, 'hero_alt', lang)}" loading="eager"></figure>
+    </div>
+  </section>'''
     rel = [x for x in ARTICLES if x['slug'] != a['slug']][:3]
     rel_cards = "\n".join(
         f'        <a class="card" href="{rel_href(lang, "/blog/" + r["slug"] + ".html")}">'
@@ -725,7 +755,7 @@ def build_article(a, lang):
       <p class="lede">{L(a, "lede", lang)}</p>
     </div>
   </section>
-
+{hero_html}
   <section class="section">
     <div class="wrap mw-900">
 {L(a, "body", lang)}
@@ -753,11 +783,11 @@ def build_blog_index(lang):
     page_path = "/blog/"
     url = abs_url(lang, page_path)
     home_abs = BASE + pfx(lang) + "/"
-    items = [(s, (ten if lang == "en" else tt), (den if lang == "en" else dt))
-             for s, tt, dt, ten, den in BLOG_INDEX_ITEMS]
+    items = [(s, (ten if lang == "en" else tt), (den if lang == "en" else dt), hero)
+             for s, tt, dt, ten, den, hero in BLOG_INDEX_ITEMS]
     item_list = ", ".join(
         f'{{ "@type": "ListItem", "position": {i+1}, "url": "{abs_url(lang, "/blog/" + s + ".html")}", "name": "{t}" }}'
-        for i, (s, t, d) in enumerate(items))
+        for i, (s, t, d, hero) in enumerate(items))
     schema = [
         breadcrumb([(u["home"], home_abs), (u["guide"], url)]),
         ('<script type="application/ld+json">\n{\n'
@@ -769,9 +799,11 @@ def build_blog_index(lang):
     ]
     hd = head(u["hub_title"], u["hub_desc"], page_path, lang, schema_blocks=schema, ogtype="website")
     cards = "\n".join(
-        f'        <a class="card rv" href="{rel_href(lang, "/blog/" + s + ".html")}"><span class="card__ix">{i+1:02d}</span>'
+        f'        <a class="card card--media rv" href="{rel_href(lang, "/blog/" + s + ".html")}">'
+        f'<img class="card__img" src="{hero}" alt="" loading="lazy" decoding="async">'
+        f'<span class="card__ix">{i+1:02d}</span>'
         f'<h3>{t}</h3><p>{d}</p></a>'
-        for i, (s, t, d) in enumerate(items))
+        for i, (s, t, d, hero) in enumerate(items))
     body = f"""
 <main id="main">
   <div class="wrap">
