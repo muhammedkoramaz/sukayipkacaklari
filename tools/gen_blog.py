@@ -1025,6 +1025,91 @@ ARTICLES = [
 """,
     ),
     dict(
+        slug="boru-hatti-tespiti-nedir",
+        hero="/assets/blog/boru-hatti-tespiti-nedir.webp",
+        hero_alt="Saha ekibi hat güzergâhını işaretliyor",
+        hero_alt_en="Field crew marking a pipe route",
+        date="2026-09-04",
+        h1="Boru hattı güzergâhı ve derinlik tespiti",
+        title="Boru Hattı Tespiti Nedir? Güzergâh ve Derinlik Belirleme | LeakExpert",
+        desc="Gömülü içme suyu hatlarının güzergâh ve derinliği nasıl belirlenir: metal hatlarda elektromanyetik hat dedektörü, plastik hatlarda prob ve yer radarı (GPR).",
+        lede="Kaçağı bulmadan, onarmadan veya haritalamadan önce çoğu zaman ilk soru şudur: <strong>boru tam olarak nerede ve ne kadar derinde?</strong> Hat tespiti, gömülü hattı kazmadan yüzeyden işaretleme işidir.",
+        h1_en="Locating a pipe route and depth",
+        title_en="What Is Pipe Locating? Determining Route and Depth | LeakExpert",
+        desc_en="How the route and depth of buried drinking-water mains are found: electromagnetic pipe locators on metal mains, internal probes or GPR on plastic mains.",
+        lede_en="Before finding a leak, repairing it or mapping it, the first question is often: <strong>exactly where is the pipe, and how deep?</strong> Pipe locating is marking a buried main from the surface without digging.",
+        body="""
+      <div class="prose">
+        <h2>Neden gerekir?</h2>
+        <p>Gömülü bir içme suyu hattı üzerinde çalışmadan önce çoğu zaman ilk adım, hattın yüzeydeki izdüşümünü ve yaklaşık derinliğini belirlemektir. Onarım kazısında ekskavatör kovasının nereye ineceği; yeni bir bağlantı veya vana odası planlanırken mevcut hattın tam konumu; başka altyapıların (elektrik, gaz, telekom) yakınında kazı yapılırken hasar önleme — hepsi hattın güzergâhının bilinmesine bağlıdır.</p>
+        <p>Tespit sonuçları aynı zamanda kalıcı bir kayıt üretir. İşaretlenen güzergâh ve noktasal derinlikler koordinatlandırılıp <a href="/blog/sebeke-haritalama-cbs.html">şebeke haritalama ve CBS</a> çalışmasına işlenir; böylece bir sonraki kazıda ölçümü baştan tekrarlamak gerekmez. Aynı geometri, <a href="/blog/hidrolik-modelleme-nedir.html">hidrolik modelin</a> boru uzunluğu ve bağlantı topolojisi girdisini de doğrular.</p>
+        <p>Kapsam belediye ve organize sanayi bölgesi dağıtım şebekeleridir; söz konusu olan, sokak ve arter hatlarının güzergâhının kazısız belirlenmesidir.</p>
+
+        <h2>Metal hatlar: elektromanyetik hat dedektörü</h2>
+        <p>Dökme demir, çelik ve font gibi iletken borular, elektromanyetik hat dedektörüyle izlenir. Sistem iki parçadan oluşur: hatta bir sinyal (alternatif akım) bindiren verici ve bu sinyalin oluşturduğu manyetik alanı yüzeyden algılayan alıcı.</p>
+        <p>Sinyal hatta iki yolla verilir. Doğrudan bağlantıda verici kablosu, borunun açıkta bir noktasına (vana mili, hidrant, flanş) doğrudan kelepçelenir; bu en güçlü ve en temiz yöntemdir. İndüktif kelepçede, boruyu saran bir halka verici sinyalini boruya endükler ve bağlantı için açık metal gerekmez. Verici doğrudan zemine de kurulabilir, ancak bu durumda sinyal daha zayıf ve komşu iletkenlere kaçmaya daha yatkındır.</p>
+        <p>Alıcı, güzergâh boyunca yürütülürken sinyalin en güçlü olduğu çizgi borunun izdüşümünü verir. Cihaz aynı zamanda alan geometrisinden bir derinlik tahmini hesaplar; bu değer, sinyalin tek ve bozulmamış bir iletkenden geldiği varsayımına dayanır.</p>
+
+        <h2>Plastik (PE/PVC) hatlar</h2>
+        <p>Polietilen ve PVC borular iletken değildir; üzerlerine doğrudan elektromanyetik sinyal bindirilemez. Bu hatların izlenmesi için hattın içinde veya boyunca izlenebilir bir öğe gerekir.</p>
+        <p>İlk yöntem, hat içine itilen problu kablodur (prob/sonda): ucunda küçük bir verici bulunan bükülebilir bir çubuk, bir vana veya bağlantı ağzından boruya sürülür ve alıcı, prob ucunun konumunu ve derinliğini yüzeyden takip eder. İkinci yöntem sinyal telidir: boru döşenirken hattın üzerine paralel bir bakır tel gömülür; sonradan bu tele verici bağlanarak hat, metal boru gibi izlenir. Yeni PE şebekelerde sinyal teli standart bir uygulamadır. Bu iki seçenek de yoksa geriye yer radarı kalır.</p>
+
+        <h2>Yer radarı (GPR)</h2>
+        <p>Yer radarı (GPR), zemine yüksek frekanslı radar darbeleri gönderen ve farklı malzemelerin sınırlarından dönen yansımaları kaydeden bir yöntemdir. Anten zemin üzerinde bir hat boyunca çekildiğinde, gömülü boru kesiti radargramda tipik bir hiperbol izi bırakır; bu izin tepe noktası borunun yatay konumunu, derinlik ekseni ise yaklaşık gömülme derinliğini verir.</p>
+        <p>GPR malzemeden bağımsızdır: metal, PE, PVC, beton künk ve hatta boşluk aynı ilkeyle görüntülenir. Buna karşılık performansı zemine çok bağlıdır. Kuru kum ve çakılda derin ve net sonuç alınırken, ıslak killi zeminde sinyal hızla sönümlenir ve birkaç on santimetreden derini görünmez olur. Derinlik arttıkça, yüzeye yakın çok sayıda başka altyapı bulunduğunda ve dolgu düzensiz olduğunda yorum zorlaşır.</p>
+
+        <h2>İşaretleme ve derinlik</h2>
+        <p>Bulunan güzergâh sahada görünür kılınır: hat ekseni yol yüzeyine sprey boyayla çizilir, yumuşak zeminde kazık veya bayrakla noktalanır. İşaretlemede yaygın uygulama, hattın merkez çizgisini ve belirli aralıklarla istasyon numaralarını yazmaktır.</p>
+        <p>Derinlik, güzergâh boyunca sürekli değil, seçili noktalarda ölçülür; cihazın verdiği derinlik tahmini bu noktalara not edilir. Güzergâh ve derinlik noktaları bir el GPS'i veya total station ile koordinatlandırılır ve CBS'e aktarılabilecek bir kroki ya da sayısal katman hâline getirilir. Böylece ölçüm kalıcı bir veri ürününe dönüşür.</p>
+
+        <h2>Doğruluğun sınırları</h2>
+        <p>Hiçbir yüzey yöntemi kazıyı bire bir taklit etmez. Elektromanyetik izlemede en büyük hata kaynağı, hedef hatta paralel uzanan başka metal borular ve yoğun gömülü altyapıdır; bunlar sinyali kendilerine çeker, güzergâh çizgisini yana kaydırır ve derinlik tahminini bozar. Sinyal telinde kopukluk veya eklerdeki temassızlık, izlemeyi belirli bir noktada kesebilir.</p>
+        <p>Derinlik değeri her zaman bir tahmindir; borunun tek ve düz olduğu, alanın bozulmadığı kabulüne dayanır ve genellikle gerçek derinlikten bir miktar sapar. GPR yorumu operatöre ve zemine bağlıdır; bir hiperbol her zaman aranan boru değildir.</p>
+        <p>Bu nedenle kritik bir kazıdan önce, işaretlenen nokta üzerinde elle küçük bir kontrol çukuru (el çukuru) açılıp hattın gerçek konumu ve derinliği gözle doğrulanır. Tespit çalışması ve sonuçların yorumu uzaktan / video görüşmeyle planlanabilir; şebeke krokisi, malzeme bilgisi ve erişim noktaları paylaşıldıktan sonra yöntem ve işaretleme planı birlikte belirlenir.</p>
+        <ul>
+          <li>Hizmet kapsamı: <a href="/hizmetler.html">Hizmetler</a></li>
+          <li>Saha örnekleri: <a href="/projeler/">Projeler</a></li>
+          <li>Sık sorulanlar: <a href="/sss.html">SSS</a></li>
+        </ul>
+      </div>
+""",
+        body_en="""
+      <div class="prose">
+        <h2>Why it is needed</h2>
+        <p>Before any work on a buried drinking-water main, the first step is usually to establish where the pipe runs at the surface and roughly how deep it lies. Where the excavator bucket comes down for a repair dig; the exact position of the existing main when a new connection or valve chamber is planned; damage prevention when digging near other utilities such as power or gas — all of it depends on knowing the route.</p>
+        <p>Locating results also produce a permanent record. The marked route and spot depths are given coordinates and entered into a <a href="/en/blog/sebeke-haritalama-cbs.html">network mapping and GIS</a> effort, so the survey need not be repeated from scratch at the next dig. The same geometry also confirms the pipe length and connection topology that feed a <a href="/en/blog/hidrolik-modelleme-nedir.html">hydraulic model</a>.</p>
+        <p>The scope is municipal and organised-industrial-zone distribution networks; what is being found is the route of street and arterial mains, without excavation.</p>
+
+        <h2>Metal mains: the electromagnetic pipe locator</h2>
+        <p>Conductive pipes — cast iron, ductile iron, steel — are traced with an electromagnetic pipe locator. The system has two parts: a transmitter that applies an alternating-current signal to the pipe, and a receiver that senses the magnetic field this signal creates from the surface.</p>
+        <p>The signal is applied in one of two ways. In a direct connection the transmitter lead is clamped straight onto an exposed point of the pipe — a valve spindle, a hydrant, a flange — which is the strongest and cleanest method. With an inductive clamp, a ring around the pipe induces the signal into it and no bare metal is needed for the connection. The transmitter can also be set on the ground, but then the signal is weaker and more likely to couple onto neighbouring conductors.</p>
+        <p>Walked along the route, the receiver traces the line of strongest signal as the pipe's plan position. The instrument also computes a depth estimate from the field geometry; that figure assumes the signal comes from a single, undistorted conductor.</p>
+
+        <h2>Plastic (PE/PVC) mains</h2>
+        <p>Polyethylene and PVC pipes are not conductive, so no electromagnetic signal can be applied to them directly. Tracing these mains needs a traceable element in or along the line.</p>
+        <p>The first method is a push probe or sonde: a flexible rod with a small transmitter at its tip is pushed into the pipe through a valve or fitting, and the receiver follows the position and depth of the probe tip from the surface. The second is tracer wire: a copper wire is buried parallel to the pipe as it is laid, and a transmitter is later connected to that wire so the main is traced as if it were metal. On new PE networks tracer wire is standard practice. Where neither is available, ground penetrating radar remains.</p>
+
+        <h2>Ground penetrating radar (GPR)</h2>
+        <p>GPR sends high-frequency radar pulses into the ground and records the reflections that return from the boundaries between different materials. As the antenna is pulled along a line over the surface, a buried pipe cross-section leaves a characteristic hyperbola on the radargram; the apex of that trace gives the pipe's horizontal position and the depth axis its approximate burial depth.</p>
+        <p>GPR is independent of material: metal, PE, PVC, concrete pipe and even a void are imaged on the same principle. Its performance, however, depends heavily on the ground. Dry sand and gravel give deep, clear results, while in wet clay the signal is absorbed quickly and little is visible below a few tens of centimetres. Interpretation gets harder with depth, in congested ground, and where the backfill is heterogeneous.</p>
+
+        <h2>Marking and depth</h2>
+        <p>The located route is made visible on site: the pipe centreline is sprayed onto the road surface with paint, or pegged and flagged in soft ground, with the centreline and station numbers written at set intervals.</p>
+        <p>Depth is measured not continuously but at selected points, and the instrument's depth estimate is noted there. The route and depth points are given coordinates with a hand-held GPS or a total station and turned into a sketch or a digital layer that can be imported into GIS. The survey thus becomes a permanent data product.</p>
+
+        <h2>The limits of accuracy</h2>
+        <p>No surface method reproduces a dig exactly. In electromagnetic tracing the biggest error source is other metal pipes running parallel to the target and dense buried services; they draw the signal onto themselves, shift the route line sideways and distort the depth estimate. A break in tracer wire, or a bad contact at a joint, can stop the trace at a point.</p>
+        <p>The depth figure is always an estimate; it rests on the pipe being single and straight and the field undistorted, and it usually departs somewhat from the true depth. GPR interpretation depends on the operator and the ground; a hyperbola is not always the pipe being sought.</p>
+        <p>For this reason, before a critical excavation, a small hand-dug trial pit is opened over the marked point to verify the pipe's real position and depth by eye. The locating work and the interpretation of its results can be planned over a remote or video call; once the network sketch, material data and access points are shared, the method and the marking plan are set together.</p>
+        <ul>
+          <li>Service scope: <a href="/en/hizmetler.html">Services</a></li>
+          <li>Field examples: <a href="/en/projeler/">Projects</a></li>
+          <li>Common questions: <a href="/en/sss.html">FAQ</a></li>
+        </ul>
+      </div>
+""",
+    ),
+    dict(
         slug="su-kaybi-dusurme-yol-haritasi",
         hero="/assets/photos/depo-cikis.webp",
         hero_alt="Depo çıkışı debi ölçüm noktası",
@@ -1155,6 +1240,10 @@ BLOG_INDEX_ITEMS = [
      "Hidrolik modelleme nedir?", "Şebekenin bilgisayar benzetimi: girdi verisi, saha kalibrasyonu ve senaryolar.",
      "What is hydraulic modelling?", "A computer simulation of the network: input data, field calibration and scenarios.",
      "/assets/photos/basinc-test.webp"),
+    ("boru-hatti-tespiti-nedir",
+     "Boru hattı tespiti nedir?", "Metal ve plastik gömülü hatların güzergâh ve derinliğini kazısız belirleme.",
+     "What is pipe locating?", "Finding the route and depth of buried metal and plastic mains without excavation.",
+     "/assets/blog/boru-hatti-tespiti-nedir.webp"),
     ("su-kaybi-dusurme-yol-haritasi",
      "Su kaybını düşürme yol haritası", "NRW / IWA çerçevesi ve sekiz adımlı kalıcı kayıp azaltma programı.",
      "A roadmap for cutting water loss", "The NRW / IWA framework and an eight-step programme for lasting loss reduction.",
