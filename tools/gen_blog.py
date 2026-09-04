@@ -857,6 +857,85 @@ ARTICLES = [
 """,
     ),
     dict(
+        slug="sifir-basinc-testi-nedir",
+        hero="/assets/blog/sifir-basinc-testi-nedir.webp",
+        hero_alt="Vana odasında hat izolasyonu",
+        hero_alt_en="Line isolation at a valve chamber",
+        date="2026-09-04",
+        h1="Sıfır basınç testi nedir?",
+        title="Sıfır Basınç Testi Nedir? Hat İzolasyon Kontrolü | LeakExpert",
+        desc="Sıfır basınç testi, izole edilen bir hat bölümünde basıncı sıfıra indirip basıncın geri gelip gelmediğine bakarak o bölümde kaçak olup olmadığını doğrular.",
+        lede="Bazen bir hat bölümünden şüphelenilir ama kesin karar verilemez. <strong>Sıfır basınç testi</strong>, o bölümü izole edip basıncını sıfıra düşürür: basınç yavaşça geri geliyorsa içeride hâlâ su besleyen bir yol — çoğu zaman bir kaçak — vardır.",
+        h1_en="What is a zero-pressure test?",
+        title_en="What Is a Zero-Pressure Test? Line Isolation Check | LeakExpert",
+        desc_en="A zero-pressure test isolates a section of main, drops its pressure to zero and watches whether pressure returns, confirming whether that section leaks.",
+        lede_en="Sometimes a section of main is suspected but cannot be ruled in or out. A <strong>zero-pressure test</strong> isolates that section and drops its pressure to zero: if pressure creeps back, something is still feeding water in — usually a leak.",
+        body="""
+      <div class="prose">
+        <h2>Ne zaman uygulanır?</h2>
+        <p>Sıfır basınç testi, bir bölgede kayıp olduğu bilindiği ama kaynağın hâlâ daraltılamadığı durumlarda devreye girer. Genellikle bir <a href="/blog/adim-testi-nedir.html">adım (step) testi</a> ya da akustik tarama sonrasında, şüphe belirli bir hat parçasına inmiş ancak kesin karar verilememişse uygulanır. Örneğin adım testinde bir basamak beklenenden büyük çıkmış, yer mikrofonu ise o parçada net bir ses vermemiş olabilir. Bu belirsizliği gidermek için o parça tek başına sınanır.</p>
+        <p>Yöntem, kısa ve sınırları belli bir hat parçası için anlamlıdır: iki sınır vanası arasında kalan, birkaç yüz metreyi geçmeyen, bağlantıları bilinen bir kesim. Parça uzadıkça izole etmek zorlaşır, boşaltma süresi uzar ve sonucun yorumu bulanıklaşır. Kapsam belediye ve organize sanayi bölgesi dağıtım şebekeleridir; test, ana hat ve bölge hatları için tasarlanmıştır.</p>
+
+        <h2>Bölümü izole etme</h2>
+        <p>İlk adım, sınanacak parçayı şebekenin geri kalanından tamamen ayırmaktır. Parçanın iki ucundaki sınır vanaları kapatılır ve her birinin gerçekten sızdırmaz oturduğu ayrı ayrı doğrulanır. Kapanmayan ya da azıcık su geçiren tek bir sınır vanası, testi baştan geçersiz kılar: dışarıdan sızan su, parçanın içindeki bir kaçakla karışır ve sonuç okunamaz hâle gelir.</p>
+        <p>Vana sızdırmazlığı, mümkünse vananın arkasındaki basınç düşüşü izlenerek veya tahliye noktasından gözlemle kontrol edilir. İzole edilen parçaya bir <strong>basınç kaydedici (veri loggerı)</strong> bağlanır; kaydedici, testin tamamı boyunca kısa aralıklarla basınç kaydı alır. Parça üzerinde birden çok ölçüm noktası varsa, en düşük kotta ve sınır vanasına en uzak noktada kayıt tercih edilir.</p>
+
+        <h2>Basıncı sıfıra indirme</h2>
+        <p>Parça izole edildikten sonra içindeki su, bir hidranttan veya tahliye (washout) noktasından kontrollü biçimde boşaltılır. Boşaltma yavaş yapılır: ani açma, hatta basınç darbesi yaratır ve boru cidarındaki tortuyu harekete geçirir. Basınç kaydedici, değer sıfıra inene kadar izlenir.</p>
+        <p>Basınç sıfıra ulaştığında tahliye kısılır ve parça içindeki su seviyesi dengelenene kadar kısa süre beklenir. Amaç, parçanın hiçbir dış kaynaktan beslenmediği ve iç basıncın gerçekten sıfır olduğu bir başlangıç durumu kurmaktır. Bu noktadan sonra tahliye tümüyle kapatılır.</p>
+
+        <h2>Gözlem</h2>
+        <p>Tahliye kapatıldıktan sonra basınç kaydedici izlenmeye devam eder. İki olası davranış vardır. Basınç sabit sıfırda kalıyorsa, parçaya giren hiçbir su yolu yoktur: sınır vanaları sızdırmaz ve parça üzerinde belirgin bir kaçak bulunmamaktadır; parça sağlam kabul edilir.</p>
+        <p>Basınç zamanla yavaşça yükseliyorsa, parçaya hâlâ su giren bir yol vardır. Yükseliş hızı kabaca giren debiyle orantılıdır: hızlı bir tırmanış büyük bir açıklığa, çok yavaş bir tırmanış küçük bir sızıntıya işaret eder. Gözlem, basıncın eğilimi net görülene kadar sürdürülür; birkaç dakikalık kısa bir bakış yanıltıcı olabilir.</p>
+
+        <h2>Sonucun yorumu</h2>
+        <p>Basıncın geri gelmesi tek başına &ldquo;boru delik&rdquo; demek değildir. İki neden ayırt edilemez durumdadır: parça üzerinde gerçek bir kaçak olabilir ya da sınır vanalarından biri tam sızdırmaz oturmayıp dışarıdan su geçiriyor olabilir. Bu ayrımın yapılamaması yöntemin doğal sınırıdır ve rapora böyle yazılır.</p>
+        <p>Ayrımı netleştirmek için sınır vanaları yeniden ve daha dikkatli kapatılıp test tekrarlanır; mümkünse vananın diğer tarafı da geçici olarak basınçsız bırakılır. Geri gelme sürüyorsa neden büyük olasılıkla parçanın içindedir. Bu durumda parça, nokta tespiti için <a href="/blog/akustik-su-kacagi-tespiti-nedir.html">akustik ekibe</a> devredilir; sıfır basınç testi kaçağın yerini vermez, yalnızca o parçada kaçak bulunduğunu doğrular. Basınç sabit sıfırda kaldıysa şüphe o parçadan kaldırılır ve arama komşu parçalara kaydırılır.</p>
+
+        <h2>Güvenlik ve su kalitesi</h2>
+        <p>Basıncı sıfıra indirmek, izole parçada ve komşu şebekede geçici olarak negatif basınç oluşturabilir. Negatif basınç, zemindeki kirli suyun bağlantı noktalarından içeri emilmesine (geri emilim) yol açabilir. Bu yüzden boşaltma kontrollü yapılır, parça gereğinden uzun süre basınçsız bırakılmaz ve iş biter bitmez hat yeniden basınçlandırılır.</p>
+        <p>Yeniden basınçlandırma yavaş yapılır: vana kademeli açılır, hava tahliye noktalarından atılır ve basınç normal değerine dereceli olarak getirilir. Ardından parça bir hidranttan yıkanır; bulanıklık veya renk sürüyorsa yıkama uzatılır ve gerekiyorsa dezenfeksiyon uygulanır. Testten etkilenen bağlantılar önceden bilgilendirilir, kesinti penceresi kısa tutulur. Sonuçlar, kesinlik iddiası abartılmadan; &ldquo;parça sağlam&rdquo;, &ldquo;parçada besleyen bir yol var&rdquo; veya &ldquo;ayrım yapılamadı, tekrar gerekli&rdquo; biçiminde raporlanır.</p>
+        <ul>
+          <li>Yöntemin ayrıntısı: <a href="/hizmetler.html">Hizmetler</a></li>
+          <li>Saha örnekleri: <a href="/projeler/">Projeler</a></li>
+          <li>Sık sorulanlar: <a href="/sss.html">SSS</a></li>
+        </ul>
+      </div>
+""",
+        body_en="""
+      <div class="prose">
+        <h2>When is it used?</h2>
+        <p>A zero-pressure test comes in where a zone is known to have loss but the source still cannot be narrowed down. It is usually applied after a <a href="/en/blog/adim-testi-nedir.html">step test</a> or an acoustic survey, when suspicion has come down to a particular length of main but no firm decision could be made. A step in the step test may have come out larger than expected, or the ground microphone may have given no clear sound on that length. To resolve that uncertainty, the length is tested on its own.</p>
+        <p>The method is meaningful for a short, clearly bounded length of main: a section between two boundary valves, no more than a few hundred metres, with known connections. The longer the length, the harder it is to isolate, the longer the draw-down takes and the murkier the interpretation. The scope is municipal and organised-industrial-zone distribution networks; the test is designed for mains and zone pipes.</p>
+
+        <h2>Isolating the section</h2>
+        <p>The first step is to separate the length under test completely from the rest of the network. The boundary valves at each end of the length are closed, and each is verified separately to seat truly tight. A single boundary valve that will not close, or that passes a little water, invalidates the test from the start: water leaking in from outside mixes with any leak inside the length and the result becomes unreadable.</p>
+        <p>Valve tightness is checked where possible by watching the pressure fall behind the valve, or by observation at the washout. A <strong>pressure recorder (data logger)</strong> is connected to the isolated length; it logs pressure at short intervals throughout the test. Where the length has more than one measuring point, the reading is taken at the lowest elevation and farthest from the boundary valve.</p>
+
+        <h2>Dropping the pressure to zero</h2>
+        <p>Once the length is isolated, the water inside it is drawn down in a controlled way through a hydrant or a washout point. The draw-down is done slowly: a sudden opening sends a pressure surge through the main and disturbs sediment on the pipe wall. The pressure recorder is watched until the value reaches zero.</p>
+        <p>When the pressure reaches zero, the washout is throttled back and a short wait lets the water level inside the length settle. The aim is to establish a starting state in which the length is fed from no external source and the internal pressure is genuinely zero. After that, the washout is closed completely.</p>
+
+        <h2>Observation</h2>
+        <p>With the washout closed, the pressure recorder keeps logging. There are two possible behaviours. If the pressure stays flat at zero, no path feeds water into the length: the boundary valves are tight and there is no significant leak on the length; the section is taken to be sound.</p>
+        <p>If the pressure creeps slowly back up, a path is still letting water into the length. The rate of rise is roughly proportional to the flow entering: a fast climb points to a large opening, a very slow climb to a small seep. Observation is continued until the trend of the pressure is clear; a brief few-minute glance can mislead.</p>
+
+        <h2>Interpreting the result</h2>
+        <p>Pressure returning does not by itself mean &ldquo;the pipe has a hole&rdquo;. Two causes cannot be told apart: there may be a real leak on the length, or one of the boundary valves may not be seating fully tight and is passing water from outside. That this ambiguity cannot be resolved is an inherent limit of the method, and it is written into the report as such.</p>
+        <p>To clarify, the boundary valves are closed again more carefully and the test is repeated; where possible the far side of the valve is also left unpressurised for a time. If the return persists, the cause is most likely inside the length. The length is then handed to the <a href="/en/blog/akustik-su-kacagi-tespiti-nedir.html">acoustic crew</a> for pinpointing; a zero-pressure test does not give the leak's position, only confirms that the length holds a leak. If the pressure stayed flat at zero, suspicion is lifted from that length and the search moves to neighbouring sections.</p>
+
+        <h2>Safety and water quality</h2>
+        <p>Dropping the pressure to zero can create negative pressure for a time, in the isolated length and in the neighbouring network. Negative pressure can draw contaminated water in from the ground through connection points (back-siphonage). For this reason the draw-down is controlled, the length is not left unpressurised longer than needed, and the main is re-pressurised as soon as the work is done.</p>
+        <p>Re-pressurising is done slowly: the valve is opened in stages, air is expelled at the vent points, and pressure is brought back to its normal value gradually. The length is then flushed from a hydrant; if turbidity or discolouration persists, flushing is extended and disinfection applied if needed. Connections affected by the test are notified in advance and the interruption window is kept short. Results are reported without overstating certainty — as &ldquo;section sound&rdquo;, &ldquo;a path is feeding the section&rdquo;, or &ldquo;could not be told apart, a repeat is needed&rdquo;.</p>
+        <ul>
+          <li>Method detail: <a href="/en/hizmetler.html">Services</a></li>
+          <li>Field examples: <a href="/en/projeler/">Projects</a></li>
+          <li>Common questions: <a href="/en/sss.html">FAQ</a></li>
+        </ul>
+      </div>
+""",
+    ),
+    dict(
         slug="su-kaybi-dusurme-yol-haritasi",
         hero="/assets/photos/depo-cikis.webp",
         hero_alt="Depo çıkışı debi ölçüm noktası",
@@ -979,6 +1058,10 @@ BLOG_INDEX_ITEMS = [
      "Adım (step) testi nedir?", "Gece vanaları kademeli kapatıp debi düşüşünden kaybı alt hatlara daraltma.",
      "What is a step test?", "Closing valves in steps at night and reading the flow drop to narrow the loss.",
      "/assets/photos/gece-operasyon.webp"),
+    ("sifir-basinc-testi-nedir",
+     "Sıfır basınç testi nedir?", "Bir hat bölümünü izole edip basıncı sıfıra indirerek kaçak var/yok kararı.",
+     "What is a zero-pressure test?", "Isolating a section and dropping pressure to zero to decide leak or no leak.",
+     "/assets/blog/sifir-basinc-testi-nedir.webp"),
     ("su-kaybi-dusurme-yol-haritasi",
      "Su kaybını düşürme yol haritası", "NRW / IWA çerçevesi ve sekiz adımlı kalıcı kayıp azaltma programı.",
      "A roadmap for cutting water loss", "The NRW / IWA framework and an eight-step programme for lasting loss reduction.",
