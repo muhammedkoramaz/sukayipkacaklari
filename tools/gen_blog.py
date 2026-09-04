@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Group B — /rehber/ hub + articles, bilingual (tr + en).
+"""Group B — /blog/ hub + articles, bilingual (tr + en).
 Writes into the live site tree (root = tr, /en/ = en).
 Shares header/footer/head/lang-switcher/open-script with gen_projects.py —
 keep the two in sync (PROJECT.md §6)."""
@@ -49,12 +49,12 @@ PHONE_SVG = ('<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke
 UI = {
     "tr": {
         "menu": [("/", "Ana Sayfa"), ("/platform.html", "Platform"), ("/hizmetler.html", "Hizmetler"),
-                 ("/rehber/", "Rehber"), ("/projeler/", "Projeler"), ("/referanslar.html", "Referanslar"),
+                 ("/blog/", "Blog"), ("/projeler/", "Projeler"), ("/referanslar.html", "Referanslar"),
                  ("/hakkimizda.html", "Hakkımızda"), ("/iletisim.html", "İletişim")],
         "skip": "İçeriğe geç", "menu_aria": "Ana menü", "burger_aria": "Menüyü aç",
         "brand_aria": "LeakExpert ana sayfa", "crumb_aria": "Sayfa işaret yolu",
         "og_locale": "tr_TR", "og_locale_alt": "en_US", "html_lang": "tr", "ld_lang": "tr-TR",
-        "guide": "Rehber", "guide_eyebrow": "Rehber",
+        "guide": "Blog", "guide_eyebrow": "Blog",
         "dock_aria": "Hızlı iletişim", "dock_cta": "Görüşme talebi",
         "ftr_brandline": ("Belediye içme suyu şebekelerinde su kayıp kaçakları tespiti, debi/basınç izleme "
                           "ve saha yönetimi. Web ve mobil entegre platform."),
@@ -64,7 +64,7 @@ UI = {
                          ("/platform.html#api", "API &amp; entegrasyon"),
                          ("/hizmetler.html", "Saha hizmetleri")],
         "ftr_corp": [("/hakkimizda.html", "Hakkımızda"), ("/projeler/", "Projeler"),
-                     ("/referanslar.html", "Referanslar"), ("/rehber/", "Rehber"),
+                     ("/referanslar.html", "Referanslar"), ("/blog/", "Blog"),
                      ("/sss.html", "Sık sorulan sorular"), ("/iletisim.html", "İletişim"),
                      ("/gizlilik.html", "Gizlilik politikası")],
         "ftr_rights": "© 2026 LeakExpert · Tüm hakları saklıdır.",
@@ -76,21 +76,21 @@ UI = {
         "hub_title": "Su Kayıp-Kaçak Rehberi — Tespit Yöntemleri, DMA, NRW | LeakExpert",
         "hub_desc": ("Su kaçağı belirtileri, akustik tespit, DMA kurulumu ve su kaybı düşürme yol haritası. "
                      "Belediye ve sanayi şebekeleri için uygulamalı rehber yazıları."),
-        "hub_h1": "Su kayıp-kaçak rehberi.",
+        "hub_h1": "Su kayıp-kaçak blogu.",
         "hub_lede": ('Şebeke ve sanayi tesislerinde su kaçağını anlamak, ölçmek ve kalıcı olarak '
                      'azaltmak için uygulamalı yazılar. Yöntemin saha karşılığı için '
                      '<a class="link-arw inline-flex" href="{P}/projeler/">projelere</a> bakın.'),
-        "hub_name": "Su kayıp-kaçak rehberi",
+        "hub_name": "Su kayıp-kaçak blogu",
         "home": "Ana Sayfa",
     },
     "en": {
         "menu": [("/", "Home"), ("/platform.html", "Platform"), ("/hizmetler.html", "Services"),
-                 ("/rehber/", "Guide"), ("/projeler/", "Projects"), ("/referanslar.html", "References"),
+                 ("/blog/", "Blog"), ("/projeler/", "Projects"), ("/referanslar.html", "References"),
                  ("/hakkimizda.html", "About"), ("/iletisim.html", "Contact")],
         "skip": "Skip to content", "menu_aria": "Main menu", "burger_aria": "Open menu",
         "brand_aria": "LeakExpert home", "crumb_aria": "Breadcrumb",
         "og_locale": "en_US", "og_locale_alt": "tr_TR", "html_lang": "en", "ld_lang": "en-US",
-        "guide": "Guide", "guide_eyebrow": "Guide",
+        "guide": "Blog", "guide_eyebrow": "Blog",
         "dock_aria": "Quick contact", "dock_cta": "Request a consultation",
         "ftr_brandline": ("Water loss and leak detection, flow/pressure monitoring and field management "
                           "for municipal drinking-water networks. Integrated web and mobile platform."),
@@ -100,7 +100,7 @@ UI = {
                          ("/platform.html#api", "API &amp; integration"),
                          ("/hizmetler.html", "Field services")],
         "ftr_corp": [("/hakkimizda.html", "About"), ("/projeler/", "Projects"),
-                     ("/referanslar.html", "References"), ("/rehber/", "Guide"),
+                     ("/referanslar.html", "References"), ("/blog/", "Blog"),
                      ("/sss.html", "FAQ"), ("/iletisim.html", "Contact"),
                      ("/gizlilik.html", "Privacy policy")],
         "ftr_rights": "© 2026 LeakExpert · All rights reserved.",
@@ -112,11 +112,11 @@ UI = {
         "hub_title": "Water Loss & Leakage Guide — Detection Methods, DMA, NRW | LeakExpert",
         "hub_desc": ("Leak signs, acoustic detection, DMA setup and a roadmap for cutting water loss. "
                      "Practical guide articles for municipal and industrial networks."),
-        "hub_h1": "Water loss & leakage guide.",
+        "hub_h1": "Water loss & leakage blog.",
         "hub_lede": ('Practical articles on understanding, measuring and permanently reducing water loss in '
                      'distribution networks and industrial plants. For the field side of the method, see the '
                      '<a class="link-arw inline-flex" href="{P}/projeler/">projects</a>.'),
-        "hub_name": "Water loss & leakage guide",
+        "hub_name": "Water loss & leakage blog",
         "home": "Home",
     },
 }
@@ -127,7 +127,7 @@ def pfx(lang):
 
 
 def rel_href(lang, path):
-    """root-relative href for the current language tree; path like '/', '/x.html', '/rehber/'."""
+    """root-relative href for the current language tree; path like '/', '/x.html', '/blog/'."""
     if path == "/":
         return pfx(lang) + "/"
     return pfx(lang) + path
@@ -225,8 +225,8 @@ def head(title, desc, page_path, lang, schema_blocks=(), ogtype="article"):
 
 
 def _active_menu(page_path):
-    if page_path.startswith("/rehber/"):
-        return "/rehber/"
+    if page_path.startswith("/blog/"):
+        return "/blog/"
     return page_path
 
 
@@ -471,7 +471,7 @@ ARTICLES = [
         <p>Çok derin hatlar, geniş çaplı isale boruları, yüksek yeraltı suyu ve tümüyle plastik yeni şebekelerde akustik yöntem <strong>debi/basınç ölçümü ve step testiyle</strong> birlikte kullanılır. LeakExpert bu yüzden tek yönteme değil, kapalı döngü bir programa dayanır.</p>
         <ul>
           <li>İlişkili hizmet: <a href="/hizmetler.html#akustik">Akustik sızıntı tespiti</a></li>
-          <li>Kavram: <a href="/rehber/dma-nedir.html">DMA nedir?</a></li>
+          <li>Kavram: <a href="/blog/dma-nedir.html">DMA nedir?</a></li>
           <li>Uygulanışı: <a href="/projeler/">Proje sayfaları</a></li>
         </ul>
       </div>
@@ -503,7 +503,7 @@ ARTICLES = [
         <p>On very deep mains, large-diameter transmission pipes, high groundwater and entirely plastic new networks, the acoustic method is used together with <strong>flow/pressure measurement and step testing</strong>. That is why LeakExpert relies not on a single method but on a closed-loop programme.</p>
         <ul>
           <li>Related service: <a href="/en/hizmetler.html#akustik">Acoustic leak detection</a></li>
-          <li>Concept: <a href="/en/rehber/dma-nedir.html">What is a DMA?</a></li>
+          <li>Concept: <a href="/en/blog/dma-nedir.html">What is a DMA?</a></li>
           <li>In practice: <a href="/en/projeler/">Project pages</a></li>
         </ul>
       </div>
@@ -545,7 +545,7 @@ ARTICLES = [
         <ul>
           <li>İlişkili hizmet: <a href="/hizmetler.html#dma">DMA, step &amp; sıfır basınç testi</a></li>
           <li>Ölçüm tarafı: <a href="/hizmetler.html#debi">Debi ölçümü &amp; NRW analizi</a></li>
-          <li>Yol haritası: <a href="/rehber/su-kaybi-dusurme-yol-haritasi.html">Su kaybını düşürme yol haritası</a></li>
+          <li>Yol haritası: <a href="/blog/su-kaybi-dusurme-yol-haritasi.html">Su kaybını düşürme yol haritası</a></li>
         </ul>
       </div>
 """,
@@ -575,7 +575,7 @@ ARTICLES = [
         <ul>
           <li>Related service: <a href="/en/hizmetler.html#dma">DMA, step &amp; zero-pressure testing</a></li>
           <li>Measurement side: <a href="/en/hizmetler.html#debi">Flow measurement &amp; NRW analysis</a></li>
-          <li>Roadmap: <a href="/en/rehber/su-kaybi-dusurme-yol-haritasi.html">Roadmap for cutting water loss</a></li>
+          <li>Roadmap: <a href="/en/blog/su-kaybi-dusurme-yol-haritasi.html">Roadmap for cutting water loss</a></li>
         </ul>
       </div>
 """,
@@ -609,9 +609,9 @@ ARTICLES = [
         <h3>2. Basınç bölgelerinin haritalanması</h3>
         <p>Yüksek basınçlı bölgeler tespit edilir; basınç düşürücü vana (PRV) noktaları planlanır.</p>
         <h3>3. Pilot DMA kurulumu</h3>
-        <p>Kayıp şüphesi yüksek bir bölgede <a href="/rehber/dma-nedir.html">DMA</a> kurulur, gece minimum debi ölçülür.</p>
+        <p>Kayıp şüphesi yüksek bir bölgede <a href="/blog/dma-nedir.html">DMA</a> kurulur, gece minimum debi ölçülür.</p>
         <h3>4. Aktif tarama</h3>
-        <p>Pilot bölgede <a href="/rehber/akustik-su-kacagi-tespiti-nedir.html">akustik tespit</a> + step test uygulanır, noktalar raporlanır.</p>
+        <p>Pilot bölgede <a href="/blog/akustik-su-kacagi-tespiti-nedir.html">akustik tespit</a> + step test uygulanır, noktalar raporlanır.</p>
         <h3>5. Hızlı onarım döngüsü</h3>
         <p>Bulunan her nokta önceliklendirilip onarım ekibine iletilir; onarım sonrası kontrol dinlemesi yapılır.</p>
         <h3>6. Sayaç doğrulama</h3>
@@ -649,9 +649,9 @@ ARTICLES = [
         <h3>2. Mapping the pressure zones</h3>
         <p>High-pressure zones are identified; pressure-reducing valve (PRV) locations are planned.</p>
         <h3>3. Pilot DMA setup</h3>
-        <p>A <a href="/en/rehber/dma-nedir.html">DMA</a> is set up in a zone with high suspected loss, and the minimum night flow is measured.</p>
+        <p>A <a href="/en/blog/dma-nedir.html">DMA</a> is set up in a zone with high suspected loss, and the minimum night flow is measured.</p>
         <h3>4. Active survey</h3>
-        <p><a href="/en/rehber/akustik-su-kacagi-tespiti-nedir.html">Acoustic detection</a> + step testing are applied in the pilot zone and the points are reported.</p>
+        <p><a href="/en/blog/akustik-su-kacagi-tespiti-nedir.html">Acoustic detection</a> + step testing are applied in the pilot zone and the points are reported.</p>
         <h3>5. Fast repair cycle</h3>
         <p>Each point found is prioritised and passed to the repair crew; a check listen is done after repair.</p>
         <h3>6. Meter verification</h3>
@@ -674,7 +674,7 @@ ARTICLES = [
 ]
 
 # slug, tr_title, tr_desc, en_title, en_desc
-REHBER_INDEX_ITEMS = [
+BLOG_INDEX_ITEMS = [
     ("su-kacagi-nasil-anlasilir",
      "Su kaçağı nasıl anlaşılır?", "İçme suyu şebekesinde gizli kaybın 8 belirtisi ve nasıl doğrulandığı.",
      "How to tell if there is a water leak?", "Eight signs of hidden loss in a drinking-water network and how it is confirmed."),
@@ -696,12 +696,12 @@ def L(a, key, lang):
 
 def build_article(a, lang):
     u = UI[lang]
-    page_path = f"/rehber/{a['slug']}.html"
+    page_path = f"/blog/{a['slug']}.html"
     url = abs_url(lang, page_path)
     h1 = L(a, "h1", lang)
     desc = L(a, "desc", lang)
     home_abs = BASE + pfx(lang) + "/"
-    guide_abs = abs_url(lang, "/rehber/")
+    guide_abs = abs_url(lang, "/blog/")
     schema = [
         breadcrumb([(u["home"], home_abs), (u["guide"], guide_abs), (h1, url)]),
         article_schema(h1, desc, url, u["guide"], u["ld_lang"]),
@@ -709,13 +709,13 @@ def build_article(a, lang):
     hd = head(L(a, "title", lang), desc, page_path, lang, schema_blocks=schema)
     rel = [x for x in ARTICLES if x['slug'] != a['slug']][:3]
     rel_cards = "\n".join(
-        f'        <a class="card" href="{rel_href(lang, "/rehber/" + r["slug"] + ".html")}">'
+        f'        <a class="card" href="{rel_href(lang, "/blog/" + r["slug"] + ".html")}">'
         f'<h3>{L(r, "h1", lang)}</h3><p>{L(r, "desc", lang)[:90]}…</p></a>'
         for r in rel)
     body = f"""
 <main id="main">
   <div class="wrap">
-    {crumbnav([(u["home"], rel_href(lang, "/")), (u["guide"], rel_href(lang, "/rehber/")), (h1, None)], u["crumb_aria"])}
+    {crumbnav([(u["home"], rel_href(lang, "/")), (u["guide"], rel_href(lang, "/blog/")), (h1, None)], u["crumb_aria"])}
   </div>
 
   <section class="phead">
@@ -744,19 +744,19 @@ def build_article(a, lang):
 {cta(lang)}
 </main>
 """
-    write(f"{pfx(lang).lstrip('/')}/rehber/{a['slug']}.html" if lang == "en" else f"rehber/{a['slug']}.html",
+    write(f"{pfx(lang).lstrip('/')}/blog/{a['slug']}.html" if lang == "en" else f"blog/{a['slug']}.html",
           hd + body + footer(lang, page_path))
 
 
-def build_rehber_index(lang):
+def build_blog_index(lang):
     u = UI[lang]
-    page_path = "/rehber/"
+    page_path = "/blog/"
     url = abs_url(lang, page_path)
     home_abs = BASE + pfx(lang) + "/"
     items = [(s, (ten if lang == "en" else tt), (den if lang == "en" else dt))
-             for s, tt, dt, ten, den in REHBER_INDEX_ITEMS]
+             for s, tt, dt, ten, den in BLOG_INDEX_ITEMS]
     item_list = ", ".join(
-        f'{{ "@type": "ListItem", "position": {i+1}, "url": "{abs_url(lang, "/rehber/" + s + ".html")}", "name": "{t}" }}'
+        f'{{ "@type": "ListItem", "position": {i+1}, "url": "{abs_url(lang, "/blog/" + s + ".html")}", "name": "{t}" }}'
         for i, (s, t, d) in enumerate(items))
     schema = [
         breadcrumb([(u["home"], home_abs), (u["guide"], url)]),
@@ -769,7 +769,7 @@ def build_rehber_index(lang):
     ]
     hd = head(u["hub_title"], u["hub_desc"], page_path, lang, schema_blocks=schema, ogtype="website")
     cards = "\n".join(
-        f'        <a class="card rv" href="{rel_href(lang, "/rehber/" + s + ".html")}"><span class="card__ix">{i+1:02d}</span>'
+        f'        <a class="card rv" href="{rel_href(lang, "/blog/" + s + ".html")}"><span class="card__ix">{i+1:02d}</span>'
         f'<h3>{t}</h3><p>{d}</p></a>'
         for i, (s, t, d) in enumerate(items))
     body = f"""
@@ -796,12 +796,12 @@ def build_rehber_index(lang):
 {cta(lang)}
 </main>
 """
-    write("en/rehber/index.html" if lang == "en" else "rehber/index.html", hd + body + footer(lang, page_path))
+    write("en/blog/index.html" if lang == "en" else "blog/index.html", hd + body + footer(lang, page_path))
 
 
 if __name__ == "__main__":
     for lang in LANGS:
         for a in ARTICLES:
             build_article(a, lang)
-        build_rehber_index(lang)
+        build_blog_index(lang)
     print("done")

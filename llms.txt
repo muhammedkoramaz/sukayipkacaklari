@@ -22,13 +22,13 @@
 - [Saha hizmetleri ve 4 aşamalı yöntem](https://sukayipkacaklari.com/hizmetler.html): akustik sızıntı tespiti ve korelasyon, ultrasonik debi ölçümü, su dengesi / NRW analizi, basınç izleme ve yönetimi, DMA - step - sıfır basınç testleri, CBS haritalama, ekip eğitimi
 - [Yazılım platformu](https://sukayipkacaklari.com/platform.html): mobil saha uygulaması (GPS + fotoğraflı kaçak kaydı), Leaflet haritalı web paneli, Excel/Word raporlama, GSM ultrasonik debimetre entegrasyonu
 
-## Rehber (kavramsal içerik)
+## Blog
 
-- [Su kaçağı nasıl anlaşılır?](https://sukayipkacaklari.com/rehber/su-kacagi-nasil-anlasilir.html)
-- [Akustik su kaçağı tespiti nedir?](https://sukayipkacaklari.com/rehber/akustik-su-kacagi-tespiti-nedir.html)
-- [DMA (İzole Ölçüm Bölgesi) nedir?](https://sukayipkacaklari.com/rehber/dma-nedir.html)
-- [Su kaybı düşürme yol haritası](https://sukayipkacaklari.com/rehber/su-kaybi-dusurme-yol-haritasi.html)
-- [Rehber ana sayfası](https://sukayipkacaklari.com/rehber/)
+- [Su kaçağı nasıl anlaşılır?](https://sukayipkacaklari.com/blog/su-kacagi-nasil-anlasilir.html)
+- [Akustik su kaçağı tespiti nedir?](https://sukayipkacaklari.com/blog/akustik-su-kacagi-tespiti-nedir.html)
+- [DMA (İzole Ölçüm Bölgesi) nedir?](https://sukayipkacaklari.com/blog/dma-nedir.html)
+- [Su kaybı düşürme yol haritası](https://sukayipkacaklari.com/blog/su-kaybi-dusurme-yol-haritasi.html)
+- [Blog ana sayfası](https://sukayipkacaklari.com/blog/)
 
 ## Projeler (sahadan ölçülmüş sonuçlar)
 
@@ -53,4 +53,4 @@ balance and non-revenue water (NRW) analysis. 25+ years of field experience
 (founded 2004). Registered office in Melikgazi/Kayseri; service area: Turkey.
 
 - [English home](https://sukayipkacaklari.com/en/)
-- [Services](https://sukayipkacaklari.com/en/hizmetler.html) · [Platform](https://sukayipkacaklari.com/en/platform.html) · [Guide](https://sukayipkacaklari.com/en/rehber/) · [Projects](https://sukayipkacaklari.com/en/projeler/) · [About](https://sukayipkacaklari.com/en/hakkimizda.html) · [Contact](https://sukayipkacaklari.com/en/iletisim.html)
+- [Services](https://sukayipkacaklari.com/en/hizmetler.html) · [Platform](https://sukayipkacaklari.com/en/platform.html) · [Blog](https://sukayipkacaklari.com/en/blog/) · [Projects](https://sukayipkacaklari.com/en/projeler/) · [About](https://sukayipkacaklari.com/en/hakkimizda.html) · [Contact](https://sukayipkacaklari.com/en/iletisim.html)

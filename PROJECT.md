@@ -85,7 +85,7 @@ güzel URL (`try_files $uri $uri/ $uri.html`) · markalı `error_page 404 /404.h
 
 > **İngilizce (tam parite):** her TR sayfanın `/en/` önekli birebir kopyası var
 > (`/en/`, `/en/platform.html`, `/en/hizmetler.html`, `/en/projeler/*.html`,
-> `/en/rehber/*.html`, `/en/sss.html`, `/en/iletisim.html`, `/en/gizlilik.html`,
+> `/en/blog/*.html`, `/en/sss.html`, `/en/iletisim.html`, `/en/gizlilik.html`,
 > `/en/referanslar.html`, `/en/hakkimizda.html`; `/en/tesekkurler.html` +
 > `/en/404.html` `noindex`). Slug'lar Türkçe kalır. Eşleşme kuralı: `EN yol = "/en" + TR yol`.
 > Her indekslenebilir sayfada karşılıklı `hreflang` üçlüsü (`tr` / `en` / `x-default`→TR),
@@ -102,8 +102,8 @@ güzel URL (`try_files $uri $uri/ $uri.html`) · markalı `error_page 404 /404.h
 | `/projeler/*.html` (**11**) | Proje detayları: Kütahya, Batman, Çanakkale, Keşan, Kilis, Sivas, Rize, Doğubayazıt, Fatsa, Bodrum, Mozambik-Beira | BreadcrumbList, Article (image dizisi, datePublished, isPartOf) |
 | `/referanslar.html` | Kurum logoları + proje geçmişi | BreadcrumbList |
 | `/hakkimizda.html` | Ekip + saha galerisi | AboutPage, Person ×2 |
-| `/rehber/` | Rehber hub | CollectionPage |
-| `/rehber/*.html` (**4**) | su-kacagi-nasil-anlasilir · akustik-su-kacagi-tespiti-nedir · dma-nedir · su-kaybi-dusurme-yol-haritasi | BreadcrumbList, Article |
+| `/blog/` | Blog hub | CollectionPage |
+| `/blog/*.html` (**4**) | su-kacagi-nasil-anlasilir · akustik-su-kacagi-tespiti-nedir · dma-nedir · su-kaybi-dusurme-yol-haritasi | BreadcrumbList, Article |
 | `/sss.html` | **11** SSS | FAQPage |
 | `/iletisim.html` | Form + Melikgazi/Kayseri haritası | LocalBusiness (areaServed = Türkiye), BreadcrumbList |
 | `/gizlilik.html` | KVKK gizlilik politikası | BreadcrumbList |
@@ -121,22 +121,22 @@ Windows'ta `py` (Python 3.10) + `PYTHONUTF8=1` ile çalıştır.
 | Script | Ne üretir |
 |---|---|
 | `tools/gen_projects.py` | **TR + EN** 11'er proje sayfası + `projeler/index.html` (+ `en/…`) + `sitemap.xml` (hreflang çiftli). TR verisi `P` listesinde, EN verisi `EN` sözlüğünde (`slug` anahtarlı), chrome metinleri `UI` sözlüğünde. Döngü: `for lang in ("tr","en")` |
-| `tools/gen_rehber.py` | **TR + EN** `/rehber/` hub + 4'er makale (`ARTICLES` içinde `*_en` alanları, `UI` sözlüğü, `for lang in ("tr","en")`). `en/rehber/…` çıktısı |
+| `tools/gen_blog.py` | **TR + EN** `/blog/` hub + 4'er makale (`ARTICLES` içinde `*_en` alanları, `UI` sözlüğü, `for lang in ("tr","en")`). `en/blog/…` çıktısı |
 | `tools/add_img_dims.py` | **Her jeneratör çalıştırmasından sonra** — tüm yerel `<img>`'lere gerçek `width`/`height` ekler (CLS düzeltmesi; idempotent) |
 | `tools/minify.py` | `site.css` / `fonts.css` / `site.js` → `*.min.*` üretir. **CSS/JS kaynağı değiştiyse çalıştır.** Bağımlılık yok, idempotent |
 | `tools/validate_all.py` | tag dengesi + JSON-LD parse + Article zorunlu alanlar + img boyut + GA etiketi + **hreflang tr/en/x-default üçlüsü (hedef diskte çözülür) + `<html lang>` ağaç tutarlılığı + JSON-LD `inLanguage`** (`noindex` sayfalar hreflang'den muaf) |
 | `tools/linkcheck.py` | kırık iç link taraması |
 
-Tipik akış: `py tools/gen_projects.py` → `py tools/gen_rehber.py` → `py tools/add_img_dims.py` → (`site.css`/`site.js` değiştiyse `py tools/minify.py`) → `py tools/validate_all.py` → `py tools/linkcheck.py` → `git commit` → `git push` (Coolify deploy eder).
+Tipik akış: `py tools/gen_projects.py` → `py tools/gen_blog.py` → `py tools/add_img_dims.py` → (`site.css`/`site.js` değiştiyse `py tools/minify.py`) → `py tools/validate_all.py` → `py tools/linkcheck.py` → `git commit` → `git push` (Coolify deploy eder).
 
-> Jeneratör şablonları (`gen_projects.py`, `gen_rehber.py`) `<head>` bloğunu — meta description, font preload, GA snippet, `.min` referansları, **hreflang üçlüsü, `og:locale` çifti, açılış (dil algılama) script'i, `TR | EN` değiştirici** — kendi içlerinde tutar. Bu politika değişirse **hem 20 el HTML'i (10 TR kök + 10 `en/` kök) hem iki jeneratör şablonunu** güncelle, yoksa ilk `regen` geri alır. İki jeneratör bu ortak parçaları paralel tutar — birini değiştirince diğerini de.
+> Jeneratör şablonları (`gen_projects.py`, `gen_blog.py`) `<head>` bloğunu — meta description, font preload, GA snippet, `.min` referansları, **hreflang üçlüsü, `og:locale` çifti, açılış (dil algılama) script'i, `TR | EN` değiştirici** — kendi içlerinde tutar. Bu politika değişirse **hem 20 el HTML'i (10 TR kök + 10 `en/` kök) hem iki jeneratör şablonunu** güncelle, yoksa ilk `regen` geri alır. İki jeneratör bu ortak parçaları paralel tutar — birini değiştirince diğerini de.
 >
 > **Dil değiştirici / açılış davranışı:** `assets/js/site.js` `.nav__lang a` / `.ftr__lang a` tıklamasında `localStorage['le-lang']` yazar (→ `site.min.js`). `<head>` script'i: kayıtlı tercih varsa tüm sitede o dile sabitler; tercih yoksa **yalnızca `data-home="1"` sayfada** (`/` ve `/en/`) `navigator.languages` Türkçe içermiyorsa `/en/`'e yönlendirir. `sessionStorage['le-lang-redirected']` döngü koruması. `.nav__lang` stili `site.css` sonunda.
 
 `SITE` yolu her jeneratörün başında sabit yazılı — repo taşınırsa orayı güncelle. `nginx.conf`
 değiştiyse ayrıca §4'teki `custom_nginx_configuration` PATCH'i unutma.
 
-> **nginx (`/en/` 404):** `nginx.conf`'a `location ^~ /en/ { … error_page 404 /en/404.html; try_files $uri $uri/ $uri.html =404; }` bloğu eklendi (`location /`'ten önce) + `location = /en/404.html { internal; }`. Deploy'da §4 base64 PATCH + `deploy?force=true` gerekli; yapılmazsa hatalı `/en/` yolları Türkçe `/404.html`'e düşer (fonksiyonel kayıp yok).
+> **nginx (`/en/` 404):** `nginx.conf`'a `location ^~ /en/ { … error_page 404 /en/404.html; try_files $uri $uri/ $uri.html =404; }` bloğu eklendi (`location /`'ten önce) + `location = /en/404.html { internal; }`. Deploy'da §4 base64 PATCH + `deploy?force=true` gerekli; yapılmazsa hatalı `/en/` yolları Türkçe `/404.html`'e düşer (fonksiyonel kayıp yok). Aynı şekilde eski `/rehber/` → `/blog/` 301 kuralı (`location ~ ^/(en/)?rehber(/.*)?$`) da `custom_nginx_configuration` PATCH gerektirir.
 
 ---
 
@@ -162,12 +162,13 @@ Bunlar kullanıcının açık talimatları. Yeni içerik eklerken hepsine uy:
 | Grup | İş |
 |---|---|
 | **A** | non-www kanonik + `www`→301 · güvenlik/gzip/cache başlıkları (nginx custom config) · anahtar kelime title/meta/H1 · hreflang (tr/x-default) · self-hosted fontlar · WebP görseller · genişletilmiş şema (Organization/ProfessionalService + WebSite + Person) · iç linkleme · sitemap `lastmod` + `image` · GA4 |
-| **B** | `/rehber/` bölümü (hub + 4 SEO makalesi) · SSS 5 → 11 soru (FAQPage) |
+| **B** | `/blog/` bölümü (hub + 4 SEO makalesi) · SSS 5 → 11 soru (FAQPage) |
 | **C** | Proje sayfaları Article şeması derinleştirme (gerçek foto `image` dizisi, `datePublished`, `isPartOf` CollectionPage) · `platform.html` SoftwareApplication `featureList` · şema `logo` → `icon.png` standardizasyonu · GA `preconnect`/`dns-prefetch` · 60 `<img>`'e `width`/`height` (CLS) |
 | **Sonra** | "**su kayıp kaçakları**" tam ifadesi görünür metne (ana sayfa title/meta/OG/eyebrow/lede + 25 sayfa footer marka satırı) — domain adının birebir karşılığı |
 | **Sonra** | Kayseri bölgesel konumlandırması tamamen kaldırıldı (yerel iniş sayfası + "Kayseri Merkez" projesi silindi, 12→11 proje) · ev/bina içi kaçak ibareleri kaldırıldı (SSS sorusu, rehber maddesi, hizmetler wording) |
 | **D** (2026-09-02) | SEOptimer + Rank Math denetimlerine göre: **(G1)** 13 sayfada meta description ≤160 krk'e indirildi (meta + OG + Twitter senkron) · **(G2)** `/llms.txt` eklendi · **(G3)** ölü `google-site-verification` placeholder meta'sı silindi · **(G4)** ana sayfa `Organization` şemasına `founder` (Hasan + Muhammed, `@id`'li — `hakkimizda.html` Person'larıyla eşleşir), `foundingLocation`, `numberOfEmployees` eklendi · **(G5)** `tools/minify.py` + `site.min.css`/`fonts.min.css`/`site.min.js`, 27 HTML + 2 jeneratör `.min`'e repoint (Rank Math "minify" FAIL kapandı) · **(G6)** ~110 satır-içi `style=""` → `site.css` utility sınıfları (1:1, görsel değişiklik yok) · **(G7)** mobil CLS 0.218 / LCP 3.8s: Bricolage başlık fontu `font-display:optional` (başlıkta swap→kayma yok), font preload yanlış subset düzeltildi (`-latin-ext` → asıl gereken `-latin` + `-ext`), GA `gtag.js` `requestIdleCallback` ile kritik yoldan çıkarıldı (27 sayfa) |
 | **E** (2026-09-03) | **Tam İngilizce desteği** — `/en/` alt ağacı, TR ile birebir parite (25 indekslenebilir + 2 `noindex` sayfa). Karşılıklı `hreflang` üçlüsü (tr/en/x-default) + `og:locale:alternate` tüm indekslenebilir sayfalarda · header+footer `TR | EN` metin değiştirici (`.nav__lang`/`.ftr__lang`, JS ile seçimi hatırlar) · `<head>` içi açılış script'i: bilgisayar dili Türkçe değilse ana sayfada `/en/`'e yönlendirir, seçim `localStorage['le-lang']`'de sabitlenir · `sitemap.xml` 50 URL (25 TR + 25 EN) + `xhtml:link` hreflang çiftleri · `gen_projects.py` + `gen_rehber.py` iki dilli refaktör (`UI`/`EN` sözlükleri, `for lang` döngüsü) · 10 el sayfası `/en/` altında elle çevrildi (JSON-LD `@id` korunur, `inLanguage`→`en-US`, `areaServed`=Türkiye) · `nginx.conf` `/en/` 404 kuralı · `validate_all.py` hreflang/lang kontrolleri · `llms.txt` İngilizce bölüm. Doğrulama: 54 HTML, 0 sorun, 0 kırık link |
+| **F** (2026-09-04) | /rehber/ → /blog/ taşındı (301'li), hub+makale kartları görselli, 8 yeni makale (debi ölçümü, basınç yönetimi, adım testi, sıfır basınç testi, hidrolik modelleme, boru hattı tespiti, şebeke haritalama/CBS, kaçak onarımı) TR+EN |
 | **Bekliyor (kullanıcı)** | SPF + DMARC TXT kayıtları (Cloudflare) · sosyal profiller → açılınca şema `sameAs`'e eklenecek · `iletisim.html` + `en/iletisim.html` formu hâlâ `formspree.io/f/BURAYA_FORM_ID` placeholder · **`nginx.conf` `/en/` 404 kuralı için §4 `custom_nginx_configuration` PATCH + `deploy?force=true`** |
 
 ## 9. SEO — neden henüz Google'da çıkmıyoruz
@@ -181,7 +182,7 @@ Bunlar kullanıcının açık talimatları. Yeni içerik eklerken hepsine uy:
 ## 10. Yapılacaklar (kullanıcı tarafı)
 
 - [ ] **Google İşletme Profili** — `business.google.com`, Melikgazi/Kayseri adres + telefon (sitedekiyle birebir). Açıklama metni hazır (oturuma bak).
-- [ ] **GSC → URL İncele → "Dizine Eklenmesini İste"** — ana sayfa + `/hizmetler.html`, `/platform.html`, `/rehber/`, birkaç proje.
+- [ ] **GSC → URL İncele → "Dizine Eklenmesini İste"** — ana sayfa + `/hizmetler.html`, `/platform.html`, `/blog/`, birkaç proje.
 - [ ] **Backlink**: LinkedIn şirket sayfası (siteye link), Kayseri TSO / sektör dizinleri, su kayıp-kaçak forumları (`waterlossforum.org`), ihale/tedarikçi platformları, belediye referanslarından geri link.
 - [ ] **Bing Webmaster Tools** — siteyi ekle, sitemap gönder.
 - [ ] `index.html`'deki `google-site-verification` meta'sı hâlâ placeholder (GSC başka yöntemle doğrulandığı için sorun değil; istenirse temizlenir).
