@@ -56,7 +56,7 @@ python -m http.server 8080
 
 ```bash
 py tools/gen_projects.py   # 11 proje sayfası + projeler/index.html + sitemap.xml
-py tools/gen_blog.py       # /blog/ hub + 4 makale
+py tools/gen_blog.py       # /blog/ hub + 12 makale
 py tools/add_img_dims.py   # HER jeneratörden sonra: <img> width/height (CLS; idempotent)
 py tools/validate_all.py   # tag dengesi + JSON-LD + img boyut + GA preconnect
 py tools/linkcheck.py      # kırık iç link
