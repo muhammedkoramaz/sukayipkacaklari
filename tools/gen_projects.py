@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Generate all project detail pages + projeler/index.html + sitemap.xml for the
 LeakExpert site, bilingual (tr at root, en under /en/).
-Shares header/footer/head/lang-switcher/open-script shape with gen_rehber.py —
+Shares header/footer/head/lang-switcher/open-script shape with gen_blog.py —
 keep the two in sync (PROJECT.md §6)."""
 import os, json, html, re
 from datetime import date as _date
@@ -69,7 +69,7 @@ FONTS = (
 UI = {
     "tr": {
         "menu": [("/", "Ana Sayfa"), ("/platform.html", "Platform"), ("/hizmetler.html", "Hizmetler"),
-                 ("/rehber/", "Rehber"), ("/projeler/", "Projeler"), ("/referanslar.html", "Referanslar"),
+                 ("/blog/", "Blog"), ("/projeler/", "Projeler"), ("/referanslar.html", "Referanslar"),
                  ("/hakkimizda.html", "Hakkımızda"), ("/iletisim.html", "İletişim")],
         "skip": "İçeriğe geç", "menu_aria": "Ana menü", "burger_aria": "Menüyü aç",
         "brand_aria": "LeakExpert ana sayfa", "crumb_aria": "Sayfa işaret yolu",
@@ -83,7 +83,7 @@ UI = {
                          ("/platform.html#api", "API &amp; entegrasyon"),
                          ("/hizmetler.html", "Saha hizmetleri")],
         "ftr_corp": [("/hakkimizda.html", "Hakkımızda"), ("/projeler/", "Projeler"),
-                     ("/referanslar.html", "Referanslar"), ("/rehber/", "Rehber"),
+                     ("/referanslar.html", "Referanslar"), ("/blog/", "Blog"),
                      ("/sss.html", "Sık sorulan sorular"), ("/iletisim.html", "İletişim"),
                      ("/gizlilik.html", "Gizlilik politikası")],
         "ftr_rights": "© 2026 LeakExpert · Tüm hakları saklıdır.",
@@ -109,7 +109,7 @@ UI = {
     },
     "en": {
         "menu": [("/", "Home"), ("/platform.html", "Platform"), ("/hizmetler.html", "Services"),
-                 ("/rehber/", "Guide"), ("/projeler/", "Projects"), ("/referanslar.html", "References"),
+                 ("/blog/", "Blog"), ("/projeler/", "Projects"), ("/referanslar.html", "References"),
                  ("/hakkimizda.html", "About"), ("/iletisim.html", "Contact")],
         "skip": "Skip to content", "menu_aria": "Main menu", "burger_aria": "Open menu",
         "brand_aria": "LeakExpert home", "crumb_aria": "Breadcrumb",
@@ -123,7 +123,7 @@ UI = {
                          ("/platform.html#api", "API &amp; integration"),
                          ("/hizmetler.html", "Field services")],
         "ftr_corp": [("/hakkimizda.html", "About"), ("/projeler/", "Projects"),
-                     ("/referanslar.html", "References"), ("/rehber/", "Guide"),
+                     ("/referanslar.html", "References"), ("/blog/", "Blog"),
                      ("/sss.html", "FAQ"), ("/iletisim.html", "Contact"),
                      ("/gizlilik.html", "Privacy policy")],
         "ftr_rights": "© 2026 LeakExpert · All rights reserved.",
@@ -1022,9 +1022,9 @@ u("/projeler/", "weekly", "0.8")
 for pp in P:
     u(f"/projeler/{pp['slug']}.html", "monthly", "0.7",
       ["/assets/projects/" + ph[0].replace('.jpg', '.webp') for ph in pp['photos']])
-u("/rehber/", "monthly", "0.8")
-for _rs in ("su-kacagi-nasil-anlasilir", "akustik-su-kacagi-tespiti-nedir", "dma-nedir", "su-kaybi-dusurme-yol-haritasi"):
-    u(f"/rehber/{_rs}.html", "yearly", "0.7")
+u("/blog/", "monthly", "0.8")
+for _rs in ("su-kacagi-nasil-anlasilir", "debi-olcumu-nedir", "basinc-yonetimi-nedir", "akustik-su-kacagi-tespiti-nedir", "dma-nedir", "adim-testi-nedir", "sifir-basinc-testi-nedir", "hidrolik-modelleme-nedir", "boru-hatti-tespiti-nedir", "sebeke-haritalama-cbs", "kacak-onarimi-ve-dogrulama", "su-kaybi-dusurme-yol-haritasi"):
+    u(f"/blog/{_rs}.html", "yearly", "0.7")
 u("/referanslar.html", "monthly", "0.8")
 u("/hakkimizda.html", "monthly", "0.7", ["/assets/team/hasan-koramaz.webp", "/assets/team/muhammed-koramaz.webp"])
 u("/sss.html", "monthly", "0.7")

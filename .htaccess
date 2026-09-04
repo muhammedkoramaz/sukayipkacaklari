@@ -3,6 +3,9 @@
 
 ErrorDocument 404 /404.html
 
+# eski /rehber/ yolları -> /blog/ (kalıcı)
+RedirectMatch 301 ^/(en/)?rehber(/.*)?$ /$1blog$2
+
 # www + HTTPS'e yönlendir (barındırıcı zaten yapıyorsa kaldırın)
 <IfModule mod_rewrite.c>
   RewriteEngine On

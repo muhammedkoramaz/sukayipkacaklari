@@ -371,6 +371,13 @@ h1, h2, h3, h4 {
 .card .link-arw { margin-top: auto; align-self: flex-start; }
 a.card:hover { border-color: var(--brand); }
 
+.card--media { padding: 0; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+.card--media .card__img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--bg-2); }
+.card--media > *:not(.card__img) { padding-inline: clamp(22px, 3vw, 30px); }
+.card--media > .card__img + * { padding-top: clamp(22px, 3vw, 30px); }
+.card--media > *:last-child { padding-bottom: clamp(22px, 3vw, 30px); }
+.card--media .card__ix { position: absolute; top: 12px; left: 12px; background: #fff; border-radius: var(--radius-sm); padding: 2px 8px; }
+
 /* ---------- spec list ---------- */
 .spec { border-top: 2px solid var(--ink); }
 .spec__row {
@@ -426,6 +433,9 @@ a.card:hover { border-color: var(--brand); }
 .figure--tall { aspect-ratio: 4 / 5; }
 .figure--wide { aspect-ratio: 16 / 10; }
 .figure--sq { aspect-ratio: 1 / 1; }
+
+.article-hero { margin: 0 0 8px; border-radius: var(--radius); overflow: hidden; }
+.article-hero img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
 
 .photo-grid { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); }
 @media (min-width: 800px) { .photo-grid { grid-template-columns: repeat(4, 1fr); } }
