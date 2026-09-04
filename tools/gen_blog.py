@@ -1048,7 +1048,7 @@ ARTICLES = [
         <p>Kapsam belediye ve organize sanayi bölgesi dağıtım şebekeleridir; söz konusu olan, sokak ve arter hatlarının güzergâhının kazısız belirlenmesidir.</p>
 
         <h2>Metal hatlar: elektromanyetik hat dedektörü</h2>
-        <p>Dökme demir, çelik ve font gibi iletken borular, elektromanyetik hat dedektörüyle izlenir. Sistem iki parçadan oluşur: hatta bir sinyal (alternatif akım) bindiren verici ve bu sinyalin oluşturduğu manyetik alanı yüzeyden algılayan alıcı.</p>
+        <p>Dökme demir, düktil font ve çelik gibi iletken borular, elektromanyetik hat dedektörüyle izlenir. Sistem iki parçadan oluşur: hatta bir sinyal (alternatif akım) bindiren verici ve bu sinyalin oluşturduğu manyetik alanı yüzeyden algılayan alıcı.</p>
         <p>Sinyal hatta iki yolla verilir. Doğrudan bağlantıda verici kablosu, borunun açıkta bir noktasına (vana mili, hidrant, flanş) doğrudan kelepçelenir; bu en güçlü ve en temiz yöntemdir. İndüktif kelepçede, boruyu saran bir halka verici sinyalini boruya endükler ve bağlantı için açık metal gerekmez. Verici doğrudan zemine de kurulabilir, ancak bu durumda sinyal daha zayıf ve komşu iletkenlere kaçmaya daha yatkındır.</p>
         <p>Alıcı, güzergâh boyunca yürütülürken sinyalin en güçlü olduğu çizgi borunun izdüşümünü verir. Cihaz aynı zamanda alan geometrisinden bir derinlik tahmini hesaplar; bu değer, sinyalin tek ve bozulmamış bir iletkenden geldiği varsayımına dayanır.</p>
 
