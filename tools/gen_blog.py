@@ -530,6 +530,94 @@ ARTICLES = [
 """,
     ),
     dict(
+        slug="basinc-yonetimi-nedir",
+        hero="/assets/photos/basinc-logger.webp",
+        hero_alt="Hat üzerinde basınç veri loggerı",
+        hero_alt_en="Pressure data logger on a main",
+        h1="Basınç yönetimi ve basınç bölgeleri (PMA)",
+        title="Basınç Yönetimi Nedir? Basınç Bölgeleri ve PMA | LeakExpert",
+        desc="Şebekede yüksek ve dalgalı basıncın kaçak ve patlaklarla ilişkisi, basınç bölgesi (PMA) kurulumu, basınç düşürücü vana ve sabit/zaman/akış kontrollü ayar.",
+        lede="Şebekedeki her fazla metre basınç, hem yeni patlak riskini hem de mevcut kaçakların debisini artırır. <strong>Basınç yönetimi</strong>, şebekeyi gerektiği kadar — ne fazla, ne eksik — basınçta tutma işidir.",
+        h1_en="Pressure management and pressure zones (PMA)",
+        title_en="What Is Pressure Management? Pressure Zones and PMA | LeakExpert",
+        desc_en="How high and fluctuating pressure drives leaks and bursts, setting up a pressure managed area (PMA), and fixed/time/flow-modulated PRV control.",
+        lede_en="Every extra metre of pressure in a network raises both the risk of new bursts and the flow rate of existing leaks. <strong>Pressure management</strong> is the work of keeping the network at just the pressure it needs — no more, no less.",
+        body="""
+      <div class="prose">
+        <h2>Basınç ile kaçak arasındaki ilişki</h2>
+        <p>Basınçlı bir borudaki her açıklıktan — mikro çatlak, gevşemiş conta, korozyon deliği — kaçan su debisi, hattaki basınçla birlikte artar. Bu ilişki doğrusal değildir: kaçak debisi, basıncın <strong>N1 üssü</strong> ile orantılı kabul edilir (FAVAD yaklaşımı). N1 genellikle 0,5 ile 1,5 arasındadır; rijit borulardaki sabit alanlı delik ve çatlaklarda ~0,5'e, esnek (plastik) borulardaki arka plan sızıntılarında ~1'e, açıklığın basınçla genişlediği durumlarda daha yükseğe çıkar. Karışık bir şebekede pratik değer 1 civarındadır; yani ortalama basıncı %15 düşürmek, mevcut kaçak debisini kabaca %15 azaltır.</p>
+        <p>Basıncın ikinci etkisi yeni patlaklar üzerinedir. Yüksek ortalama basınç ve özellikle pompa/vana manevralarından doğan <strong>basınç dalgalanmaları (transiyentler)</strong> boru ve bağlantılarda yorulmayı hızlandırır; arıza sıklığı artar. Basıncı hem düşürmek hem de gün içinde sabit tutmak, kırılma hızını kalıcı biçimde aşağı çeker. Bu yüzden basınç yönetimi, <a href="/blog/su-kaybi-dusurme-yol-haritasi.html">su kaybını düşürme programının</a> ilk ve en hızlı geri dönüşlü adımıdır.</p>
+
+        <h2>Basınç bölgesi (PMA) nedir?</h2>
+        <p>Basınç bölgesi (PMA — Pressure Managed Area), kot ve besleme yönü bakımından birbirine benzeyen, sınırları kapalı vanalarla belirlenmiş ve tek bir noktadan beslenen şebeke parçasıdır. Alan içindeki bağlantıların yer aldığı kot aralığı dar tutulur; böylece girişte ayarlanan tek bir çıkış basıncı, bölgenin tamamına kabul edilebilir sınırlar içinde hizmet verir.</p>
+        <p>Basınç bölgesi çoğu zaman bir <a href="/blog/dma-nedir.html">izole ölçüm bölgesiyle (DMA)</a> çakışır veya onun içine yerleşir: aynı kapalı sınır hem debiyi sayılabilir kılar hem de basıncı tek girişten yönetmeye izin verir. Geniş bir kot farkı varsa alan, her biri kendi hedef basıncına sahip birden çok bölgeye ayrılır.</p>
+
+        <h2>Basınç düşürücü vana</h2>
+        <p>Bölge girişine bir <strong>basınç düşürücü vana</strong> konur. Bu, pilot devresiyle çalışan, kendinden tahrikli bir hidrolik kontrol vanasıdır: giriş basıncı ve debi değişse de kısılma oranını sürekli ayarlayarak çıkış basıncını belirlenen hedefte tutar. Marka veya modelden bağımsız olarak temel işlev aynıdır — bölgeye giren suyun basıncını ihtiyaç duyulan değere indirmek ve orada sabitlemek.</p>
+        <p>Vana bir <strong>basınç veri loggerına</strong> bağlanır; giriş ve çıkış basıncı ile bölge debisi kaydedilir. Bu kayıt hem ayarın doğru çalıştığını gösterir hem de aşağıdaki kontrol tiplerinin uygulanmasına zemin hazırlar.</p>
+
+        <h2>Ayar tipleri</h2>
+        <p><strong>Sabit çıkış:</strong> Vana, giriş koşulları ne olursa olsun tek bir çıkış basıncını korur. Kurulumu en basit yöntemdir; ancak hedef, gün içindeki en yüksek talep anına göre seçilmek zorunda olduğundan, talebin düştüğü saatlerde bölge hâlâ gereğinden yüksek basınçta kalır.</p>
+        <p><strong>Zaman kontrollü:</strong> Bir kontrol ünitesi, çıkış hedefini tanımlı saat aralıklarına göre değiştirir — tipik olarak gece talep düşükken daha düşük, sabah ve akşam piklerinde daha yüksek. Ek donanımı azdır; fakat gerçek talebi değil saati izlediğinden, tüketim beklenen desenden saparsa ayar da sapar.</p>
+        <p><strong>Akış kontrollü:</strong> Çıkış hedefi, vanadan geçen ölçülü debinin bir fonksiyonu olarak sürekli değişir. Talep azaldıkça basınç düşer, arttıkça yükselir; kritik nokta her an tam yeterli basınçta tutulur, fazlası bölgeye verilmez. Kaçak azaltmada en etkili yöntemdir, karşılığında bir debimetre ve daha yetenekli bir kontrol ünitesi gerektirir.</p>
+
+        <h2>Hedef basınç nasıl belirlenir?</h2>
+        <p>Hedef, bölgenin ortalamasına göre değil <strong>en kritik abonesine</strong> göre seçilir: en yüksek kottaki veya besleme noktasından en uzak bağlantı. Bu noktada, en yüksek talep anında bile korunması gereken bir <strong>asgari servis basıncı</strong> vardır — idarenin bağlantı noktası için tanımladığı alt sınır.</p>
+        <p>Giriş hedefi geriye doğru hesaplanır: kritik noktadaki asgari servis basıncı, artı kritik noktayla giriş arasındaki kot farkı, artı en yüksek debideki sürtünme kayıpları, artı bir güvenlik payı. Hesap, kritik noktaya yerleştirilen bir basınç loggerıyla tam bir talep çevrimi boyunca saha verisiyle doğrulanır; ayar, ölçülen en düşük değere göre ince ayarlanır.</p>
+
+        <h2>Kazanç nasıl ölçülür?</h2>
+        <p>Ölçüt, ayar öncesi ve sonrasının karşılaştırılmasıdır. Birincil gösterge bölgenin <strong>gece minimum debisidir</strong>: basınç düştüğünde gece debisi birkaç gün içinde ölçülebilir biçimde geriler. İkincil gösterge, benzer uzunluktaki dönemlerde bölgedeki <strong>patlak ve arıza sayısıdır</strong>; basınç sabitlendikçe bu sayı da düşer.</p>
+        <p>Bunun için giriş ve kritik noktadaki loggerlar kalıcı bırakılır. Basınçtaki düşüşün korunduğu ve gece debisinin yeniden tırmanmadığı sürekli izlenir; eşik aşıldığında bölge yeniden taranır. Basınç yönetiminin kazancı ancak bu izlemeyle kalıcı olur.</p>
+
+        <h2>Tasarımın doğrulanması</h2>
+        <p>Sahadan toplanan basınç ve debi kayıtları — giriş, kritik nokta ve ara düğümler — kalibre edilmiş bir <a href="/blog/hidrolik-modelleme-nedir.html">hidrolik modele</a> işlenir. Model, tüm talep senaryolarında her düğümün asgari basıncın üzerinde kaldığını kontrol eder, vananın boyutunu ve kavitasyon riskini değerlendirir, zaman ve akış kontrollü profilleri sınar ve manevralardan doğacak dalgalanmaları öngörür.</p>
+        <p>Bu doğrulama, ayarın yalnızca ortalama koşullarda değil uç durumlarda da güvenli olduğunu gösterir. LeakExpert; saha ölçümü, model ve kalıcı izlemeyi tek programda yürütür ve her bölgenin hedef basıncını, gece debisini ve arıza geçmişini birlikte raporlar.</p>
+        <ul>
+          <li>Yöntemin ayrıntısı: <a href="/hizmetler.html">Hizmetler</a></li>
+          <li>Saha örnekleri: <a href="/projeler/">Projeler</a></li>
+          <li>Sık sorulanlar: <a href="/sss.html">SSS</a></li>
+        </ul>
+      </div>
+""",
+        body_en="""
+      <div class="prose">
+        <h2>The link between pressure and leakage</h2>
+        <p>The flow escaping any opening in a pressurised pipe — a hairline crack, a loosened joint, a corrosion hole — rises with the pressure in the main, and not linearly: leak flow is taken to vary with pressure raised to the power <strong>N1</strong> (the FAVAD approach). N1 usually lies between 0.5 and 1.5 — near 0.5 for fixed-area holes and cracks in rigid pipe, near 1 for background leakage in flexible (plastic) pipe, higher where the opening widens with pressure. In a mixed network the practical value is around 1, so cutting the average pressure by 15% cuts the existing leak flow by roughly 15%.</p>
+        <p>Pressure has a second effect, on new bursts. High average pressure, and above all the <strong>pressure transients</strong> caused by pump and valve operations, accelerate fatigue in pipes and joints, so the break frequency rises. Lowering the pressure and holding it steady through the day drive the break rate permanently down. This is why pressure management is the first and fastest-returning step of a <a href="/en/blog/su-kaybi-dusurme-yol-haritasi.html">water-loss reduction programme</a>.</p>
+
+        <h2>What is a pressure managed area (PMA)?</h2>
+        <p>A pressure managed area (PMA) is a part of the network similar in elevation and supply direction, bounded by closed valves and fed from a single point. The range of ground levels across its connections is kept narrow, so that one outlet pressure set at the inlet serves the whole area within acceptable limits.</p>
+        <p>A PMA often coincides with, or sits inside, a <a href="/en/blog/dma-nedir.html">District Metered Area (DMA)</a>: the same closed boundary that makes flow countable also allows pressure to be managed from one inlet. Where the elevation range is wide, the area is split into several zones, each with its own target pressure.</p>
+
+        <h2>The pressure reducing valve</h2>
+        <p>A <strong>pressure reducing valve (PRV)</strong> is fitted at the zone inlet. It is a self-operated hydraulic control valve driven by a pilot circuit: it continuously adjusts how far it throttles so that the downstream pressure holds at a chosen target even as the inlet pressure and the flow change. Independent of make or model, the function is the same — bring the pressure of the water entering the zone down to what is needed and hold it there.</p>
+        <p>The valve is connected to a <strong>pressure data logger</strong> recording the inlet and outlet pressure and the zone flow. This record shows the setting is working and is the basis for the control modes described next.</p>
+
+        <h2>Control modes</h2>
+        <p><strong>Fixed outlet:</strong> the valve holds a single downstream pressure whatever the inlet conditions. It is the simplest to commission; but because the target must suit the moment of highest daily demand, the zone stays at more pressure than it needs when demand falls.</p>
+        <p><strong>Time-modulated:</strong> a controller changes the outlet target by defined time bands — lower at night when demand is low, higher at the morning and evening peaks. It needs little extra hardware; but because it follows the clock rather than real demand, the setting drifts if consumption departs from the expected pattern.</p>
+        <p><strong>Flow-modulated:</strong> the outlet target varies continuously as a function of the measured flow through the valve. As demand falls the pressure falls, as it rises the pressure rises; the critical point is kept at just-adequate pressure at all times. It is the most effective mode for cutting leakage, and in return it needs a flow meter and a more capable controller.</p>
+
+        <h2>How is the target pressure set?</h2>
+        <p>The target is chosen not for the zone average but for its <strong>critical point</strong>: the connection at the highest elevation, or the farthest from the feed. At that point a <strong>minimum service pressure</strong> must be preserved even at the moment of highest demand — the lower limit the utility defines for the connection point.</p>
+        <p>The inlet target is worked back from it: the minimum service pressure at the critical point, plus the elevation difference to the inlet, plus the friction losses at peak flow, plus a safety margin. It is then verified with a pressure logger at the critical point over a full demand cycle, and the setting is trimmed to the lowest value recorded.</p>
+
+        <h2>How is the gain measured?</h2>
+        <p>The measure is a before-and-after comparison. The primary indicator is the zone's <strong>minimum night flow</strong>: when the pressure drops, it falls measurably within a few days. The secondary indicator is the <strong>count of bursts and failures</strong> over periods of similar length; as the pressure steadies, that count falls too.</p>
+        <p>For this the loggers at the inlet and the critical point are left in place. That the pressure reduction holds and the night flow does not climb again is monitored continuously; when a threshold is passed, the zone is surveyed again. The gain only lasts with this monitoring.</p>
+
+        <h2>Validating the design</h2>
+        <p>The pressure and flow records collected in the field — at the inlet, the critical point and intermediate nodes — are entered into a calibrated <a href="/en/blog/hidrolik-modelleme-nedir.html">hydraulic model</a>. The model checks that every node stays above the minimum pressure under all demand scenarios, assesses the valve size and the cavitation risk, tests the time- and flow-modulated profiles, and predicts the transients that operations would produce.</p>
+        <p>This validation shows the setting is safe not only in average conditions but at the extremes. LeakExpert runs field measurement, modelling and permanent monitoring as one programme, reporting each zone's target pressure, night flow and failure history together.</p>
+        <ul>
+          <li>Method detail: <a href="/en/hizmetler.html">Services</a></li>
+          <li>Field examples: <a href="/en/projeler/">Projects</a></li>
+          <li>Common questions: <a href="/en/sss.html">FAQ</a></li>
+        </ul>
+      </div>
+""",
+    ),
+    dict(
         slug="akustik-su-kacagi-tespiti-nedir",
         hero="/assets/photos/gece-dinleme-hero.webp",
         hero_alt="Gece akustik dinleme",
@@ -790,6 +878,10 @@ BLOG_INDEX_ITEMS = [
      "Debi ölçümü nedir?", "Taşınabilir ve kalıcı debimetreler, ölçüm noktası seçimi ve gece minimum debi.",
      "What is flow measurement?", "Portable and permanent flow meters, choosing the measuring point, minimum night flow.",
      "/assets/photos/debi-olcum.webp"),
+    ("basinc-yonetimi-nedir",
+     "Basınç yönetimi nedir?", "Basınç–kaçak ilişkisi, basınç bölgesi (PMA) ve basınç düşürücü vana ayarı.",
+     "What is pressure management?", "The pressure–leak link, pressure managed areas (PMA) and PRV control.",
+     "/assets/photos/basinc-logger.webp"),
     ("akustik-su-kacagi-tespiti-nedir",
      "Akustik su kaçağı tespiti nasıl yapılır?", "Gürültü kaydedici, yer mikrofonu ve korelatörle adım adım yer tespiti.",
      "How is acoustic water leak detection done?", "Step-by-step location with noise loggers, a ground microphone and a correlator.",
