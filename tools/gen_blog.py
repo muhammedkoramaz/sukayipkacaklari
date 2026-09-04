@@ -936,6 +936,95 @@ ARTICLES = [
 """,
     ),
     dict(
+        slug="hidrolik-modelleme-nedir",
+        hero="/assets/photos/basinc-test.webp",
+        hero_alt="Sahada basınç ölçümü",
+        hero_alt_en="Field pressure measurement",
+        date="2026-09-04",
+        h1="Hidrolik modelleme ve saha kalibrasyonu",
+        title="Hidrolik Modelleme Nedir? Şebeke Modeli ve Saha Kalibrasyonu | LeakExpert",
+        desc="Hidrolik model, içme suyu şebekesinin bilgisayar benzetimidir. Model girdileri, saha basınç-debi ölçümleriyle kalibrasyon, kayıp ve basınç senaryoları.",
+        lede="Bir şehir şebekesinde \"şu vanayı kısarsam uçtaki basınç ne olur?\" sorusunu sahada denemek pahalıdır. <strong>Hidrolik model</strong>, şebekenin borularını, kotlarını ve tüketimini bilgisayarda kurup bu soruları önceden yanıtlar.",
+        h1_en="Hydraulic modelling and field calibration",
+        title_en="What Is Hydraulic Modelling? Network Model and Field Calibration | LeakExpert",
+        desc_en="A hydraulic model is a computer simulation of a drinking-water network: model inputs, calibration against field measurements, loss and pressure scenarios.",
+        lede_en="Testing \"what happens to end-of-line pressure if I throttle this valve?\" in the field is expensive. A <strong>hydraulic model</strong> builds the network's pipes, elevations and demand in software and answers those questions in advance.",
+        body="""
+      <div class="prose">
+        <h2>Model nedir, ne işe yarar?</h2>
+        <p>Hidrolik model, bir içme suyu dağıtım şebekesinin bilgisayarda kurulmuş benzetimidir. Şebeke bir grafik olarak temsil edilir: borular kenarlar, kavşak ve tüketim noktaları düğümlerdir. Her boru için uzunluk, çap, malzeme ve iç pürüzlülük; her düğüm için kot ve o düğüme atanan talep tanımlanır. Buna depo su seviyeleri ve pompa eğrileri gibi sınır koşulları eklenir. Modelleme yazılımı bu denklemleri çözerek her düğümdeki basıncı ve her borudaki debiyi hesaplar.</p>
+        <p>İki temel çalışma biçimi vardır. Kararlı hâl (steady-state) çözümü, talebin sabit olduğu tek bir an için şebekeyi çözer. Uzatılmış süre benzetimi (extended-period) ise günlük bir tüketim profili boyunca saat saat çözüm üretir; depo dolup boşalması, pompa çalışma saatleri ve gece–gündüz basınç değişimi bu biçimde görülür.</p>
+        <p>Model, sahada denemesi pahalı veya riskli olan soruları önceden yanıtlamak için kullanılır: <a href="/blog/basinc-yonetimi-nedir.html">basınç yönetimi</a> tasarımı, yeni boru veya depo yatırımının etkisi, bir bölgenin beslemesinin değiştirilmesi ve kayıp azaltmanın şebeke davranışına yansıması. Model bir karar destek aracıdır; gerçeğin yerini tutmaz, gerçeği tahmin eder.</p>
+
+        <h2>Girdi verileri</h2>
+        <p>Bir modelin değeri, girdi verisinin doğruluğuna bağlıdır. Ağ geometrisi genellikle şebekenin harita ve coğrafi bilgi sisteminden alınır: boru güzergâhı, çap, malzeme, döşenme yılı ve vana konumları. Bu verinin güncel ve eksiksiz olması kritik önemdedir; bu nedenle model çalışması çoğu zaman <a href="/blog/sebeke-haritalama-cbs.html">şebeke haritalama ve CBS</a> çalışmasıyla birlikte yürür.</p>
+        <p>Düğüm kotları sayısal yükseklik verisinden veya nivelman ölçümünden gelir; basınç kot farkına doğrudan bağlı olduğu için kot hataları model basıncını sistematik biçimde kaydırır. Pürüzlülük katsayısı boru malzemesi ve yaşına göre başlangıçta tahmin edilir, sonra kalibrasyonla düzeltilir.</p>
+        <p>Sınır koşulları da tanımlanır: depo ve terfi merkezi su seviyeleri, pompa debi–basma yüksekliği eğrileri, basınç düşürücü vana ayar değerleri ve şebekeye giren toplam üretim debisi. Bu değerlerin ölçüm kayıtlarıyla, tercihen modelin temsil ettiği güne ait kayıtlarla desteklenmesi gerekir.</p>
+
+        <h2>Talep dağıtımı</h2>
+        <p>Şebekeye giren toplam su, modeldeki düğümlere paylaştırılmak zorundadır; çünkü tüketim gerçekte binlerce abone bağlantısından çekilir, model ise sınırlı sayıda düğümle çalışır. En yaygın yöntem, her düğüme yakınındaki abone sayısı veya faturalanan tüketim payı oranında talep atamaktır. Böylece düğüm talepleri toplandığında sisteme giren ölçülmüş debiye eşit olur.</p>
+        <p>Kararlı hâl çözümü tek bir talep seviyesiyle çalışır; genellikle günlük ortalama veya saatlik en yüksek talep seçilir. Uzatılmış süre benzetiminde ise düğüm taleplerine bir günlük tüketim profili uygulanır: gecenin düşük, sabah ve akşamın yüksek çarpanlarıyla saatlik talep değişimi tanımlanır. Sanayi ve kamu gibi farklı abone türleri için ayrı profiller kullanılabilir.</p>
+        <p>Fiziki kayıp da bir tür taleptir ve basınçla birlikte artar. Kaba modellerde kayıp, tüm düğümlere yayılmış sabit bir ek tüketim olarak; daha ayrıntılı modellerde basınca bağlı bir sızıntı terimi olarak tanımlanır. <a href="/blog/debi-olcumu-nedir.html">Debi ölçümü</a> ve <a href="/blog/dma-nedir.html">DMA</a> gece minimum debisi, bu kayıp bileşeninin büyüklüğünü belirlemede kullanılır.</p>
+
+        <h2>Saha kalibrasyonu</h2>
+        <p>Kurulan model başlangıçta gerçeği tam yansıtmaz; pürüzlülük tahminleri, talep dağıtımı ve harita hataları çıktıyı gerçekten uzaklaştırır. Kalibrasyon, model çıktısını sahada ölçülen değerlere yaklaştırma sürecidir. Bunun için şebekede birkaç noktaya eşzamanlı basınç kaydediciler ve seçili hatlara debi ölçüm cihazları yerleştirilir; ölçüm en az bir tam gün, tercihen tipik bir hafta içi gün boyunca sürer.</p>
+        <p>Aynı gün için model çalıştırılır ve modellenen basınç ile debi, ölçülen değerlerle karşılaştırılır. Fark kabul edilebilir sınırın üzerindeyse, önce belirgin hatalar (kapalı sanılan açık vana, yanlış çap, hatalı kot) düzeltilir; ardından pürüzlülük katsayıları ve talep dağıtımı, model ile ölçüm örtüşene kadar ayarlanır. Ayar, ölçüm noktalarının tümünde aynı anda makul uyum sağlayacak biçimde yapılır; tek noktayı tutturmak için diğerlerini bozmak kalibrasyon değildir.</p>
+        <p>Kalibre edilmiş model, ölçümün yapıldığı çalışma koşulları için güvenilirdir. Koşullar (talep seviyesi, pompa düzeni) ölçüm aralığından uzaklaştıkça belirsizlik artar. Bu yüzden hem kararlı hâl hem de gün boyu değişim için ayrı ayrı doğrulama tercih edilir.</p>
+
+        <h2>Senaryolar</h2>
+        <p>Kalibre edilmiş bir model, &ldquo;ya şöyle olsaydı?&rdquo; sorularını sahada denemeden ucuza sınamaya yarar. Sık kullanılan senaryolardan biri basınç düşürücü vana hedef değerinin değiştirilmesidir: uç noktalarda basınç kabul edilebilir sınırın altına inmeden ayarın ne kadar düşürülebileceği modelde görülür. Bir diğeri bölge sınırlarının değiştirilmesidir; bir <a href="/blog/dma-nedir.html">DMA</a> sınır vanasının açılıp kapatılmasının komşu bölgelerin basıncına ve debisine etkisi önceden hesaplanır.</p>
+        <p>Yangın debisi senaryosunda, belirli bir hidranttan yüksek debi çekilirken şebekede kalan artık basınç kontrol edilir. Kayıp azaltma senaryosunda ise fiziki kaybın belirli bir oranda düşürülmesinin gece minimum debisine ve ortalama basınca yansıması incelenir. Her senaryo, aynı kalibre modelin tek bir girdisini değiştirip yeniden çözmekle üretilir; sonuçlar mutlak sayı olarak değil, mevcut duruma göre değişim olarak yorumlanır, çünkü modelin doğruluğu sınırlıdır ve karşılaştırmalı sonuç tek bir kesin sayıdan daha güvenilirdir.</p>
+
+        <h2>Modelin sınırları</h2>
+        <p>Model, girdi verisi kadar iyidir. Eski veya eksik CBS kayıtları, kayıt dışı bağlantılar, yanlış çap veya malzeme bilgisi ve konumu bilinmeyen kapalı vanalar, çözümü sessizce yanlış tarafa çeker. Bu hatalar çoğu zaman kalibrasyonda pürüzlülük ayarına gömülür ve model &ldquo;uyuyor&rdquo; görünürken fiziksel olarak yanlış olabilir.</p>
+        <p>Doğruluk abartılmamalıdır. İyi kalibre edilmiş bir model, basınçları birkaç metre su sütunu, debileri ise yüzde birkaç ile birkaç on mertebesinde hata payıyla verir; kesin bir ölçüm cihazı değildir. Şebeke değiştikçe (yeni hat, yeni abone, yenilenen boru, değişen pompa düzeni) model eskir ve periyodik olarak yeniden kalibre edilmelidir.</p>
+        <p>Bu sınırlara rağmen model, sahada tek tek denenemeyecek çok sayıda seçeneği hızlı ve düşük maliyetle karşılaştırmayı sağlar. Modelleme çalışması uzaktan / video görüşmeyle planlanabilir; şebeke verisi ve ölçüm kayıtları paylaşıldıktan sonra kurulum, kalibrasyon ve senaryo çalışması birlikte yürütülür.</p>
+        <ul>
+          <li>Hizmet kapsamı: <a href="/hizmetler.html">Hizmetler</a></li>
+          <li>Saha örnekleri: <a href="/projeler/">Projeler</a></li>
+          <li>Sık sorulanlar: <a href="/sss.html">SSS</a></li>
+        </ul>
+      </div>
+""",
+        body_en="""
+      <div class="prose">
+        <h2>What a model is and what it is for</h2>
+        <p>A hydraulic model is a computer simulation of a drinking-water distribution network. The network is a graph: pipes are edges, junctions and draw-off points nodes. Each pipe carries a length, diameter, material and roughness; each node an elevation and an assigned demand. With boundary conditions added — reservoir levels, pump curves — the software solves for the pressure at every node and the flow in every pipe.</p>
+        <p>A steady-state solution solves the network for one instant of fixed demand. An extended-period simulation solves it hour by hour across a daily demand pattern, showing reservoirs filling and emptying, pump run times and the day–night pressure swing.</p>
+        <p>The model answers questions that are expensive or risky to try in the field: designing <a href="/en/blog/basinc-yonetimi-nedir.html">pressure management</a>, the effect of a new main or reservoir, re-routing a zone's supply, and how loss reduction changes network behaviour. It is a decision-support tool, not a substitute for the network itself.</p>
+
+        <h2>Input data</h2>
+        <p>A model is only as good as its input data. The network geometry usually comes from the utility's map and geographic information system: pipe route, diameter, material, year laid and valve positions. Because that data must be current and complete, a modelling exercise often runs alongside a <a href="/en/blog/sebeke-haritalama-cbs.html">network mapping and GIS</a> effort.</p>
+        <p>Node elevations come from a digital elevation model or a levelling survey; since pressure depends on elevation difference, elevation errors shift modelled pressure systematically. Roughness is first estimated from pipe material and age, then corrected in calibration.</p>
+        <p>Boundary conditions are also defined: reservoir and pumping-station levels, pump flow–head curves, pressure-reducing valve settings and the total production flow — ideally backed by measurement records from the day the model represents.</p>
+
+        <h2>Demand allocation</h2>
+        <p>The total inflow must be shared out among the model's nodes, since consumption is really drawn from thousands of service connections while the model has far fewer. The common method assigns demand to each node in proportion to the subscribers near it, or to its share of billed consumption, so the nodal demands sum to the measured inflow.</p>
+        <p>A steady-state run uses a single demand level, usually the daily average or peak hour. An extended-period run applies a daily pattern of hourly multipliers — low at night, high morning and evening — with separate patterns for customer types such as industrial or public.</p>
+        <p>Physical loss is itself a kind of demand, and it rises with pressure. Coarse models enter it as a fixed extra draw across all nodes; detailed models use a pressure-dependent leakage term. <a href="/en/blog/debi-olcumu-nedir.html">Flow measurement</a> and <a href="/en/blog/dma-nedir.html">DMA</a> minimum night flow size this component.</p>
+
+        <h2>Field calibration</h2>
+        <p>A newly built model does not reflect reality exactly; roughness estimates, demand allocation and map errors move the output off the truth. Calibration brings it back toward field measurements: pressure loggers at several points and flow meters on selected mains log for at least a full day, preferably a weekday.</p>
+        <p>The model is run for that same day and its pressures and flows are compared with the measurements. Obvious errors are corrected first — an open valve thought closed, a wrong diameter, a bad elevation — then roughness and demand allocation are adjusted until model and measurement agree at all points at once. Forcing one point at the cost of the others is not calibration.</p>
+        <p>A calibrated model is reliable for the conditions under which it was measured; as demand level or pump configuration move away from that range, uncertainty grows.</p>
+
+        <h2>Scenarios</h2>
+        <p>A calibrated model lets &ldquo;what if?&rdquo; questions be tried cheaply. One scenario changes a pressure-reducing valve target: how far the setting can be lowered before end-of-line points fall below the acceptable limit. Another changes zone boundaries: the effect on neighbouring zones' pressure and flow of opening or closing a <a href="/en/blog/dma-nedir.html">DMA</a> boundary valve.</p>
+        <p>A fire-flow scenario checks the residual pressure in the network while a high flow is drawn from a hydrant. A loss-reduction scenario examines how cutting physical loss by a given fraction feeds through to the minimum night flow and the average pressure. Each comes from changing one input of the calibrated model and solving again; results are read as a change from the present state, not as absolute numbers, since a comparative result is more trustworthy than a single hard figure.</p>
+
+        <h2>The model's limits</h2>
+        <p>A model is only as good as its input data — garbage in, garbage out. Stale or incomplete GIS records, unrecorded connections, wrong diameter or material, and unknown closed valves all pull the solution quietly the wrong way. Such errors often end up buried in the roughness adjustment during calibration, so the model can look as if it &ldquo;fits&rdquo; while being physically wrong.</p>
+        <p>Accuracy should not be overstated. A well-calibrated model gives pressures to within a few metres of head and flows to within a few to a few tens of per cent; it is not a precise instrument. As the network changes — new mains, customers, renewed pipe, altered pumping — the model ages and needs periodic re-calibration.</p>
+        <p>Even so, a model compares many options that could never be tried one by one in the field, quickly and cheaply. A modelling exercise can be planned over a remote or video call; once the network data and measurement records are shared, the build, calibration and scenario work proceed together.</p>
+        <ul>
+          <li>Service scope: <a href="/en/hizmetler.html">Services</a></li>
+          <li>Field examples: <a href="/en/projeler/">Projects</a></li>
+          <li>Common questions: <a href="/en/sss.html">FAQ</a></li>
+        </ul>
+      </div>
+""",
+    ),
+    dict(
         slug="su-kaybi-dusurme-yol-haritasi",
         hero="/assets/photos/depo-cikis.webp",
         hero_alt="Depo çıkışı debi ölçüm noktası",
@@ -1062,6 +1151,10 @@ BLOG_INDEX_ITEMS = [
      "Sıfır basınç testi nedir?", "Bir hat bölümünü izole edip basıncı sıfıra indirerek kaçak var/yok kararı.",
      "What is a zero-pressure test?", "Isolating a section and dropping pressure to zero to decide leak or no leak.",
      "/assets/blog/sifir-basinc-testi-nedir.webp"),
+    ("hidrolik-modelleme-nedir",
+     "Hidrolik modelleme nedir?", "Şebekenin bilgisayar benzetimi: girdi verisi, saha kalibrasyonu ve senaryolar.",
+     "What is hydraulic modelling?", "A computer simulation of the network: input data, field calibration and scenarios.",
+     "/assets/photos/basinc-test.webp"),
     ("su-kaybi-dusurme-yol-haritasi",
      "Su kaybını düşürme yol haritası", "NRW / IWA çerçevesi ve sekiz adımlı kalıcı kayıp azaltma programı.",
      "A roadmap for cutting water loss", "The NRW / IWA framework and an eight-step programme for lasting loss reduction.",
