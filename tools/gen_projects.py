@@ -1000,7 +1000,7 @@ for pp in P:
     u(f"/projeler/{pp['slug']}.html", "monthly", "0.7",
       ["/assets/projects/" + ph[0].replace('.jpg', '.webp') for ph in pp['photos']])
 u("/blog/", "monthly", "0.8")
-for _rs in ("su-kacagi-nasil-anlasilir", "debi-olcumu-nedir", "basinc-yonetimi-nedir", "akustik-su-kacagi-tespiti-nedir", "dma-nedir", "adim-testi-nedir", "sifir-basinc-testi-nedir", "hidrolik-modelleme-nedir", "boru-hatti-tespiti-nedir", "su-kaybi-dusurme-yol-haritasi"):
+for _rs in ("su-kacagi-nasil-anlasilir", "debi-olcumu-nedir", "basinc-yonetimi-nedir", "akustik-su-kacagi-tespiti-nedir", "dma-nedir", "adim-testi-nedir", "sifir-basinc-testi-nedir", "hidrolik-modelleme-nedir", "boru-hatti-tespiti-nedir", "sebeke-haritalama-cbs", "su-kaybi-dusurme-yol-haritasi"):
     u(f"/blog/{_rs}.html", "yearly", "0.7")
 u("/referanslar.html", "monthly", "0.8")
 u("/hakkimizda.html", "monthly", "0.7", ["/assets/team/hasan-koramaz.webp", "/assets/team/muhammed-koramaz.webp"])

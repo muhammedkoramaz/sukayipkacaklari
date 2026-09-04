@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is Network Mapping and GIS Transfer? | LeakExpert</title>
+<meta name="description" content="Turning field survey data into a geographic information system: GPS coordinates, attributes (diameter, material, year laid), the GIS layer and topology.">
+<link rel="canonical" href="https://sukayipkacaklari.com/en/blog/sebeke-haritalama-cbs.html">
+<link rel="alternate" hreflang="tr" href="https://sukayipkacaklari.com/blog/sebeke-haritalama-cbs.html">
+<link rel="alternate" hreflang="en" href="https://sukayipkacaklari.com/en/blog/sebeke-haritalama-cbs.html">
+<link rel="alternate" hreflang="x-default" href="https://sukayipkacaklari.com/blog/sebeke-haritalama-cbs.html">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="LeakExpert">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta property="og:title" content="What Is Network Mapping and GIS Transfer? | LeakExpert">
+<meta property="og:description" content="Turning field survey data into a geographic information system: GPS coordinates, attributes (diameter, material, year laid), the GIS layer and topology.">
+<meta property="og:url" content="https://sukayipkacaklari.com/en/blog/sebeke-haritalama-cbs.html">
+<meta property="og:image" content="https://sukayipkacaklari.com/assets/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sukayipkacaklari.com/assets/img/og-cover.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/assets/img/icon.png">
+<link rel="apple-touch-icon" href="/assets/icons/app-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-600-800-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-600-800-latin-ext.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/plus-jakarta-sans-400-latin.woff2" crossorigin>
+<script>
+(function(){try{
+  var d=document.documentElement,cur=d.lang==='en'?'en':'tr';
+  var alt=document.querySelector('link[rel="alternate"][hreflang="'+(cur==='en'?'tr':'en')+'"]');
+  if(!alt)return;
+  var other=alt.getAttribute('href');
+  if(sessionStorage.getItem('le-lang-redirected'))return;
+  var pref=null;try{pref=localStorage.getItem('le-lang');}catch(e){}
+  if(pref==='tr'||pref==='en'){
+    if(pref!==cur){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
+    return;
+  }
+  if(d.getAttribute('data-home')!=='1')return;
+  var langs=navigator.languages||[navigator.language||''];
+  var wantsTr=langs.some(function(l){return /^tr\b/i.test(l);});
+  if(!wantsTr&&cur==='tr'){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
+  else if(wantsTr&&cur==='en'){sessionStorage.setItem('le-lang-redirected','1');location.replace(other);}
+}catch(e){}})();
+</script>
+<link rel="stylesheet" href="/assets/css/fonts.min.css">
+<link rel="stylesheet" href="/assets/css/site.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sukayipkacaklari.com/en/" }, { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://sukayipkacaklari.com/en/blog/" }, { "@type": "ListItem", "position": 3, "name": "Network mapping and transfer to GIS", "item": "https://sukayipkacaklari.com/en/blog/sebeke-haritalama-cbs.html" } ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Network mapping and transfer to GIS",
+  "description": "Turning field survey data into a geographic information system: GPS coordinates, attributes (diameter, material, year laid), the GIS layer and topology.",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://sukayipkacaklari.com/en/blog/sebeke-haritalama-cbs.html" },
+  "articleSection": "Blog",
+  "inLanguage": "en-US",
+  "author": { "@type": "Organization", "name": "LeakExpert", "url": "https://sukayipkacaklari.com/" },
+  "publisher": { "@type": "Organization", "name": "LeakExpert", "url": "https://sukayipkacaklari.com/",
+    "logo": { "@type": "ImageObject", "url": "https://sukayipkacaklari.com/assets/img/icon.png" } },
+  "image": "https://sukayipkacaklari.com/assets/blog/sebeke-haritalama-cbs.webp",
+  "datePublished": "2026-09-04", "dateModified": "2026-09-04"
+}
+</script>
+<!-- Google Analytics 4 — gtag.js kritik yoldan çıkarıldı, boşta yüklenir -->
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ETN61F721R',{anonymize_ip:true});(function(){function l(){var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=G-ETN61F721R';document.head.appendChild(s);}if('requestIdleCallback'in window){requestIdleCallback(l,{timeout:3000});}else{window.addEventListener('load',function(){setTimeout(l,1200);});}})();</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="brand" href="/en/" aria-label="LeakExpert home">
+      <img src="/assets/img/logo.svg" alt="LeakExpert" width="118" height="34" class="brand__logo">
+    </a>
+    <nav class="nav" id="navmenu" aria-label="Main menu">
+      <a href="/en/">Home</a>
+      <a href="/en/platform.html">Platform</a>
+      <a href="/en/hizmetler.html">Services</a>
+      <a href="/en/blog/" aria-current="page">Blog</a>
+      <a href="/en/projeler/">Projects</a>
+      <a href="/en/referanslar.html">References</a>
+      <a href="/en/hakkimizda.html">About</a>
+      <a href="/en/iletisim.html">Contact</a>
+      <span class="nav__lang" role="group" aria-label="Language / Dil">
+        <a href="/blog/sebeke-haritalama-cbs.html" hreflang="tr" lang="tr">TR</a>
+        <span class="nav__lang-sep" aria-hidden="true">|</span>
+        <a href="/en/blog/sebeke-haritalama-cbs.html" hreflang="en" lang="en" aria-current="true" class="is-active">EN</a>
+      </span>
+    </nav>
+    <div class="hdr__cta">
+      <a class="hdr__phone" href="tel:+905396588434">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        0539 658 84 34
+      </a>
+    </div>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navmenu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="/en/">Home</a><span class="sep">/</span><a href="/en/blog/">Blog</a><span class="sep">/</span><span aria-current="page">Network mapping and transfer to GIS</span>
+    </nav>
+  </div>
+
+  <section class="phead">
+    <div class="wrap">
+      <p class="eyebrow">Blog</p>
+      <h1>Network mapping and transfer to GIS</h1>
+      <p class="lede">You can only manage a network if you have a <strong>current map</strong> of it. Network mapping moves the field's pipes, valves and connections — with their locations and properties — into a digital system.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap mw-900">
+      <figure class="article-hero"><img src="/assets/blog/sebeke-haritalama-cbs.webp" width="1600" height="900" alt="Network map on screen" loading="eager"></figure>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap mw-900">
+
+      <div class="prose">
+        <h2>From field survey to data</h2>
+        <p>Network mapping is the work of moving the physical components of a distribution network — mains, valves, hydrants, connections — into a digital form together with their positions and properties. The scope is municipal and organised-industrial-zone distribution networks; what is mapped is the street and arterial mains.</p>
+        <p>The first input comes from the field. The route and depth of a main are found from the surface without digging (see <a href="/en/blog/boru-hatti-tespiti-nedir.html">pipe locating</a>). The positions of valves, hydrants and connections are each measured with a GPS/GNSS receiver. Every measurement is stored as a latitude–longitude pair with a label that says what the point is.</p>
+        <p>This raw data falls into two geometry types: point objects (valve, hydrant, connection, fitting) and line objects (pipe segments running between two points). The string of coordinates collected while walking the route becomes the line geometry of the main.</p>
+
+        <h2>Attributes</h2>
+        <p>Position alone is not enough. For the map to be useful, every object has to be recorded with its attributes — the fields that describe it.</p>
+        <p>Typical attributes for a pipe segment are: diameter, material (ductile iron, steel, PE, PVC, asbestos cement), year laid, the pressure zone it belongs to, and any lining information. For a valve: type (gate, butterfly, air, washout), open or closed state, diameter and turning direction. For hydrants, type and outlet size; for connections, the customer type (bulk user, industrial site) and the connection diameter.</p>
+        <p>Attributes are captured while the survey is still in the field; a field left blank becomes a gap that is hard to fill later. Fields such as year laid and material are often compiled from old paper plans and utility records, then cross-checked against what is seen on site.</p>
+
+        <h2>The GIS layer and topology</h2>
+        <p>The points and lines are loaded into a geographic information system (GIS) as a layer. The key idea here is topology: objects being connected to one another not only visually but logically.</p>
+        <p>In a topologically correct layer, pipe segments meet end to end at node points, valves sit on the main they belong to, and the system knows which valve feeds or isolates which main. Which valves must be closed to isolate a section can be computed from this connection structure. Dangling line ends, gaps, or a valve snapped to the wrong node break these queries.</p>
+        <p>Mapping therefore does not end with collecting coordinates; cleaning the geometry, splitting segments at the right places and checking the connections are an inseparable part of the job.</p>
+
+        <h2>Accuracy class</h2>
+        <p>The accuracy of a network map is not a single number; it comes from the combination of several sources and varies from object to object.</p>
+        <p>The precision of the GPS/GNSS measurement itself ranges from a few metres to a few centimetres depending on the receiver and the correction service used. Geometry obtained by digitising old paper plans is usually of lower accuracy; it depends on the plan's scale, drafting error and how well it is referenced. Field verification — seeing a valve chamber, a hydrant or a trial pit in place — ties the two sources together and catches gross errors.</p>
+        <p>In practice each object is given an accuracy or source tag: &ldquo;measured by GNSS&rdquo;, &ldquo;digitised from a plan&rdquo;, &ldquo;verified on site&rdquo;. Accuracy should not be overstated; a digitised main should still be confirmed from the surface and with a trial pit before any excavation.</p>
+
+        <h2>Loading into the platform</h2>
+        <p>The cleaned GIS layer is transferred into the LeakExpert platform (see <a href="/en/platform.html">platform</a>). Pipe and valve geometry, leak points, flow and pressure measurements and field projects then appear together on one map.</p>
+        <p>This combination speeds the work up: an acoustic survey result lands on the real main on the map, a DMA boundary is drawn with its valves, a repair record is linked to the pipe segment it belongs to. Measurement and observation data now build up on a queryable layer rather than on a paper sketch.</p>
+        <p>The platform also gives the teams a single current source; the field crew, the office and the analysis all look at the same version of the map.</p>
+
+        <h2>Keeping the map current</h2>
+        <p>A network map begins to age the moment it is produced. Unless every new connection, every repair, every main renewal and every valve change is posted back to the map, the layer soon falls behind reality.</p>
+        <p>The cost of an out-of-date GIS is not just a wrong drawing. A missing main or a wrong diameter corrupts the pipe length and topology input of a <a href="/en/blog/hidrolik-modelleme-nedir.html">hydraulic model</a>; an unknown closed valve pulls model and field apart. In the same way the water balance and loss analysis give unreliable results if the zone boundaries and customer connections are wrong.</p>
+        <p>Updating is therefore defined as a workflow: every change made in the field is recorded with its attributes and added to the map. A mapping and updating routine can be planned over a remote or video call; once the existing sketches, plans and records are shared, the data model and the workflow are set together.</p>
+        <ul>
+          <li>Service scope: <a href="/en/hizmetler.html">Services</a></li>
+          <li>Field examples: <a href="/en/projeler/">Projects</a></li>
+          <li>Common questions: <a href="/en/sss.html">FAQ</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section--panel">
+    <div class="wrap">
+      <p class="eyebrow rv">Also on the blog</p>
+      <h2 class="h-sec rv">Related articles.</h2>
+      <div class="cards cards--3 mt-l">
+        <a class="card" href="/en/blog/su-kacagi-nasil-anlasilir.html"><h3>How to tell if there is a water leak: 8 signs in a network</h3><p>Signs of a hidden leak in a drinking-water network: rising night flow, pressure drop, a wi…</p></a>
+        <a class="card" href="/en/blog/debi-olcumu-nedir.html"><h3>What is flow measurement, and how is it done in a network?</h3><p>The purpose of network flow measurement, temporary measurement with a portable ultrasonic/…</p></a>
+        <a class="card" href="/en/blog/basinc-yonetimi-nedir.html"><h3>Pressure management and pressure zones (PMA)</h3><p>How high and fluctuating pressure drives leaks and bursts, setting up a pressure managed a…</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight cta-band">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">For your network</p>
+        <h2>Let's measure the loss and pinpoint it.</h2>
+        <p class="lede mt-14">In a short video call we can review the current situation and the method to apply.</p>
+      </div>
+      <div class="cta-band__act">
+        <a class="btn" href="/en/iletisim.html">Request a consultation <span class="arw" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="/en/hizmetler.html">Services</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__grid">
+      <div>
+        <a class="brand" href="/en/" aria-label="LeakExpert home">
+          <img src="/assets/img/logo.svg" alt="LeakExpert" width="118" height="34" class="brand__logo">
+        </a>
+        <p class="ftr__brandline">Water loss and leak detection, flow/pressure monitoring and field management for municipal drinking-water networks. Integrated web and mobile platform.</p>
+      </div>
+      <div><h4>Platform</h4><ul>
+        <li><a href="/en/platform.html#mobil">Mobile field app</a></li>
+        <li><a href="/en/platform.html#web">Web management panel</a></li>
+        <li><a href="/en/platform.html#api">API &amp; integration</a></li>
+        <li><a href="/en/hizmetler.html">Field services</a></li>
+      </ul></div>
+      <div><h4>Company</h4><ul>
+        <li><a href="/en/hakkimizda.html">About</a></li>
+        <li><a href="/en/projeler/">Projects</a></li>
+        <li><a href="/en/referanslar.html">References</a></li>
+        <li><a href="/en/blog/">Blog</a></li>
+        <li><a href="/en/sss.html">FAQ</a></li>
+        <li><a href="/en/iletisim.html">Contact</a></li>
+        <li><a href="/en/gizlilik.html">Privacy policy</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li class="ftr__mono">Melikgazi / Kayseri</li>
+        <li class="ftr__mono"><a href="tel:+905396588434">+90 539 658 84 34</a></li>
+        <li class="ftr__mono"><a href="mailto:sukayipkacaklari@gmail.com">sukayipkacaklari@gmail.com</a></li>
+      </ul></div>
+    </div>
+    <div class="ftr__bottom">
+      <span>© 2026 LeakExpert · All rights reserved.</span>
+      <span class="ftr__lang">
+        <a href="/blog/sebeke-haritalama-cbs.html" hreflang="tr" lang="tr">Türkçe</a>
+        <span aria-hidden="true">·</span>
+        <a href="/en/blog/sebeke-haritalama-cbs.html" hreflang="en" lang="en">English</a>
+      </span>
+      <span>sukayipkacaklari.com</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Quick contact">
+  <a class="btn btn--ghost btn--sm" href="/en/iletisim.html">Request a consultation</a>
+  <a class="btn btn--sm" href="tel:+905396588434">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    0539 658 84 34
+  </a>
+</nav>
+
+<script src="/assets/js/site.min.js" defer></script>
+</body>
+</html>

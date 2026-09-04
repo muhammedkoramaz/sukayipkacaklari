@@ -1110,6 +1110,97 @@ ARTICLES = [
 """,
     ),
     dict(
+        slug="sebeke-haritalama-cbs",
+        hero="/assets/blog/sebeke-haritalama-cbs.webp",
+        hero_alt="Şebeke haritası ekranı",
+        hero_alt_en="Network map on screen",
+        date="2026-09-04",
+        h1="Şebeke haritalama ve CBS'e (GIS) aktarım",
+        title="Şebeke Haritalama ve CBS (GIS) Aktarımı Nedir? | LeakExpert",
+        desc="Saha tespiti verisinin coğrafi bilgi sistemine dönüşmesi: GPS koordinat, öznitelik (çap, malzeme, döşeme yılı), CBS katmanı ve topoloji.",
+        lede="Bir şebekeyi ancak <strong>güncel bir haritası varsa</strong> yönetebilirsiniz. Şebeke haritalama, sahadaki boruları, vanaları ve bağlantıları konumları ve özellikleriyle birlikte sayısal bir sisteme geçirir.",
+        h1_en="Network mapping and transfer to GIS",
+        title_en="What Is Network Mapping and GIS Transfer? | LeakExpert",
+        desc_en="Turning field survey data into a geographic information system: GPS coordinates, attributes (diameter, material, year laid), the GIS layer and topology.",
+        lede_en="You can only manage a network if you have a <strong>current map</strong> of it. Network mapping moves the field's pipes, valves and connections — with their locations and properties — into a digital system.",
+        body="""
+      <div class="prose">
+        <h2>Saha tespitinden veriye</h2>
+        <p>Şebeke haritalama, bir dağıtım şebekesinin fiziksel bileşenlerini — hatlar, vanalar, hidrantlar, bağlantılar — konumları ve özellikleriyle birlikte sayısal bir ortama taşıma işidir. Kapsam belediye ve organize sanayi bölgesi dağıtım şebekeleridir; haritalanan, sokak ve arter hatlarıdır.</p>
+        <p>İlk girdi sahadan gelir. Hat güzergâhı ve derinliği, gömülü borunun kazısız olarak yüzeyden belirlenmesiyle bulunur (bkz. <a href="/blog/boru-hatti-tespiti-nedir.html">boru hattı tespiti</a>). Vana, hidrant ve bağlantı noktalarının konumu ise bir GPS/GNSS alıcısıyla tek tek ölçülür. Her ölçüm, bir enlem-boylam çifti ve o noktanın ne olduğunu söyleyen bir etiketle kaydedilir.</p>
+        <p>Bu ham veri iki geometrik türe ayrılır: nokta nesneleri (vana, hidrant, bağlantı, ek parça) ve çizgi nesneleri (iki nokta arasında uzanan hat bölümleri). Güzergâh boyunca yürünürken toplanan koordinat dizisi, hattın çizgi geometrisini oluşturur.</p>
+
+        <h2>Öznitelikler</h2>
+        <p>Konum tek başına yeterli değildir. Haritanın işe yaraması için her nesnenin öznitelikleriyle — onu tanımlayan alanlarla — birlikte kaydedilmesi gerekir.</p>
+        <p>Her hat bölümü için tipik öznitelikler şunlardır: çap, malzeme (font, çelik, PE, PVC, AÇB), döşeme yılı, bağlı olduğu basınç bölgesi ve varsa iç astar bilgisi. Her vana için: tip (sürgülü, kelebek, hava, tahliye), açık/kapalı durumu, çap ve manevra yönü. Hidrantlar için tip ve çıkış çapı; bağlantılar için abone türü (ana kullanıcı, sanayi tesisi) ve bağlantı çapı.</p>
+        <p>Öznitelikler, ölçüm sahadayken kayıt altına alınır; eksik bırakılan bir alan sonradan tamamlanması zor bir boşluğa dönüşür. Döşeme yılı ve malzeme gibi alanlar çoğu zaman eski paftalardan ve idari kayıtlardan derlenir, sonra saha gözlemiyle çapraz kontrol edilir.</p>
+
+        <h2>CBS katmanı ve topoloji</h2>
+        <p>Nokta ve çizgiler bir coğrafi bilgi sistemine (CBS) katman olarak yüklenir. Buradaki kritik kavram topolojidir: nesnelerin birbirine yalnızca görsel olarak değil, mantıksal olarak da bağlı olması.</p>
+        <p>Topolojik olarak doğru bir katmanda hat bölümleri uçlarından düğüm noktalarında birleşir, vanalar ait oldukları hat üzerine oturur ve sistem hangi vananın hangi hattı beslediğini ya da kestiğini bilir. Bir bölümü izole etmek için hangi vanaların kapatılması gerektiği, bu bağlantı yapısından hesaplanabilir. Kopuk çizgi uçları, boşluklar veya yanlış düğüme bağlanmış bir vana bu sorguları bozar.</p>
+        <p>Bu yüzden haritalama, koordinatları toplamakla bitmez; geometrinin temizlenmesi, bölümlerin doğru yerlerden bölünmesi ve bağlantıların denetlenmesi işin ayrılmaz parçasıdır.</p>
+
+        <h2>Doğruluk sınıfı</h2>
+        <p>Bir şebeke haritasının doğruluğu tek bir sayı değildir; birkaç kaynağın birleşiminden gelir ve nesneden nesneye değişir.</p>
+        <p>GPS/GNSS ölçümünün kendi hassasiyeti, kullanılan alıcıya ve düzeltme servisine göre birkaç metreden birkaç santimetreye kadar değişir. Eski kâğıt paftaların sayısallaştırılmasıyla elde edilen geometri genellikle daha düşük doğruluktadır; paftanın ölçeğine, çizim hatasına ve referanslama kalitesine bağlıdır. Saha teyidi — bir vana odasının, hidrantın veya kontrol çukurunun yerinde görülmesi — bu iki kaynağı birbirine bağlar ve kaba hataları yakalar.</p>
+        <p>Pratikte her nesneye bir doğruluk/kaynak etiketi verilir: &ldquo;GNSS ile ölçüldü&rdquo;, &ldquo;paftadan sayısallaştırıldı&rdquo;, &ldquo;sahada teyit edildi&rdquo;. Doğruluğu abartmamak gerekir; sayısallaştırılmış bir hat, kazıdan önce yine yüzeyden tespit ve kontrol çukuruyla doğrulanmalıdır.</p>
+
+        <h2>Platforma işleme</h2>
+        <p>Temizlenmiş CBS katmanı LeakExpert platformuna aktarılır (bkz. <a href="/platform.html">platform</a>). Böylece hat ve vana geometrisi, kaçak noktaları, debi ve basınç ölçümleri ile saha projeleri aynı harita üzerinde bir arada görünür.</p>
+        <p>Bu birleşim çalışmayı hızlandırır: bir akustik tarama sonucu haritadaki gerçek hat üzerine düşer, bir DMA sınırı vanalarıyla birlikte çizilir, bir onarım kaydı ilgili hat bölümüne bağlanır. Ölçüm ve gözlem verisi artık kâğıt kroki üzerinde değil, sorgulanabilir bir katman üzerinde birikir.</p>
+        <p>Platform aynı zamanda ekipler arasında tek bir güncel kaynak sağlar; saha ekibi, ofis ve analiz aynı harita sürümüne bakar.</p>
+
+        <h2>Haritayı güncel tutma</h2>
+        <p>Bir şebeke haritası, üretildiği anda eskimeye başlar. Her yeni bağlantı, her onarım, her hat yenileme ve her vana değişimi haritaya geri işlenmezse katman kısa sürede gerçeğin gerisinde kalır.</p>
+        <p>Güncel olmayan bir CBS'nin bedeli yalnızca yanlış bir çizim değildir. Eksik bir hat veya yanlış bir çap, <a href="/blog/hidrolik-modelleme-nedir.html">hidrolik modelin</a> boru uzunluğu ve topoloji girdisini bozar; bilinmeyen kapalı bir vana, model ile sahayı birbirinden uzaklaştırır. Aynı şekilde su dengesi ve kayıp analizi, bölge sınırları ve abone bağlantıları hatalıysa güvenilmez sonuç verir.</p>
+        <p>Bu nedenle güncelleme bir iş akışı olarak tanımlanır: sahada yapılan her değişiklik, öznitelikleriyle birlikte kaydedilip haritaya eklenir. Haritalama ve güncelleme düzeni uzaktan / video görüşmeyle planlanabilir; mevcut kroki, pafta ve kayıtlar paylaşıldıktan sonra veri modeli ve iş akışı birlikte belirlenir.</p>
+        <ul>
+          <li>Hizmet kapsamı: <a href="/hizmetler.html">Hizmetler</a></li>
+          <li>Saha örnekleri: <a href="/projeler/">Projeler</a></li>
+          <li>Sık sorulanlar: <a href="/sss.html">SSS</a></li>
+        </ul>
+      </div>
+""",
+        body_en="""
+      <div class="prose">
+        <h2>From field survey to data</h2>
+        <p>Network mapping is the work of moving the physical components of a distribution network — mains, valves, hydrants, connections — into a digital form together with their positions and properties. The scope is municipal and organised-industrial-zone distribution networks; what is mapped is the street and arterial mains.</p>
+        <p>The first input comes from the field. The route and depth of a main are found from the surface without digging (see <a href="/en/blog/boru-hatti-tespiti-nedir.html">pipe locating</a>). The positions of valves, hydrants and connections are each measured with a GPS/GNSS receiver. Every measurement is stored as a latitude–longitude pair with a label that says what the point is.</p>
+        <p>This raw data falls into two geometry types: point objects (valve, hydrant, connection, fitting) and line objects (pipe segments running between two points). The string of coordinates collected while walking the route becomes the line geometry of the main.</p>
+
+        <h2>Attributes</h2>
+        <p>Position alone is not enough. For the map to be useful, every object has to be recorded with its attributes — the fields that describe it.</p>
+        <p>Typical attributes for a pipe segment are: diameter, material (ductile iron, steel, PE, PVC, asbestos cement), year laid, the pressure zone it belongs to, and any lining information. For a valve: type (gate, butterfly, air, washout), open or closed state, diameter and turning direction. For hydrants, type and outlet size; for connections, the customer type (bulk user, industrial site) and the connection diameter.</p>
+        <p>Attributes are captured while the survey is still in the field; a field left blank becomes a gap that is hard to fill later. Fields such as year laid and material are often compiled from old paper plans and utility records, then cross-checked against what is seen on site.</p>
+
+        <h2>The GIS layer and topology</h2>
+        <p>The points and lines are loaded into a geographic information system (GIS) as a layer. The key idea here is topology: objects being connected to one another not only visually but logically.</p>
+        <p>In a topologically correct layer, pipe segments meet end to end at node points, valves sit on the main they belong to, and the system knows which valve feeds or isolates which main. Which valves must be closed to isolate a section can be computed from this connection structure. Dangling line ends, gaps, or a valve snapped to the wrong node break these queries.</p>
+        <p>Mapping therefore does not end with collecting coordinates; cleaning the geometry, splitting segments at the right places and checking the connections are an inseparable part of the job.</p>
+
+        <h2>Accuracy class</h2>
+        <p>The accuracy of a network map is not a single number; it comes from the combination of several sources and varies from object to object.</p>
+        <p>The precision of the GPS/GNSS measurement itself ranges from a few metres to a few centimetres depending on the receiver and the correction service used. Geometry obtained by digitising old paper plans is usually of lower accuracy; it depends on the plan's scale, drafting error and how well it is referenced. Field verification — seeing a valve chamber, a hydrant or a trial pit in place — ties the two sources together and catches gross errors.</p>
+        <p>In practice each object is given an accuracy or source tag: &ldquo;measured by GNSS&rdquo;, &ldquo;digitised from a plan&rdquo;, &ldquo;verified on site&rdquo;. Accuracy should not be overstated; a digitised main should still be confirmed from the surface and with a trial pit before any excavation.</p>
+
+        <h2>Loading into the platform</h2>
+        <p>The cleaned GIS layer is transferred into the LeakExpert platform (see <a href="/en/platform.html">platform</a>). Pipe and valve geometry, leak points, flow and pressure measurements and field projects then appear together on one map.</p>
+        <p>This combination speeds the work up: an acoustic survey result lands on the real main on the map, a DMA boundary is drawn with its valves, a repair record is linked to the pipe segment it belongs to. Measurement and observation data now build up on a queryable layer rather than on a paper sketch.</p>
+        <p>The platform also gives the teams a single current source; the field crew, the office and the analysis all look at the same version of the map.</p>
+
+        <h2>Keeping the map current</h2>
+        <p>A network map begins to age the moment it is produced. Unless every new connection, every repair, every main renewal and every valve change is posted back to the map, the layer soon falls behind reality.</p>
+        <p>The cost of an out-of-date GIS is not just a wrong drawing. A missing main or a wrong diameter corrupts the pipe length and topology input of a <a href="/en/blog/hidrolik-modelleme-nedir.html">hydraulic model</a>; an unknown closed valve pulls model and field apart. In the same way the water balance and loss analysis give unreliable results if the zone boundaries and customer connections are wrong.</p>
+        <p>Updating is therefore defined as a workflow: every change made in the field is recorded with its attributes and added to the map. A mapping and updating routine can be planned over a remote or video call; once the existing sketches, plans and records are shared, the data model and the workflow are set together.</p>
+        <ul>
+          <li>Service scope: <a href="/en/hizmetler.html">Services</a></li>
+          <li>Field examples: <a href="/en/projeler/">Projects</a></li>
+          <li>Common questions: <a href="/en/sss.html">FAQ</a></li>
+        </ul>
+      </div>
+""",
+    ),
+    dict(
         slug="su-kaybi-dusurme-yol-haritasi",
         hero="/assets/photos/depo-cikis.webp",
         hero_alt="Depo çıkışı debi ölçüm noktası",
@@ -1244,6 +1335,10 @@ BLOG_INDEX_ITEMS = [
      "Boru hattı tespiti nedir?", "Metal ve plastik gömülü hatların güzergâh ve derinliğini kazısız belirleme.",
      "What is pipe locating?", "Finding the route and depth of buried metal and plastic mains without excavation.",
      "/assets/blog/boru-hatti-tespiti-nedir.webp"),
+    ("sebeke-haritalama-cbs",
+     "Şebeke haritalama ve CBS nedir?", "Saha verisini GPS koordinat ve özniteliklerle CBS katmanına ve platforma işleme.",
+     "What is network mapping and GIS?", "Turning field data with GPS coordinates and attributes into a GIS layer.",
+     "/assets/blog/sebeke-haritalama-cbs.webp"),
     ("su-kaybi-dusurme-yol-haritasi",
      "Su kaybını düşürme yol haritası", "NRW / IWA çerçevesi ve sekiz adımlı kalıcı kayıp azaltma programı.",
      "A roadmap for cutting water loss", "The NRW / IWA framework and an eight-step programme for lasting loss reduction.",
