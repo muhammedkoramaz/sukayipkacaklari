@@ -1201,6 +1201,97 @@ ARTICLES = [
 """,
     ),
     dict(
+        slug="kacak-onarimi-ve-dogrulama",
+        hero="/assets/blog/kacak-onarimi-ve-dogrulama.webp",
+        hero_alt="Kaçak noktasında onarım kazısı",
+        hero_alt_en="Repair excavation at a leak point",
+        date="2026-09-04",
+        h1="Kaçak onarımı ve onarım sonrası doğrulama",
+        title="Kaçak Onarımı ve Onarım Sonrası Doğrulama | LeakExpert",
+        desc="Kaçak noktasının onarım süreci ve onarımın gerçekten kapandığının doğrulanması: nokta teyidi, onarım tipleri ve onarım sonrası gece debi tekrar ölçümü.",
+        lede="Bir kaçağı bulmak işin yarısıdır; diğer yarısı onarımın <strong>gerçekten</strong> kaybı kapattığını göstermektir. Bu yazı, onarım sürecini ve onarım sonrası doğrulamayı özetler.",
+        h1_en="Leak repair and post-repair verification",
+        title_en="Leak Repair and Post-Repair Verification | LeakExpert",
+        desc_en="The repair process for a located leak point and confirming the loss is actually closed: point confirmation, repair types and repeat night-flow measurement.",
+        lede_en="Finding a leak is half the job; the other half is showing the repair <strong>actually</strong> closed the loss. This article outlines the repair process and post-repair verification.",
+        body="""
+      <div class="prose">
+        <h2>Kazı öncesi son teyit</h2>
+        <p>Bir kaçak noktası <a href="/blog/akustik-su-kacagi-tespiti-nedir.html">akustik tespit</a> ve korelasyonla daraltıldıktan sonra, kazıya başlamadan önce nokta bir kez daha yerinde dinlenir. Zemin mikrofonu ile en yüksek kaçak sesinin alındığı yer işaretlenir; işaret, kazının merkezini ve genişliğini belirler. Amaç, ekskavatörün doğru noktaya, gereğinden geniş olmayan bir çukurla inmesidir.</p>
+        <p>İşaretlemeyle birlikte hattın güzergâhı ve derinliği de doğrulanır (bkz. <a href="/blog/boru-hatti-tespiti-nedir.html">boru hattı tespiti</a>). Elektromanyetik hat dedektörü veya yer radarı ile borunun izdüşümü ve yaklaşık gömülme derinliği kontrol edilir; aynı taramada bölgedeki diğer gömülü altyapı — elektrik, gaz, telekom, yağmur suyu — konumlandırılır. Bu adım, kazı sırasında başka bir hattın kesilmesini önler.</p>
+        <p>Son teyit verisi krokiye işlenir: nokta koordinatı, tahmini derinlik, çevredeki altyapı ve yüzey durumu (asfalt, parke, yeşil alan). Kapsam belediye ve organize sanayi bölgesi dağıtım şebekeleridir; söz konusu olan sokak ve arter hatlarıdır. Bu kayıt hem idareye iletilen kazı talebinin ekidir hem de onarım sonrası doğrulamanın başlangıç referansıdır.</p>
+
+        <h2>Onarımı kim yapar?</h2>
+        <p>Kazı ve boru onarımı, şebekenin sahibi olan idarenin kendi ekibi veya idarenin sözleşmeli yüklenicisi tarafından yapılır. Yol kesme izni, trafik yönetimi, kazı, boru üzerindeki fiziki müdahale, dolgu ve üstyapı onarımı bu ekibin sorumluluğundadır. LeakExpert bu işlerde yer almaz; ana hat kazmaz, boru değiştirmez.</p>
+        <p>LeakExpert'in bu projedeki rolü iki noktada toplanır. Birincisi kazı öncesi nokta teyididir: kaçağın tam yerinin ve hattın konumunun kazısız olarak belirlenmesi, böylece idare ekibinin doğru yeri açması. İkincisi onarım sonrası doğrulamadır: onarımın gerçekten kaybı kapatıp kapatmadığının gece debisi tekrar ölçülerek gösterilmesi ve kapanan kaybın raporlanması. İş bölümü bu şekilde nettir.</p>
+        <p>Bu ayrım pratik bir nedene dayanır: ana hat müdahalesi yol kesme izni, iş güvenliği düzeni ve şebeke manevrası gerektirir; bunlar idarenin yetki ve sorumluluk alanındadır. LeakExpert ölçüm ve doğrulama tarafında kalarak, onarımın sonucunu bağımsız ve sayısal biçimde ortaya koyar.</p>
+
+        <h2>Onarım tipleri</h2>
+        <p>Onarım yöntemi, hasarın türüne ve borunun genel durumuna göre seçilir. Küçük bir delik veya dar bir boyuna çatlak için tamir kelepçesi kullanılır: borunun etrafına oturan, contalı çelik bir bilezik hasarı sarar ve hat kesilmeden sızdırmazlık sağlanır. Kelepçe, sınırlı ve tekil hasarlarda hızlı bir çözümdür.</p>
+        <p>Enine kırık, ezilme veya kelepçeyle kapatılamayacak büyüklükte bir hasar varsa, hasarlı kısım kesilip çıkarılır ve yerine yeni bir boru parçası eklenir; iki uçta manşon veya bağlantı elemanıyla birleştirilir. Sızdıran bir bağlantı, vana veya ek parça söz konusuysa o eleman sökülüp yenisiyle değiştirilir.</p>
+        <p>Aynı hat bölümünde tekrarlayan arızalar görülüyorsa — malzeme yorulmuş, korozyon ilerlemişse — noktasal onarım yerine belirli bir uzunlukta hat yenilemesi gündeme gelir. Bu karar idareye aittir ve genellikle arıza geçmişi ile hattın yaşına dayanır.</p>
+
+        <h2>Onarım sonrası test</h2>
+        <p>Fiziki müdahale bittikten sonra hat yavaşça yeniden basınçlandırılır. Ani basınçlandırma, yeni birleşim yerinde ve komşu bağlantılarda basınç darbesi oluşturabileceği için vana kademeli açılır. Basınç kararlı hâle geldiğinde onarım noktası ve manşonlar gözle ve elle kontrol edilir; nemlenme veya damlama olup olmadığına bakılır.</p>
+        <p>Çukur kapatılmadan önce hat yıkanır: açılan uçtan veya en yakın hidranttan su verilerek kazı sırasında içeri girmiş olabilecek toprak ve kir dışarı alınır. Kirlenme şüphesi varsa bölüm dezenfekte edilir ve idarenin uygulamasına göre bakiye klor veya numune ile su kalitesi teyit edilir. Ancak bu kontrollerden sonra dolgu ve üstyapı onarımı yapılır.</p>
+        <p>Test sırasında elde edilen gözlemler — basıncın oturma süresi, birleşim yerinin durumu, yıkama süresi — krokiye not edilir. Onarım noktası daha sonra hat üzerinde bir kayıt olarak kalır ve bir sonraki çalışmada referans alınır.</p>
+
+        <h2>Doğrulama: gece debisi tekrar</h2>
+        <p>Onarımın kaybı gerçekten kapatıp kapatmadığı, bölgenin gece minimum debisinin onarım öncesi ve sonrası değerleri karşılaştırılarak gösterilir. Gece minimum debisi, tüketimin en düşük olduğu saatlerde (yaklaşık 03:00–05:00) bölge girişinden ölçülen akıştır; bu saatlerde ölçülen akışın büyük kısmı fiziki kaçaktır (bkz. <a href="/blog/debi-olcumu-nedir.html">debi ölçümü</a>, <a href="/blog/dma-nedir.html">DMA</a>).</p>
+        <p>Onarımdan birkaç gün sonra, koşullar benzerken (aynı basınç bölgesi, benzer gece, bilinen vana durumu) ölçüm tekrarlanır. Onarım öncesi ile sonrası arasındaki düşüş, o noktada kapatılan kaçak debisidir. Düşüş beklenen mertebedeyse nokta kapanmış sayılır; düşüş yoksa veya küçükse, aynı bölgede başka bir kaçak daha vardır ve arama sürer.</p>
+        <p>Tek bir noktanın etkisini görmek için ölçümün hattın doğru kesitinde ve mümkünse dar bir bölgede yapılması önemlidir. Geniş bir bölgede tek bir küçük onarımın etkisi ölçüm gürültüsü içinde kaybolabilir; bu durumda adım testi ile alt hatlara inmek gerekebilir.</p>
+
+        <h2>Raporlama</h2>
+        <p>Her onarım, sonuçlarıyla birlikte LeakExpert platformuna işlenir: nokta koordinatı, onarım tarihi (idarenin bildirdiği şekliyle), yapılan onarımın tipi, onarım öncesi ve sonrası gece debisi ve bu ikisinin farkı olan kapanan kayıp. Böylece her proje için ölçülebilir bir kazanım kaydı oluşur.</p>
+        <p>Doğrulamada kapanmadığı görülen noktalar tekrar tarama listesine alınır ve yeniden dinleme, korelasyon veya adım testi ile ele alınır. Kapanan noktalar ise bölgenin kayıp bilançosundan düşülür. Bu kayıtların toplamı, <a href="/blog/su-kaybi-dusurme-yol-haritasi.html">su kaybını düşürme programının</a> ilerleyişini gösteren temel veridir. Sonuçlar abartılmadan, ölçülen değerlerle raporlanır.</p>
+        <p>Nokta teyidi ve onarım sonrası doğrulama düzeni uzaktan / video görüşmeyle planlanabilir; şebeke krokisi, ölçüm kayıtları ve idarenin onarım bildirimleri paylaşıldıktan sonra doğrulama planı birlikte belirlenir.</p>
+        <ul>
+          <li>Hizmet kapsamı: <a href="/hizmetler.html">Hizmetler</a></li>
+          <li>Saha örnekleri: <a href="/projeler/">Projeler</a></li>
+          <li>Sık sorulanlar: <a href="/sss.html">SSS</a></li>
+        </ul>
+      </div>
+""",
+        body_en="""
+      <div class="prose">
+        <h2>Final confirmation before the dig</h2>
+        <p>Once a leak point has been narrowed down with <a href="/en/blog/akustik-su-kacagi-tespiti-nedir.html">acoustic detection</a> and correlation, it is listened to once more on site before digging. The spot where the ground microphone is loudest is marked, setting the centre and width of the dig so the excavator opens no wider a pit than needed.</p>
+        <p>The marking step also confirms the route and depth of the main (see <a href="/en/blog/boru-hatti-tespiti-nedir.html">pipe locating</a>). An electromagnetic locator or ground penetrating radar checks the pipe's plan position and burial depth, and the same scan locates other buried services, so another line is not cut during the dig.</p>
+        <p>The confirmation data goes on the sketch: the point coordinate, the estimated depth, the surrounding services and the surface type. The scope is municipal and organised-industrial-zone distribution networks; the work is on street and arterial mains. This record goes with the excavation request sent to the utility and is the starting reference for verification.</p>
+
+        <h2>Who does the repair?</h2>
+        <p>The excavation and repair are done by the utility that owns the network — its own crew or its contractor. Road-opening permits, traffic management, the dig, the work on the pipe, backfill and reinstatement are that crew's responsibility. LeakExpert takes no part in this; it does not dig mains and does not replace pipe.</p>
+        <p>LeakExpert's role sits at two points: point confirmation before the dig — fixing the exact position of the leak and of the main without excavation, so the utility crew opens the right place — and verification after the repair, measuring the night flow again to show whether the loss has actually closed and reporting the recovered loss.</p>
+        <p>The split has a practical reason: work on a main needs a road closure, a safety plan and network switching, all within the utility's authority. LeakExpert stays on the measurement and verification side and reports the repair result independently, in numbers.</p>
+
+        <h2>Types of repair</h2>
+        <p>The repair method follows the kind of damage and the condition of the pipe. For a small hole or a narrow longitudinal crack, a repair clamp is used: a gasketed steel band that seats around the pipe and seals the damage without cutting the line, which suits limited, isolated damage.</p>
+        <p>Where there is a circumferential break, a crushed length, or damage too large for a clamp, the damaged part is cut out and a new pipe section fitted in, joined at each end with a coupling. A leaking fitting, valve or joint is removed and renewed.</p>
+        <p>If the same length of main shows repeated failures — fatigued material, advanced corrosion — a full renewal of a defined length is considered instead of a spot repair. That decision rests with the utility and draws on the failure history and the age of the pipe.</p>
+
+        <h2>Testing after the repair</h2>
+        <p>Once the physical work is done, the main is re-pressurised slowly: a sudden rise can create a surge at the new joint and neighbouring connections, so the valve is opened in stages. Once the pressure has settled, the repair point and couplings are checked by eye and hand for wetting or dripping.</p>
+        <p>Before the pit is closed, the main is flushed: water is run from the open end or the nearest hydrant to carry out soil and dirt that entered during the dig. If contamination is suspected, the section is disinfected and the water quality confirmed with a residual-chlorine reading or a sample, per the utility's practice. Only then are backfill and reinstatement done.</p>
+        <p>The test observations — the settling time, the joint condition, the flushing time — are noted on the sketch, and the repair point stays as a record on the main for later work.</p>
+
+        <h2>Verification: night flow again</h2>
+        <p>Whether the repair has really closed the loss is shown by comparing the zone's minimum night flow before and after. That is the flow measured at the zone inlet during the hours of lowest consumption, roughly 03:00–05:00, when most of the flow is physical leakage (see <a href="/en/blog/debi-olcumu-nedir.html">flow measurement</a>, <a href="/en/blog/dma-nedir.html">DMA</a>).</p>
+        <p>A few days later, under similar conditions — same pressure zone, comparable night, known valve state — the measurement is repeated. The drop between before and after is the leak rate closed at that point. A drop of the expected order means the point is closed; no drop means another leak remains.</p>
+        <p>To see the effect of a single point, the measurement should be on the right section of main and, where possible, in a small zone. In a large zone one small repair can be lost in measurement noise, and a step test may be needed to reach sub-sections.</p>
+
+        <h2>Reporting</h2>
+        <p>Every repair is entered into the LeakExpert platform with its results: the point coordinate, the repair date as notified by the utility, the type of repair, the night flow before and after, and the recovered loss between the two, so each project gains a measurable record of what was won back.</p>
+        <p>Points found not to have closed at verification go back on the survey list, taken up again with re-listening, correlation or a step test; points that did close come off the zone's loss balance. Together these records show the progress of a <a href="/en/blog/su-kaybi-dusurme-yol-haritasi.html">water-loss reduction programme</a>, reported with measured values and without overstatement.</p>
+        <p>The point-confirmation and post-repair verification routine can be planned over a remote or video call; once the network sketch, measurement records and the utility's repair notifications are shared, the verification plan is set together.</p>
+        <ul>
+          <li>Service scope: <a href="/en/hizmetler.html">Services</a></li>
+          <li>Field examples: <a href="/en/projeler/">Projects</a></li>
+          <li>Common questions: <a href="/en/sss.html">FAQ</a></li>
+        </ul>
+      </div>
+""",
+    ),
+    dict(
         slug="su-kaybi-dusurme-yol-haritasi",
         hero="/assets/photos/depo-cikis.webp",
         hero_alt="Depo çıkışı debi ölçüm noktası",
@@ -1339,6 +1430,10 @@ BLOG_INDEX_ITEMS = [
      "Şebeke haritalama ve CBS nedir?", "Saha verisini GPS koordinat ve özniteliklerle CBS katmanına ve platforma işleme.",
      "What is network mapping and GIS?", "Turning field data with GPS coordinates and attributes into a GIS layer.",
      "/assets/blog/sebeke-haritalama-cbs.webp"),
+    ("kacak-onarimi-ve-dogrulama",
+     "Kaçak onarımı ve doğrulama nedir?", "Nokta teyidi, onarım tipleri ve onarım sonrası gece debiyle kapanan kaybın doğrulanması.",
+     "Leak repair and verification", "Point confirmation, repair types, and verifying recovered loss with post-repair night flow.",
+     "/assets/blog/kacak-onarimi-ve-dogrulama.webp"),
     ("su-kaybi-dusurme-yol-haritasi",
      "Su kaybını düşürme yol haritası", "NRW / IWA çerçevesi ve sekiz adımlı kalıcı kayıp azaltma programı.",
      "A roadmap for cutting water loss", "The NRW / IWA framework and an eight-step programme for lasting loss reduction.",
