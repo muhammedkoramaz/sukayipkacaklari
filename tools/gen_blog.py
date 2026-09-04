@@ -772,6 +772,91 @@ ARTICLES = [
 """,
     ),
     dict(
+        slug="adim-testi-nedir",
+        hero="/assets/photos/gece-operasyon.webp",
+        hero_alt="Gece saha operasyonu",
+        hero_alt_en="Night-time field operation",
+        date="2026-09-04",
+        h1="Adım (step) testi ile kaçak bölgeleme",
+        title="Adım (Step) Testi Nedir? Gece Kademeli Vana Kapatma | LeakExpert",
+        desc="Adım testi, bir DMA içinde gece vanaları kademeli kapatarak debi düşüşlerinden kaybın hangi alt hatta yoğunlaştığını bulur.",
+        lede="Bir bölgede kayıp olduğunu bilmek yetmez; <strong>hangi sokakta</strong> olduğunu daraltmak gerekir. Adım testi, gece boyunca vanaları sırayla kapatıp her adımda debinin ne kadar düştüğüne bakarak kaybı alt hatlara böler.",
+        h1_en="Step testing to narrow down leakage",
+        title_en="What Is a Step Test? Night-time Stepped Valve Closing | LeakExpert",
+        desc_en="A step test closes valves in sequence at night within a DMA and reads the flow drops to find which sub-section holds the loss.",
+        lede_en="Knowing a zone has loss is not enough; you need to narrow down <strong>which street</strong> it is on. A step test closes valves one by one through the night and watches how much flow drops at each step, splitting the loss between sub-sections.",
+        body="""
+      <div class="prose">
+        <h2>Adım testinin amacı</h2>
+        <p>Bir <a href="/blog/dma-nedir.html">izole ölçüm bölgesinde (DMA)</a> gece minimum debisi yüksek çıktığında, o bölgede fiziki kayıp olduğu bilinir; ama kaybın bölgenin hangi sokağında yoğunlaştığı bilinmez. Adım (step) testi, bu belirsizliği gidermek için bölgeyi geçici olarak küçük alt parçalara böler ve her parçanın debiye katkısını tek tek ölçer.</p>
+        <p>Yöntemin çıktısı, kaybın büyük bölümünü barındıran birkaç yüz metrelik hat parçalarının sıralı bir listesidir. Bu liste olmadan akustik ekip kilometrelerce hattı nokta nokta dinlemek zorunda kalır. Adım testi tarama alanını daralttığı için <a href="/blog/akustik-su-kacagi-tespiti-nedir.html">akustik tespit</a> hem hızlanır hem de isabet oranı yükselir. Kısacası adım testi kaçağı bulmaz; kaçağın aranacağı yeri belirler.</p>
+
+        <h2>Ön hazırlık</h2>
+        <p>Testin güvenilirliği hazırlığa bağlıdır. İlk gereksinim güncel bir şebeke haritasıdır: hatların çapı, malzemesi, bağlantı yönü ve bölge içindeki tüm vanaların konumu. Harita eksikse, kapatılan vananın hangi hattı beslediği yorumlanamaz ve basamaklar anlamını yitirir.</p>
+        <p>Haritadan bir vana listesi ve kapatma sırası çıkarılır; sıra, bölgenin en uç noktasından girişe doğru ilerler. Listedeki her vana testten önce gündüz denenir: tam kapanıyor mu, mili sağlam mı, kutusu erişilebilir mi. Kapanmayan veya sızdıran bir vana, o adımın debisini olduğundan düşük gösterir.</p>
+        <p>Test, meşru tüketimin en düşük olduğu gece penceresinde, tipik olarak 01:00–04:00 arasında yapılır. Bu saatte abone kullanımı debinin küçük bir bölümüdür, dolayısıyla basamaklar büyük ölçüde kaçağı yansıtır. Bölgedeki aboneler kısa süreli kesinti olabileceği konusunda önceden bilgilendirilir; sürekli su gerektiren kullanıcılar varsa test planı buna göre ayarlanır.</p>
+
+        <h2>Uygulama: vanaları sondan başa kapatmak</h2>
+        <p>Bölge girişindeki debimetre bütün test boyunca kesintisiz kayıt alır; genellikle birkaç saniyelik, en fazla birkaç dakikalık adımlarla. Ekip, hazırlanan sıraya göre en uçtaki vanadan başlayarak vanaları tek tek kapatır. Her kapatma yavaş yapılır: ani kapama, hatta basınç darbesi yaratır ve tortuyu kaldırır.</p>
+        <p>Bir vana kapatıldıktan sonra debinin yeni bir dengeye oturması beklenir; boru ve bağlantı hacmi doldukça akış birkaç dakika içinde sabitlenir ve okuma ancak bundan sonra alınır. Kaydedilen değer, o vananın ötesindeki tüm hat kesildiğinde girişten hâlâ akan debidir. Sonra sıradaki vana kapatılır ve aynı bekleme tekrarlanır; böylece bölge girişe doğru adım adım küçülür.</p>
+
+        <h2>Debi basamaklarının okunması</h2>
+        <p>Test bitince elde edilen veri, her vana kapatmasına karşılık gelen bir debi düşüşü dizisidir. Bir adımdaki düşüş, o vananın yeni izole ettiği hat parçasının o an taşıdığı akıştır. Gece meşru tüketim küçük olduğundan bu akışın büyük bölümü fiziki kayıp kabul edilir.</p>
+        <p>Büyük bir basamak — tek bir vana kapatıldığında giriş debisinin belirgin biçimde düşmesi — o alt hatta yoğun bir kaçak olduğunu gösterir. Küçük bir basamak ise o parçanın görece sağlam olduğunu, üzerindeki kaybın düşük olduğunu söyler. Basamakların toplamı, bölge girişindeki toplam gece debisiyle tutarlı olmalıdır; büyük bir tutarsızlık kapanmayan bir vanaya veya kaçırılan bir bağlantıya işaret eder ve testin ilgili bölümü tekrarlanır.</p>
+        <p>Adım testi bir konum değil, bir dağılım verir: kaybın hangi parçada olduğunu birkaç yüz metreye indirir, o parçanın neresinde olduğunu söylemez. Sayısal değerler de kesin debi ölçümü değil, göreli büyüklük karşılaştırmasıdır; sıcaklık, basınç ve vana sızıntısı sonuçları etkiler.</p>
+
+        <h2>Yorumlama ve sonraki adım</h2>
+        <p>Basamaklar büyükten küçüğe sıralanır ve yüksek kayıplı alt hatlar bir öncelik listesine dönüştürülür. Bu liste, hat parçasının uzunluğu, malzemesi ve arıza geçmişiyle birlikte akustik ekibe verilir. Ekip, en yüksek kayıplı parçadan başlayarak <a href="/blog/akustik-su-kacagi-tespiti-nedir.html">yer mikrofonu ve korelatörle</a> noktasal tespite geçer.</p>
+        <p>Kayıp birden çok parçaya dağılmışsa, her biri ayrı bir saha görevi olarak planlanır. Onarım sonrası bölgenin gece minimum debisi yeniden ölçülür; düşüş beklenen mertebede değilse adım testi tekrarlanarak kalan kaybın yeri daraltılır. Bu döngü, bölge hedeflenen kayıp seviyesine inene kadar sürer. Ölçüm tarafının ayrıntısı için <a href="/blog/debi-olcumu-nedir.html">debi ölçümü</a> yazısına bakılabilir.</p>
+
+        <h2>Riskler ve önlemler</h2>
+        <p>Adım testi şebekeyi bir süre alışılmadık bir düzende çalıştırdığı için birkaç riski vardır. Vanaların kapatılıp açılmasıyla akış hızı ve yönü değişir; borudaki tortu hareketlenerek suda bulanıklık ve renk oluşturabilir. Yavaş manevra ve gerekirse test sonrası hattın yıkanması bu etkiyi sınırlar. Hızlı kapamalar ayrıca basınç dalgalanması (transiyent) yaratır ve zayıf bağlantıları zorlar.</p>
+        <p>Bölge parçalara ayrıldıkça bazı kesimler geçici olarak beslemesiz kalır; bu süre içinde yangın suyu ihtiyacı doğarsa müdahale gecikebilir. Test planı itfaiye erişimini gözetmeli, kesinti pencereleri kısa tutulmalı ve ekip hızlı yeniden besleme için hazır olmalıdır. En sık yapılan ve en sinsi hata, test sonunda bir vananın kapalı unutulmasıdır; bu, kalıcı bir tek yönlü besleme ve düşük basınç bölgesi yaratır.</p>
+        <p>Bu yüzden kapatmalar daima yavaş yapılır, kapatılan her vana bir kontrol listesine işlenir ve test biter bitmez tüm vanalar ters sırada açılır. Her vananın tam açıldığı, mil turu sayılarak veya hat basıncının geri geldiği görülerek teyit edilir. Ekip sahadan ayrılmadan önce bölgenin normal debisi ve basıncı eski değerlerine döndüğü doğrulanır.</p>
+        <ul>
+          <li>Yöntemin ayrıntısı: <a href="/hizmetler.html">Hizmetler</a></li>
+          <li>Saha örnekleri: <a href="/projeler/">Projeler</a></li>
+          <li>Sık sorulanlar: <a href="/sss.html">SSS</a></li>
+        </ul>
+      </div>
+""",
+        body_en="""
+      <div class="prose">
+        <h2>The purpose of a step test</h2>
+        <p>When the minimum night flow of a <a href="/en/blog/dma-nedir.html">District Metered Area (DMA)</a> comes out high, physical loss in that zone is established, but not which street it is concentrated on. A step test divides the zone temporarily into small sub-sections and measures each one's contribution to the flow in turn.</p>
+        <p>The output is an ordered list of a few-hundred-metre lengths of main that hold most of the loss. Without it, the acoustic crew must listen point by point along kilometres of pipe. Because a step test narrows the search area, <a href="/en/blog/akustik-su-kacagi-tespiti-nedir.html">acoustic detection</a> becomes faster and more accurate. A step test does not find the leak; it decides where to look for it.</p>
+
+        <h2>Preparation</h2>
+        <p>The reliability of the test rests on preparation. The first requirement is an up-to-date network map: pipe diameter, material, direction of supply and the position of every valve inside the zone. If the map is incomplete, there is no way to tell which main a closed valve feeds, and the steps lose their meaning.</p>
+        <p>From the map, a valve list and a closing order are drawn up, working from the far end of the zone back toward the inlet. Every valve on the list is tried in daylight first: does it close fully, is its spindle sound, is its chamber accessible. A valve that will not close, or that passes water, makes that step's flow read lower than it is.</p>
+        <p>The test is run in the night window when legitimate demand is lowest, typically between 01:00 and 04:00, so the steps largely reflect leakage rather than customer use. Customers are told in advance of a possible brief interruption; where users need water continuously, the plan is arranged around them.</p>
+
+        <h2>Execution: closing valves from the far end back</h2>
+        <p>The flow meter at the zone inlet logs continuously through the test, in steps of a second or two, at most a few minutes. Working through the prepared order, the crew closes the valves one at a time, starting at the far end. Each closure is made slowly: a sudden shut-off sends a pressure surge through the main and lifts sediment.</p>
+        <p>After a valve is closed, the flow is left to settle to a new balance; as the pipe volume fills, it steadies within a few minutes, and the reading is taken only then. The value recorded is the flow still passing the inlet once everything beyond that valve is cut off. The next valve is closed and the wait repeated, so the zone shrinks step by step toward the inlet.</p>
+
+        <h2>Reading the flow steps</h2>
+        <p>The finished test leaves a series of flow drops, one per valve closure. The drop at a step is the flow the length of main just isolated by that valve was carrying at that moment. Because legitimate night use is small, most of it is taken to be physical loss.</p>
+        <p>A large step — the inlet flow falling markedly when one valve is closed — shows a heavy leak on that sub-section; a small step says that length is relatively sound. The steps should sum to the total night flow at the inlet; a large mismatch points to a valve that did not close or a connection that was missed, and that part of the test is repeated.</p>
+        <p>A step test gives a distribution, not a position. It brings the loss down to which length of main, within a few hundred metres, not to where on that length. The figures compare relative magnitude rather than measure flow precisely — temperature, pressure and valve leakage all affect the result.</p>
+
+        <h2>Interpretation and the next step</h2>
+        <p>The high-loss sub-sections are ordered into a priority list, with each length's material and failure history, and handed to the acoustic crew. Starting from the highest-loss length, they move to pinpoint location with a <a href="/en/blog/akustik-su-kacagi-tespiti-nedir.html">ground microphone and a correlator</a>.</p>
+        <p>Where the loss is spread over several lengths, each is planned as a separate field task. After repair, the zone's minimum night flow is measured again; if the drop falls short of expectation, the step test is repeated to narrow the remaining loss. The cycle continues until the zone reaches its target loss level. For the measurement side, see the <a href="/en/blog/debi-olcumu-nedir.html">flow measurement</a> article.</p>
+
+        <h2>Risks and precautions</h2>
+        <p>Because a step test runs the network in an unusual configuration for a while, it carries risks. Closing and opening valves changes flow velocity and direction; sediment in the pipe is disturbed and can cause discolouration. Slow operation, and flushing the main afterwards if needed, limit this. Fast closures also create pressure transients that stress weak joints.</p>
+        <p>As the zone is split up, some parts are left unfed for a time; if a fire-flow demand arises then, response can be delayed. The plan must allow for fire-service access and keep interruption windows short. The most insidious mistake is leaving a valve shut at the end, which creates a permanent one-way feed and a low-pressure pocket.</p>
+        <p>For this reason every closed valve is entered on a checklist, and as soon as the test ends all valves are reopened in reverse order. Each is confirmed fully open by counting spindle turns or seeing the line pressure return. Before the crew leaves, the zone's normal flow and pressure are verified to have returned to their earlier values.</p>
+        <ul>
+          <li>Method detail: <a href="/en/hizmetler.html">Services</a></li>
+          <li>Field examples: <a href="/en/projeler/">Projects</a></li>
+          <li>Common questions: <a href="/en/sss.html">FAQ</a></li>
+        </ul>
+      </div>
+""",
+    ),
+    dict(
         slug="su-kaybi-dusurme-yol-haritasi",
         hero="/assets/photos/depo-cikis.webp",
         hero_alt="Depo çıkışı debi ölçüm noktası",
@@ -890,6 +975,10 @@ BLOG_INDEX_ITEMS = [
      "DMA (İzole Ölçüm Bölgesi) nedir?", "Şebekeyi ölçülebilir bölgelere ayırmak, gece minimum debi ve step test.",
      "What is a DMA (District Metered Area)?", "Splitting the network into measurable zones, minimum night flow and step testing.",
      "/assets/photos/dma-tasarim.webp"),
+    ("adim-testi-nedir",
+     "Adım (step) testi nedir?", "Gece vanaları kademeli kapatıp debi düşüşünden kaybı alt hatlara daraltma.",
+     "What is a step test?", "Closing valves in steps at night and reading the flow drop to narrow the loss.",
+     "/assets/photos/gece-operasyon.webp"),
     ("su-kaybi-dusurme-yol-haritasi",
      "Su kaybını düşürme yol haritası", "NRW / IWA çerçevesi ve sekiz adımlı kalıcı kayıp azaltma programı.",
      "A roadmap for cutting water loss", "The NRW / IWA framework and an eight-step programme for lasting loss reduction.",
